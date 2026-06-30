@@ -109,7 +109,8 @@ def _ask_ai(
                 client_kwargs = {"api_key": api_key}
                 if hasattr(types, "HttpOptions"):
                     try:
-                        client_kwargs["http_options"] = types.HttpOptions(timeout=60000)
+                        # Per-attempt cap so a slow/stuck key fails over fast.
+                        client_kwargs["http_options"] = types.HttpOptions(timeout=45000)
                     except Exception:
                         pass
                 client = genai.Client(**client_kwargs)
