@@ -1,5 +1,5 @@
 # ─── Stage 1: dependency builder ─────────────────────────────────────────────
-FROM python:3.13-slim AS builder
+FROM python:3.11-slim AS builder
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
@@ -16,7 +16,7 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r requirements.txt
 
 
 # ─── Stage 2: runtime image ───────────────────────────────────────────────────
-FROM python:3.13-slim
+FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
