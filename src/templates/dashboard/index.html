@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "ESG AI Dashboard" %} — Platanus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="esg-dash py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <span class="badge rounded-pill bg-success-subtle text-success-emphasis mb-3 px-3 py-2">
+        <i class="ti ti-sparkles me-1"></i>{% trans "AI-powered ESG analysis" %}
+      </span>
+      <h1 class="fw-bold mb-2">{% trans "ESG AI Dashboard" %}</h1>
+      <p class="text-secondary col-lg-7 mx-auto">
+        {% trans "Upload a company report or paste text. AI evaluates Environmental, Social and Governance performance and gives you scores, risks and recommendations." %}
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <h5 class="fw-semibold mb-3"><i class="ti ti-upload me-1 text-success"></i>{% trans "New analysis" %}</h5>
+            <form method="post" enctype="multipart/form-data" novalidate>
+              {% csrf_token %}
+
+              <div class="mb-3">
+                <label class="form-label">{% trans "Company name" %}</label>
+                {{ form.company_name }}
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">{% trans "Document (PDF, PNG, JPG, WEBP)" %}</label>
+                {{ form.document }}
+                {% if form.document.errors %}<div class="text-danger small mt-1">{{ form.document.errors|striptags }}</div>{% endif %}
+              </div>
+
+              <div class="esg-or text-center text-secondary small my-3">{% trans "or" %}</div>
+
+              <div class="mb-3">
+                <label class="form-label">{% trans "Paste text" %}</label>
+                {{ form.text }}
+              </div>
+
+              {% if form.non_field_errors %}<div class="text-danger small mb-3">{{ form.non_field_errors|striptags }}</div>{% endif %}
+
+              <button type="submit" class="btn btn-success w-100 btn-lg" id="esg-submit">
+                <span class="esg-submit-label"><i class="ti ti-bolt me-1"></i>{% trans "Analyse" %}</span>
+                <span class="esg-submit-loading d-none">
+                  <span class="spinner-border spinner-border-sm me-2"></span>{% trans "Analysing..." %}
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {% if recent %}
+        <div class="card border-0 shadow-sm rounded-4 mt-4">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 class="fw-semibold mb-0"><i class="ti ti-history me-1"></i>{% trans "Recent" %}</h6>
+              <a href="{% url 'dashboard:history' %}" class="small link-success">{% trans "View all" %}</a>
+            </div>
+            <ul class="list-unstyled mb-0">
+              {% for a in recent %}
+              <li class="d-flex justify-content-between align-items-center py-2 border-top">
+                <a href="{% url 'dashboard:detail' a.pk %}" class="text-decoration-none text-body text-truncate me-2">
+                  {{ a.company_name|default:_("Untitled") }}
+                </a>
+                <span class="badge bg-success-subtle text-success-emphasis">{{ a.overall_score }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="col-lg-7">
+        {% if analysis %}
+          {% include "dashboard/_result.html" %}
+        {% else %}
+        <div class="esg-empty d-flex flex-column align-items-center justify-content-center text-center h-100 p-5 rounded-4 border border-2 border-dashed">
+          <i class="ti ti-chart-pie-2 display-4 text-success-emphasis mb-3"></i>
+          <h5 class="fw-semibold">{% trans "Your ESG report appears here" %}</h5>
+          <p class="text-secondary mb-0">{% trans "Submit a document or text on the left to get started." %}</p>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.querySelector('form[enctype]')?.addEventListener('submit', function () {
+    var btn = document.getElementById('esg-submit');
+    if (!btn) return;
+    btn.disabled = true;
+    btn.querySelector('.esg-submit-label')?.classList.add('d-none');
+    btn.querySelector('.esg-submit-loading')?.classList.remove('d-none');
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Django
+db.sqlite3
+/staticfiles/
+/src/media/
+local_settings.py
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Backups (local copies — never commit to git)
+backups/
+
+# Internal design notes (kept local)
+docs/superpowers/
+
+# Claude local settings
+.claude/

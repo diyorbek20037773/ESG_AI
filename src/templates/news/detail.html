@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ news.title }} — Platanus{% endblock %}
+
+{% block content %}
+
+  <!-- Page Header -->
+  <section class="py-8 py-lg-10 bg-light border-bottom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-2 small">
+          <li class="breadcrumb-item"><a href="{% url 'core:index' %}" class="text-primary text-decoration-none">{% trans "Home page" %}</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'news:list' %}" class="text-primary text-decoration-none">{% trans "News plural" %}</a></li>
+          <li class="breadcrumb-item active text-dark text-truncate" style="max-width:300px;">{{ news.title }}</li>
+        </ol>
+      </nav>
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <span class="badge bg-{{ news.badge_color }} rounded-pill fw-normal">{{ news.get_type_display }}</span>
+        <span class="text-secondary small d-flex align-items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          {{ news.date|date:"d M, Y" }}
+        </span>
+      </div>
+      <h1 class="fw-bold mt-3 mb-0" style="max-width:800px;">{{ news.title }}</h1>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="pt-6 pb-8 pt-lg-10 pb-lg-13">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <!-- Back link -->
+          <div class="mb-8 pb-6 border-bottom">
+            <a href="{% url 'news:list' %}" class="btn-pill-link btn-pill-link--back">
+              <span class="btn-pill-link-icon" aria-hidden="true">
+                <i class="ti ti-arrow-left"></i>
+              </span>
+              Barcha yangiliklar
+            </a>
+          </div>
+
+          <!-- Image gallery -->
+          {% with images=news.images.all %}
+          {% if images %}
+          <div class="mb-8">
+            <h5 class="fw-semibold mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-1 text-primary"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+              {% trans "Images" %} ({{ images.count }})
+            </h5>
+            <div class="row g-3">
+              {% for img in images %}
+              <div class="col-md-4 col-6">
+                <a href="{{ img.image.url }}" class="glightbox rounded-4 overflow-hidden d-block" data-gallery="news-gallery" data-title="{{ news.title }}">
+                  <img src="{{ img.image.url }}" alt="{{ news.title }}" class="img-fluid rounded-4 w-100" style="height:180px; object-fit:cover; cursor:zoom-in; transition:transform .2s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          {% endwith %}
+
+          <!-- Body text -->
+          <div class="fs-6 lh-lg text-dark">
+            {{ news.body|linebreaks }}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    GLightbox({ selector: '.glightbox' });
+  </script>
+{% endblock %}

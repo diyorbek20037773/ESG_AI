@@ -1,0 +1,466 @@
+# English translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+# Navbar
+msgid "Home"
+msgstr "Home"
+
+msgid "News"
+msgstr "News"
+
+msgid "Group"
+msgstr "Team"
+
+msgid "Mentor"
+msgstr "Experts"
+
+msgid "Testimonials"
+msgstr "Blog"
+
+msgid "Pricing"
+msgstr "Pricing"
+
+msgid "Get Started"
+msgstr "Get Started"
+
+# News List page
+msgid "All News"
+msgstr "All News"
+
+msgid "All Posts"
+msgstr "All Posts"
+
+msgid "Latest News"
+msgstr "Latest News"
+
+msgid "Latest news subtitle"
+msgstr "Stay informed about the latest news and events from the Platanus platform and the green economy sector."
+
+msgid "All"
+msgstr "All"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "Update"
+msgstr "Update"
+
+msgid "Report"
+msgstr "Report"
+
+msgid "Partnership"
+msgstr "Partnership"
+
+msgid "Read more"
+msgstr "Read more"
+
+msgid "No news found"
+msgstr "No news found"
+
+msgid "No news yet"
+msgstr "No news available yet. Please check back later."
+
+# Breadcrumbs
+msgid "Home page"
+msgstr "Home"
+
+msgid "News plural"
+msgstr "News"
+
+# News Detail page
+msgid "Images"
+msgstr "Images"
+
+msgid "Back to all news"
+msgstr "All news"
+
+# Index page hero
+msgid "Hero badge"
+msgstr "Evaluate green projects"
+
+msgid "Hero title"
+msgstr "Welcome to Platanus! Explore a green future"
+
+msgid "Hero subtitle"
+msgstr "See the future differently through new era ideas and modern approaches. Every step with Platanus opens new opportunities."
+
+# Index page (additional)
+msgid "Page title index"
+msgstr "Platanus — Green Economy"
+
+msgid "Hero title line1"
+msgstr "Welcome to"
+
+msgid "Hero title highlight"
+msgstr "Platanus!"
+
+msgid "Hero title line2"
+msgstr "Explore a Green Future"
+
+msgid "Start Learning"
+msgstr "Start Learning"
+
+msgid "YouTube Channel"
+msgstr "YouTube Channel"
+
+msgid "Students"
+msgstr "Students"
+
+msgid "Courses"
+msgstr "Courses"
+
+msgid "Rating"
+msgstr "Rating"
+
+msgid "Join 50k+"
+msgstr "Join 50k+"
+
+msgid "200+ Courses"
+msgstr "200+ Courses"
+
+msgid "Available Now"
+msgstr "Available Now"
+
+msgid "Latest"
+msgstr "Latest"
+
+msgid "News section subtitle"
+msgstr "The latest news and events in the Platanus platform, green economy and sustainable development."
+
+msgid "No news empty"
+msgstr "No news yet."
+
+msgid "About us"
+msgstr "About Us"
+
+msgid "Group section title"
+msgstr "Digital Green Assessment"
+
+msgid "Group section subtitle"
+msgstr "A fast and accurate platform for evaluating projects by green criteria — a key tool for advancing green finance in Uzbekistan."
+
+msgid "Feature 1 title"
+msgstr "Investment Decisions"
+
+msgid "Feature 1 desc"
+msgstr "Strengthening investment decisions and optimizing the project selection process."
+
+msgid "Feature 2 title"
+msgstr "Decarbonization"
+
+msgid "Feature 2 desc"
+msgstr "Ensuring decarbonization and ecological sustainability of the national economy."
+
+msgid "Feature 3 title"
+msgstr "Climate Commitments"
+
+msgid "Feature 3 desc"
+msgstr "A system serving the country's fulfillment of international climate commitments."
+
+msgid "Feature 4 title"
+msgstr "Automated Assessment"
+
+msgid "Feature 4 desc"
+msgstr "Rapid and accurate digital assessment of projects based on green criteria."
+
+msgid "Feature 5 title"
+msgstr "Green Finance"
+
+msgid "Feature 5 desc"
+msgstr "A modern platform for developing green finance in Uzbekistan."
+
+msgid "Feature 6 title"
+msgstr "Sustainable Development"
+
+msgid "Feature 6 desc"
+msgstr "Creates a solid foundation for long-term green economic development."
+
+msgid "Learn more"
+msgstr "Learn More"
+
+msgid "24/7 Support"
+msgstr "24/7 Support"
+
+msgid "Always here"
+msgstr "Always here"
+
+msgid "150+ Countries"
+msgstr "150+ Countries"
+
+msgid "Worldwide reach"
+msgstr "Worldwide reach"
+
+msgid "Our"
+msgstr "Our"
+
+msgid "Experts section subtitle"
+msgstr "The Platanus team consists of experienced experts in the fields of green economy, digital technology, and financial analysis."
+
+# Contact section
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact section title"
+msgstr "Get in"
+
+msgid "Contact section title highlight"
+msgstr "Touch"
+
+msgid "Contact section subtitle"
+msgstr "Have questions or suggestions? Reach out and we'll get back to you promptly."
+
+msgid "Contact info title"
+msgstr "Contact Information"
+
+msgid "Contact info subtitle"
+msgstr "Send us a message and we'll respond within 24 hours."
+
+msgid "Contact direct email label"
+msgstr "Email Address"
+
+msgid "Contact telegram label"
+msgstr "Telegram"
+
+msgid "Contact name label"
+msgstr "Your Name"
+
+msgid "Contact email label"
+msgstr "Your Email"
+
+msgid "Contact subject label"
+msgstr "Subject"
+
+msgid "Contact message label"
+msgstr "Your Message"
+
+msgid "Contact send btn"
+msgstr "Send Message"
+
+msgid "Contact success msg"
+msgstr "Your message was sent successfully! We'll get back to you soon."
+
+msgid "Contact error msg"
+msgstr "Something went wrong. Please fill in all required fields and try again."
+
+msgid "Blog Posts"
+msgstr "Blog Posts"
+
+msgid "Blog section subtitle"
+msgstr "Articles written by the Platanus team on green economy, sustainable development and ecological finance topics."
+
+# Footer
+msgid "Footer description"
+msgstr "Empowering millions of learners worldwide with industry-leading courses and expert mentors."
+
+msgid "Footer product"
+msgstr "Product"
+
+msgid "Footer features"
+msgstr "Features"
+
+msgid "Footer pricing"
+msgstr "Pricing"
+
+msgid "Footer courses"
+msgstr "Courses"
+
+msgid "Footer community"
+msgstr "Community"
+
+msgid "Footer company"
+msgstr "Company"
+
+msgid "Footer about us"
+msgstr "About Us"
+
+msgid "Footer careers"
+msgstr "Careers"
+
+msgid "Footer blog"
+msgstr "Blog"
+
+msgid "Footer press"
+msgstr "Press"
+
+msgid "Footer support"
+msgstr "Support"
+
+msgid "Footer help center"
+msgstr "Help Center"
+
+msgid "Footer contact us"
+msgstr "Contact Us"
+
+msgid "Footer privacy policy"
+msgstr "Privacy Policy"
+
+msgid "Footer terms"
+msgstr "Terms of Service"
+
+msgid "Footer resources"
+msgstr "Resources"
+
+msgid "Footer web dev"
+msgstr "Web Development"
+
+msgid "Footer uiux"
+msgstr "UI/UX Design"
+
+msgid "Footer data science"
+msgstr "Data Science"
+
+msgid "Footer marketing"
+msgstr "Marketing"
+
+msgid "Footer copyright"
+msgstr "© 2026 Platanus. All rights reserved."
+
+msgid "Back btn"
+msgstr "Back"
+
+msgid "Latest posts"
+msgstr "Latest posts"
+
+# ESG dashboard
+
+msgid "ESG AI"
+msgstr "ESG AI"
+
+msgid "ESG AI Dashboard"
+msgstr "ESG AI Dashboard"
+
+msgid "AI-powered ESG analysis"
+msgstr "AI-powered ESG analysis"
+
+msgid "Upload a company report or paste text. AI evaluates Environmental, Social and Governance performance and gives you scores, risks and recommendations."
+msgstr "Upload a company report or paste text. AI evaluates Environmental, Social and Governance performance and gives you scores, risks and recommendations."
+
+msgid "New analysis"
+msgstr "New analysis"
+
+msgid "Company name"
+msgstr "Company name"
+
+msgid "Document (PDF, PNG, JPG, WEBP)"
+msgstr "Document (PDF, PNG, JPG, WEBP)"
+
+msgid "or"
+msgstr "or"
+
+msgid "Paste text"
+msgstr "Paste text"
+
+msgid "Analyse"
+msgstr "Analyse"
+
+msgid "Analysing..."
+msgstr "Analysing..."
+
+msgid "Recent"
+msgstr "Recent"
+
+msgid "View all"
+msgstr "View all"
+
+msgid "Untitled"
+msgstr "Untitled"
+
+msgid "Your ESG report appears here"
+msgstr "Your ESG report appears here"
+
+msgid "Submit a document or text on the left to get started."
+msgstr "Submit a document or text on the left to get started."
+
+msgid "ESG Assessment"
+msgstr "ESG Assessment"
+
+msgid "Untitled company"
+msgstr "Untitled company"
+
+msgid "Environmental"
+msgstr "Environmental"
+
+msgid "Social"
+msgstr "Social"
+
+msgid "Governance"
+msgstr "Governance"
+
+msgid "Key findings"
+msgstr "Key findings"
+
+msgid "Risks"
+msgstr "Risks"
+
+msgid "Recommendations"
+msgstr "Recommendations"
+
+msgid "Back to history"
+msgstr "Back to history"
+
+msgid "Analysed on"
+msgstr "Analysed on"
+
+msgid "ESG Analysis"
+msgstr "ESG Analysis"
+
+msgid "Analysis history"
+msgstr "Analysis history"
+
+msgid "Company"
+msgstr "Company"
+
+msgid "Overall"
+msgstr "Overall"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "No analyses yet"
+msgstr "No analyses yet"
+
+msgid "Run your first ESG analysis to see it here."
+msgstr "Run your first ESG analysis to see it here."
+
+msgid "Start now"
+msgstr "Start now"
+
+msgid "Company name (optional)"
+msgstr "Company name (optional)"
+
+msgid "Or paste the report / company information here..."
+msgstr "Or paste the report / company information here..."
+
+msgid "Unsupported file type. Use PDF, PNG, JPG or WEBP."
+msgstr "Unsupported file type. Use PDF, PNG, JPG or WEBP."
+
+msgid "File is too large (max 20 MB)."
+msgstr "File is too large (max 20 MB)."
+
+msgid "Upload a document or paste some text to analyse."
+msgstr "Upload a document or paste some text to analyse."
+
+msgid "AI engine is not configured."
+msgstr "AI engine is not configured."
+
+msgid "Analysis complete."
+msgstr "Analysis complete."
+
+msgid "Analysis failed: %(err)s"
+msgstr "Analysis failed: %(err)s"
+
+msgid "Document"
+msgstr "Document"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "ESG analysis"
+msgstr "ESG analysis"
+
+msgid "ESG analyses"
+msgstr "ESG analyses"

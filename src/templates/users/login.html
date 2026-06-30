@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kirish — Platanus{% endblock %}
+
+{% block content %}
+<section class="min-vh-100 d-flex align-items-center bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 col-lg-4">
+        <div class="card shadow-sm rounded-5 border-0 p-2">
+          <div class="card-body p-5">
+
+            <div class="text-center mb-5">
+              <div class="rounded-circle bg-primary bg-opacity-10 d-inline-flex align-items-center justify-content-center mb-3" style="width:56px;height:56px;">
+                <i class="ti ti-lock text-primary" style="font-size:1.6rem;"></i>
+              </div>
+              <h1 class="h4 fw-bold mb-1">Tizimga kirish</h1>
+              <p class="text-secondary small mb-0">Faqat vakolatli foydalanuvchilar uchun</p>
+            </div>
+
+            {% if form.errors %}
+              <div class="alert alert-danger rounded-3 small py-2 px-3 mb-4">
+                Login yoki parol noto'g'ri. Qaytadan urinib ko'ring.
+              </div>
+            {% endif %}
+
+            <form method="post" novalidate>
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ next }}">
+
+              <div class="mb-3">
+                <label class="form-label small fw-medium">Login</label>
+                <input
+                  type="text"
+                  name="username"
+                  class="form-control rounded-3"
+                  placeholder="Foydalanuvchi nomi"
+                  autofocus
+                  required
+                >
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label small fw-medium">Parol</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control rounded-3"
+                  placeholder="••••••••"
+                  required
+                >
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100 rounded-3 py-2 fw-medium">
+                <i class="ti ti-login me-1"></i> Kirish
+              </button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

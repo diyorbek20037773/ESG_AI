@@ -1,0 +1,466 @@
+# Uzbek translations (default language)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz\n"
+
+# Navbar
+msgid "Home"
+msgstr "Bosh sahifa"
+
+msgid "News"
+msgstr "Yangiliklar"
+
+msgid "Group"
+msgstr "Jamoa"
+
+msgid "Mentor"
+msgstr "Mutaxassislar"
+
+msgid "Testimonials"
+msgstr "Blog"
+
+msgid "Pricing"
+msgstr "Narxlar"
+
+msgid "Get Started"
+msgstr "Boshlash"
+
+# News List page
+msgid "All News"
+msgstr "Barcha yangiliklar"
+
+msgid "All Posts"
+msgstr "Barcha postlar"
+
+msgid "Latest News"
+msgstr "So'nggi Yangiliklar"
+
+msgid "Latest news subtitle"
+msgstr "Platanus platformasi va yashil iqtisodiyot sohasidagi eng so'nggi yangiliklardan xabardor bo'ling."
+
+msgid "All"
+msgstr "Barchasi"
+
+msgid "Event"
+msgstr "Tadbir"
+
+msgid "Update"
+msgstr "Yangilanish"
+
+msgid "Report"
+msgstr "Hisobot"
+
+msgid "Partnership"
+msgstr "Hamkorlik"
+
+msgid "Read more"
+msgstr "Batafsil"
+
+msgid "No news found"
+msgstr "Yangiliklar topilmadi"
+
+msgid "No news yet"
+msgstr "Hozircha yangiliklar mavjud emas. Keyinroq qayta tekshirib ko'ring."
+
+# Breadcrumbs
+msgid "Home page"
+msgstr "Bosh sahifa"
+
+msgid "News plural"
+msgstr "Yangiliklar"
+
+# News Detail page
+msgid "Images"
+msgstr "Rasmlar"
+
+msgid "Back to all news"
+msgstr "Barcha yangiliklar"
+
+# Index page hero
+msgid "Hero badge"
+msgstr "Yashil loyihalarni baholang"
+
+msgid "Hero title"
+msgstr "Platanus platformasiga Xush kelibsiz! Yashil kelajakni o'rganing"
+
+msgid "Hero subtitle"
+msgstr "Yangi davr g'oyalari va zamonaviy yondashuvlar orqali kelajakni boshqacha ko'ring. Platanus bilan har bir qadam yangi imkoniyatlarga olib boradi."
+
+# Index page (additional)
+msgid "Page title index"
+msgstr "Platanus — Yashil Iqtisodiyot"
+
+msgid "Hero title line1"
+msgstr "Platanus platformasiga"
+
+msgid "Hero title highlight"
+msgstr "Xush kelibsiz!"
+
+msgid "Hero title line2"
+msgstr "Yashil kelajakni o'rganing"
+
+msgid "Start Learning"
+msgstr "O'rganishni boshlang"
+
+msgid "YouTube Channel"
+msgstr "YouTube Channel"
+
+msgid "Students"
+msgstr "Talabalar"
+
+msgid "Courses"
+msgstr "Kurslar"
+
+msgid "Rating"
+msgstr "Reyting"
+
+msgid "Join 50k+"
+msgstr "50k+ ga qo'shiling"
+
+msgid "200+ Courses"
+msgstr "200+ Kurs"
+
+msgid "Available Now"
+msgstr "Mavjud"
+
+msgid "Latest"
+msgstr "So'nggi"
+
+msgid "News section subtitle"
+msgstr "Platanus platformasi, yashil iqtisodiyot va barqaror rivojlanish sohasidagi eng so'nggi yangiliklar va tadbirlar."
+
+msgid "No news empty"
+msgstr "Hozircha yangiliklar yo'q."
+
+msgid "About us"
+msgstr "Biz haqimizda"
+
+msgid "Group section title"
+msgstr "Raqamli Yashil Baholash"
+
+msgid "Group section subtitle"
+msgstr "Loyihalarni yashil mezonlar asosida tez va aniq baholovchi platforma — O'zbekistonda yashil moliyani rivojlantirishda asosiy vosita."
+
+msgid "Feature 1 title"
+msgstr "Investitsiya qarorlari"
+
+msgid "Feature 1 desc"
+msgstr "Investitsiya qarorlarini mustahkamlash va loyihalarni tanlash jarayonini optimallashtirish."
+
+msgid "Feature 2 title"
+msgstr "Dekarbonizatsiya"
+
+msgid "Feature 2 desc"
+msgstr "Milliy iqtisodiyotning dekarbonizatsiyasi va ekologik barqarorligini ta'minlash."
+
+msgid "Feature 3 title"
+msgstr "Iqlim majburiyatlari"
+
+msgid "Feature 3 desc"
+msgstr "Mamlakatning xalqaro iqlim majburiyatlarini bajarishga xizmat qiluvchi tizim."
+
+msgid "Feature 4 title"
+msgstr "Avtomatik baholash"
+
+msgid "Feature 4 desc"
+msgstr "Loyihalarni yashil mezonlar asosida tez va aniq raqamli baholash imkoniyati."
+
+msgid "Feature 5 title"
+msgstr "Yashil moliya"
+
+msgid "Feature 5 desc"
+msgstr "O'zbekistonda yashil moliyani rivojlantirish uchun zamonaviy platforma."
+
+msgid "Feature 6 title"
+msgstr "Barqaror rivojlanish"
+
+msgid "Feature 6 desc"
+msgstr "Uzoq muddatli yashil iqtisodiy rivojlanishning mustahkam poydevorini yaratadi."
+
+msgid "Learn more"
+msgstr "Batafsil ma'lumot"
+
+msgid "24/7 Support"
+msgstr "24/7 Yordam"
+
+msgid "Always here"
+msgstr "Har doim tayyor"
+
+msgid "150+ Countries"
+msgstr "150+ Davlat"
+
+msgid "Worldwide reach"
+msgstr "Dunyo bo'ylab"
+
+msgid "Our"
+msgstr "Bizning"
+
+msgid "Experts section subtitle"
+msgstr "Platanus jamoasi yashil iqtisodiyot, raqamli texnologiyalar va moliyaviy tahlil sohasidagi tajribali mutaxassislardan iborat."
+
+# Contact section
+msgid "Contact"
+msgstr "Aloqa"
+
+msgid "Contact section title"
+msgstr "Biz bilan"
+
+msgid "Contact section title highlight"
+msgstr "Bog'laning"
+
+msgid "Contact section subtitle"
+msgstr "Savollaringiz yoki takliflaringiz bo'lsa, biz bilan bog'laning. Tez orada javob beramiz."
+
+msgid "Contact info title"
+msgstr "Aloqa ma'lumotlari"
+
+msgid "Contact info subtitle"
+msgstr "Xabar jo'nating, biz 24 soat ichida javob beramiz."
+
+msgid "Contact direct email label"
+msgstr "Elektron pochta"
+
+msgid "Contact telegram label"
+msgstr "Telegram"
+
+msgid "Contact name label"
+msgstr "Ismingiz"
+
+msgid "Contact email label"
+msgstr "Email manzilingiz"
+
+msgid "Contact subject label"
+msgstr "Mavzu"
+
+msgid "Contact message label"
+msgstr "Xabaringiz"
+
+msgid "Contact send btn"
+msgstr "Xabar yuborish"
+
+msgid "Contact success msg"
+msgstr "Xabaringiz muvaffaqiyatli yuborildi! Tez orada javob beramiz."
+
+msgid "Contact error msg"
+msgstr "Xabar yuborishda xatolik yuz berdi. Iltimos, barcha maydonlarni to'ldiring."
+
+msgid "Blog Posts"
+msgstr "Blog Postlari"
+
+msgid "Blog section subtitle"
+msgstr "Platanus jamoasi tomonidan yashil iqtisodiyot, barqaror rivojlanish va ekologik moliya mavzularida yozilgan maqolalar."
+
+# Footer
+msgid "Footer description"
+msgstr "Platanus platformasi yashil iqtisodiyotni rivojlantirishda millionlab foydalanuvchilarga xizmat qiladi."
+
+msgid "Footer product"
+msgstr "Mahsulot"
+
+msgid "Footer features"
+msgstr "Imkoniyatlar"
+
+msgid "Footer pricing"
+msgstr "Narxlar"
+
+msgid "Footer courses"
+msgstr "Kurslar"
+
+msgid "Footer community"
+msgstr "Jamiyat"
+
+msgid "Footer company"
+msgstr "Kompaniya"
+
+msgid "Footer about us"
+msgstr "Biz haqimizda"
+
+msgid "Footer careers"
+msgstr "Karyera"
+
+msgid "Footer blog"
+msgstr "Blog"
+
+msgid "Footer press"
+msgstr "Matbuot"
+
+msgid "Footer support"
+msgstr "Yordam"
+
+msgid "Footer help center"
+msgstr "Yordam markazi"
+
+msgid "Footer contact us"
+msgstr "Biz bilan bog'laning"
+
+msgid "Footer privacy policy"
+msgstr "Maxfiylik siyosati"
+
+msgid "Footer terms"
+msgstr "Foydalanish shartlari"
+
+msgid "Footer resources"
+msgstr "Resurslar"
+
+msgid "Footer web dev"
+msgstr "Veb dasturlash"
+
+msgid "Footer uiux"
+msgstr "UI/UX Dizayn"
+
+msgid "Footer data science"
+msgstr "Data Science"
+
+msgid "Footer marketing"
+msgstr "Marketing"
+
+msgid "Footer copyright"
+msgstr "© 2026 Platanus. Barcha huquqlar himoyalangan."
+
+msgid "Back btn"
+msgstr "Orqaga"
+
+msgid "Latest posts"
+msgstr "So'nggi postlar"
+
+# ESG dashboard
+
+msgid "ESG AI"
+msgstr "ESG AI"
+
+msgid "ESG AI Dashboard"
+msgstr "ESG AI Boshqaruv paneli"
+
+msgid "AI-powered ESG analysis"
+msgstr "AI asosidagi ESG tahlil"
+
+msgid "Upload a company report or paste text. AI evaluates Environmental, Social and Governance performance and gives you scores, risks and recommendations."
+msgstr "Kompaniya hisobotini yuklang yoki matn kiriting. AI ekologik, ijtimoiy va boshqaruv ko'rsatkichlarini baholab, ball, risk va tavsiyalar beradi."
+
+msgid "New analysis"
+msgstr "Yangi tahlil"
+
+msgid "Company name"
+msgstr "Kompaniya nomi"
+
+msgid "Document (PDF, PNG, JPG, WEBP)"
+msgstr "Hujjat (PDF, PNG, JPG, WEBP)"
+
+msgid "or"
+msgstr "yoki"
+
+msgid "Paste text"
+msgstr "Matn kiriting"
+
+msgid "Analyse"
+msgstr "Tahlil qilish"
+
+msgid "Analysing..."
+msgstr "Tahlil qilinmoqda..."
+
+msgid "Recent"
+msgstr "So'nggi"
+
+msgid "View all"
+msgstr "Hammasini ko'rish"
+
+msgid "Untitled"
+msgstr "Nomsiz"
+
+msgid "Your ESG report appears here"
+msgstr "ESG hisobotingiz shu yerda paydo bo'ladi"
+
+msgid "Submit a document or text on the left to get started."
+msgstr "Boshlash uchun chapdan hujjat yoki matn yuboring."
+
+msgid "ESG Assessment"
+msgstr "ESG baholash"
+
+msgid "Untitled company"
+msgstr "Nomsiz kompaniya"
+
+msgid "Environmental"
+msgstr "Ekologiya"
+
+msgid "Social"
+msgstr "Ijtimoiy"
+
+msgid "Governance"
+msgstr "Boshqaruv"
+
+msgid "Key findings"
+msgstr "Asosiy topilmalar"
+
+msgid "Risks"
+msgstr "Risklar"
+
+msgid "Recommendations"
+msgstr "Tavsiyalar"
+
+msgid "Back to history"
+msgstr "Tarixga qaytish"
+
+msgid "Analysed on"
+msgstr "Tahlil sanasi"
+
+msgid "ESG Analysis"
+msgstr "ESG tahlil"
+
+msgid "Analysis history"
+msgstr "Tahlillar tarixi"
+
+msgid "Company"
+msgstr "Kompaniya"
+
+msgid "Overall"
+msgstr "Umumiy"
+
+msgid "Date"
+msgstr "Sana"
+
+msgid "No analyses yet"
+msgstr "Hali tahlillar yo'q"
+
+msgid "Run your first ESG analysis to see it here."
+msgstr "Uni shu yerda ko'rish uchun birinchi ESG tahlilingizni bajaring."
+
+msgid "Start now"
+msgstr "Boshlash"
+
+msgid "Company name (optional)"
+msgstr "Kompaniya nomi (ixtiyoriy)"
+
+msgid "Or paste the report / company information here..."
+msgstr "Yoki hisobot / kompaniya ma'lumotini shu yerga kiriting..."
+
+msgid "Unsupported file type. Use PDF, PNG, JPG or WEBP."
+msgstr "Qo'llab-quvvatlanmaydigan fayl turi. PDF, PNG, JPG yoki WEBP ishlating."
+
+msgid "File is too large (max 20 MB)."
+msgstr "Fayl juda katta (maks. 20 MB)."
+
+msgid "Upload a document or paste some text to analyse."
+msgstr "Tahlil uchun hujjat yuklang yoki matn kiriting."
+
+msgid "AI engine is not configured."
+msgstr "AI tizimi sozlanmagan."
+
+msgid "Analysis complete."
+msgstr "Tahlil yakunlandi."
+
+msgid "Analysis failed: %(err)s"
+msgstr "Tahlil amalga oshmadi: %(err)s"
+
+msgid "Document"
+msgstr "Hujjat"
+
+msgid "Text"
+msgstr "Matn"
+
+msgid "ESG analysis"
+msgstr "ESG tahlil"
+
+msgid "ESG analyses"
+msgstr "ESG tahlillar"

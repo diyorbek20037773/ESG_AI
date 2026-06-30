@@ -1,0 +1,1172 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Page title index" %}{% endblock %}
+
+{% block content %}
+
+  <section class="py-lg-13 py-8 bg-white position-relative" id="hero">
+    <div class="circle-bg d-none d-lg-block"></div>
+    <div id="hero-leaves"
+         class="hero-leaves d-none d-lg-block"
+         aria-hidden="true"
+         data-leaf-url="{% static 'assets/images/leaf.png' %}"></div>
+    <div class="container">
+      <div class="row align-items-start gy-8">
+        <div class="col-lg-6 pt-lg-3">
+          <span
+            class="badge bg-primary bg-opacity-10 text-primary px-4 py-3 fw-normal border border-primary rounded-pill">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor"
+                class="icon icon-tabler icons-tabler-filled icon-tabler-circle">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
+              </svg></span>
+            <span class="ms-1">{% trans "Hero badge" %}</span></span>
+          <h1 class="display-4 fw-bold  mt-4">
+            {% trans "Hero title line1" %}
+            <span class="text-primary">{% trans "Hero title highlight" %}</span>
+            {% trans "Hero title line2" %}
+          </h1>
+
+          <p class="my-6 lead fw-normal">
+            {% trans "Hero subtitle" %}
+          </p>
+          <div class="social-links mt-2">
+            <a href="https://t.me/faxriddinbaxtiyorov"
+               class="social-link social-link--telegram"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Telegram">
+              <i class="ti ti-brand-telegram"></i>
+            </a>
+            <a href="https://www.instagram.com/_faxriddin.b"
+               class="social-link social-link--instagram"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Instagram">
+              <i class="ti ti-brand-instagram"></i>
+            </a>
+            <a href="https://www.youtube.com/@ebiosifat"
+               class="social-link social-link--youtube"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="YouTube">
+              <i class="ti ti-brand-youtube"></i>
+            </a>
+            <a href="https://github.com/faxriddinprof"
+               class="social-link social-link--github"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="GitHub">
+              <i class="ti ti-brand-github"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card p-3 rounded-5  shadow-sm">
+            <div class="position-relative">
+              <div class="position-relative">
+                <img src="{% static 'assets/images/hero-img.jpg' %}" alt="about" class="rounded-5 img-fluid" />
+
+                <a href="https://www.youtube.com/watch?v=CivuutI6lXY"
+                  class="play-btn glightbox position-absolute top-50 start-50 translate-middle icon-shape icon-xl rounded-circle text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                    class="icon icon-tabler icons-tabler-filled icon-tabler-player-play">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
+                  </svg>
+                </a>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  {% comment %}
+  <section class="py-lg-13 py-8" id="courses">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <div class="mb-10">
+            <span class="text-primary text-uppercase small fw-semibold" style="letter-spacing: .125rem;">{% trans "News" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "Latest" %} <span class="text-primary">{% trans "News" %}</span></h2>
+            <p class="mb-0">
+              {% trans "News section subtitle" %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="row g-4">
+          {% for item in latest_news %}
+          <div class="col-lg-3 col-md-6">
+            <div class="card shadow-sm h-100 rounded-5 card-lift">
+              <div class="position-relative overflow-hidden">
+                {% with item.first_image as img %}
+                  {% if img %}
+                    <img src="{{ img.image.url }}" class="rounded-top-5 card-img-top" alt="{{ item.title }}" style="height:210px; object-fit:cover; width:100%;">
+                  {% else %}
+                    <div class="rounded-top-5 bg-light d-flex align-items-center justify-content-center" style="height:210px;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                    </div>
+                  {% endif %}
+                {% endwith %}
+                <div class="position-absolute top-0 start-0 p-3">
+                  <span class="badge bg-{{ item.badge_color }} rounded-pill fw-normal text-xs">{{ item.get_type_display }}</span>
+                </div>
+              </div>
+              <div class="card-body p-6 d-flex flex-column">
+                <h3 class="mb-3 fs-6">{{ item.title }}</h3>
+                <p class="small text-secondary flex-grow-1" style="display:-webkit-box; -webkit-line-clamp:3; line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">{{ item.body }}</p>
+                <div class="d-flex align-items-center justify-content-between mt-4 pt-3 border-top">
+                  <span class="text-xs text-secondary d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    {{ item.date|date:"d M, Y" }}
+                  </span>
+                  <a href="{% url 'news:detail' pk=item.pk %}" class="small link-primary d-flex align-items-center gap-1">{% trans "Read more" %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><line x1="13" y1="18" x2="19" y2="12"/><line x1="13" y1="6" x2="19" y2="12"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 text-center text-secondary py-8">{% trans "No news empty" %}</div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div class="col-12 text-center mt-10">
+            <a href="{% url 'news:list' %}" class="btn btn-outline-dark">
+              <span>{% trans "All News" %}</span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon ms-1">
+                  <line x1="5" y1="12" x2="19" y2="12"/><line x1="13" y1="18" x2="19" y2="12"/><line x1="13" y1="6" x2="19" y2="12"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endcomment %}
+
+
+  {% comment %}
+  <section class="py-lg-13 py-8 position-relative" id="blog">
+    <div class="circle-bg d-none d-lg-block"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center mb-10">
+            <span class="text-primary text-uppercase small fw-semibold"
+              style="letter-spacing: .125rem;">{% trans "Blog Posts" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "Group" %} <span class="text-primary">{% trans "Blog Posts" %}</span></h2>
+            <p>{% trans "Blog section subtitle" %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row gx-4 gy-6">
+        {% for post in latest_posts %}
+        <div class="col-lg-4 col-12">
+          <div class="card rounded-5 shadow-sm h-100 border">
+            <div class="card-body p-6">
+              <div class="d-flex gap-0 align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.093 -6.26l3.093 6.26l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.093 -6.26l3.093 6.26l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.093 -6.26l3.093 6.26l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.093 -6.26l3.093 6.26l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-warning"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.093 -6.26l3.093 6.26l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+              </div>
+              <div class="mt-4 mb-2">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-quote text-primary">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5" />
+                    <path d="M19 11h-4a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h3a1 1 0 0 1 1 1v6c0 2.667 -1.333 4.333 -4 5" />
+                  </svg>
+                </span>
+              </div>
+              <div>
+                <p class=" fw-semibold">{% if post.excerpt %}{{ post.excerpt|truncatechars:160 }}{% else %}{{ post.body|striptags|truncatechars:160 }}{% endif %}</p>
+              </div>
+              <div class="mt-7 pt-5 border-top">
+                <div class="d-flex gap-3 align-items-center">
+                  {% if post.author.profile.avatar %}
+                    <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author.get_full_name }}" class="avatar avatar-md rounded-circle">
+                  {% else %}
+                    <div class="avatar avatar-md rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold fs-6">
+                      {{ post.author.first_name|first|upper }}{{ post.author.last_name|first|upper }}
+                    </div>
+                  {% endif %}
+                  <div>
+                    <h6 class="mb-0">{{ post.author.get_full_name|default:post.author.username }}</h6>
+                    <small>{% if post.author.profile.job_title %}{{ post.author.profile.job_title }}{% else %}Muallif{% endif %}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center mt-10">
+          <a href="{% url 'blog:list' %}" class="btn btn-outline-dark">
+            <span>{% trans "All Posts" %}</span>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon ms-1">
+                <line x1="5" y1="12" x2="19" y2="12"/><line x1="13" y1="18" x2="19" y2="12"/><line x1="13" y1="6" x2="19" y2="12"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  {% endcomment %}
+
+
+  <section class="py-lg-13 py-8 position-relative" id="blog">
+    <div class="circle-bg d-none d-lg-block"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center mb-10">
+            <span class="text-primary text-uppercase small fw-semibold"
+              style="letter-spacing: .125rem;">{% trans "Blog Posts" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "Group" %} <span class="text-primary">{% trans "Blog Posts" %}</span></h2>
+            <p>{% trans "Blog section subtitle" %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        {% for post in latest_posts %}
+        <div class="col-lg-4 col-md-6">
+          <div class="card shadow-sm h-100 rounded-5 card-lift position-relative">
+            <div class="overflow-hidden" style="height: 220px; border-radius: 1.5rem 1.5rem 0 0;">
+              {% if post.featured_image %}
+                <img
+                  src="{{ post.featured_image.url }}"
+                  alt="{{ post.title }}"
+                  class="w-100 h-100"
+                  style="object-fit: cover; transition: transform .3s ease;"
+                  onmouseover="this.style.transform='scale(1.04)'"
+                  onmouseout="this.style.transform='scale(1)'"
+                >
+              {% else %}
+                <div class="w-100 h-100 bg-light d-flex align-items-center justify-content-center">
+                  <i class="ti ti-photo text-muted" style="font-size: 3rem;"></i>
+                </div>
+              {% endif %}
+            </div>
+            <div class="card-body p-4 d-flex flex-column">
+              <h3 class="h6 fw-semibold mb-2">
+                <a href="{% url 'blog:detail' slug=post.slug %}" class="text-dark text-decoration-none link-hover stretched-link">
+                  {{ post.title }}
+                </a>
+              </h3>
+              {% if post.excerpt %}
+                <p class="text-secondary small flex-grow-1 mb-3" style="display:-webkit-box; -webkit-line-clamp:3; line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  {{ post.excerpt }}
+                </p>
+              {% else %}
+                <p class="text-secondary small flex-grow-1 mb-3" style="display:-webkit-box; -webkit-line-clamp:3; line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;">
+                  {{ post.body|striptags|truncatechars:140 }}
+                </p>
+              {% endif %}
+                <div class="d-flex align-items-center justify-content-between pt-3 border-top mt-auto position-relative" style="z-index: 1;">
+                <div class="d-flex align-items-center gap-2">
+                  {% if post.author.profile.avatar %}
+                    <img src="{{ post.author.profile.avatar.url }}" alt="{{ post.author.get_full_name }}"
+                         class="rounded-circle" style="width:28px;height:28px;object-fit:cover;flex-shrink:0;">
+                  {% else %}
+                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-semibold" style="width:28px;height:28px;font-size:11px;flex-shrink:0;">
+                      {{ post.author.first_name|first|upper }}{{ post.author.last_name|first|upper }}
+                    </div>
+                  {% endif %}
+                  <span class="text-xs text-secondary">{{ post.author.get_full_name|default:post.author.username }}</span>
+                </div>
+                <div class="d-flex align-items-center gap-3 text-xs text-secondary">
+                  <span class="d-flex align-items-center gap-1">
+                    <i class="ti ti-calendar" style="font-size:.85rem;"></i>
+                    {{ post.created_at|date:"d M, Y" }}
+                  </span>
+                  <span class="d-flex align-items-center gap-1">
+                    <i class="ti ti-eye" style="font-size:.85rem;"></i>
+                    {{ post.view_count }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-center mt-10">
+          <a href="{% url 'blog:list' %}" class="btn-pill-link btn-pill-link--forward">
+            <span>{% trans "All Posts" %}</span>
+            <span class="btn-pill-link-icon" aria-hidden="true">
+              <i class="ti ti-arrow-right"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section class="py-lg-13 py-8 position-relative" id="group">
+    <div class="circle-bg d-none d-lg-block"></div>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <div class="mb-10">
+            <span class="text-primary text-uppercase small fw-semibold"
+              style="letter-spacing: .125rem;">{% trans "About us" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "Group section title" %}</h2>
+            <p class="mb-0">
+              {% trans "Group section subtitle" %}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-start gy-8 about-us-row">
+        <div class="col-xl-7 about-us-copy">
+          <div class="row about-us-features">
+            <div class="col-md-6">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-users">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 1 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 1 desc" %}</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-6 mt-6 mt-md-0">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-message-circle">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                      d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 2 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 2 desc" %}</p>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="col-md-6 mt-6">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-calendar-event">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="5" width="16" height="16" rx="2" />
+                    <line x1="16" y1="3" x2="16" y2="7" />
+                    <line x1="8" y1="3" x2="8" y2="7" />
+                    <line x1="4" y1="11" x2="20" y2="11" />
+                    <rect x="8" y="15" width="2" height="2" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 3 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 3 desc" %}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mt-6">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-bell-ringing">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+                    <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+                    <path d="M21 6.727a11.05 11.05 0 0 0 -2.794 -3.727" />
+                    <path d="M3 6.727a11.05 11.05 0 0 1 2.792 -3.727" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 4 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 4 desc" %}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-6">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-world">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="3.6" y1="9" x2="20.4" y2="9" />
+                    <line x1="3.6" y1="15" x2="20.4" y2="15" />
+                    <path d="M12 3a17.3 17.3 0 0 0 0 18" />
+                    <path d="M12 3a17.3 17.3 0 0 1 0 18" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 5 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 5 desc" %}</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-md-6 mt-6">
+              <div class="d-flex gap-4">
+                <div class="icon-shape icon-md bg-primary bg-opacity-10 rounded-circle text-primary flex-shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-heart-handshake">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                    <path
+                      d="M12 6l-3.293 3.293a1 1 0 0 0 0 1.414l.543 .543c.69 .69 1.81 .69 2.5 0l1 -1a3.182 3.182 0 0 1 4.5 0l2.25 2.25" />
+                    <path d="M12.5 15.5l2 2" />
+                    <path d="M15 13l2 2" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="h6">{% trans "Feature 6 title" %}</h4>
+                  <p class="mb-0 small">{% trans "Feature 6 desc" %}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row mt-10 about-us-cta-row">
+            <div class="col-lg-12">
+              <a href="#!" class="btn btn-primary">{% trans "Learn more" %}</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-xl-5 about-us-media-col">
+          <div class="card p-3 rounded-5 shadow-lg about-us-media-card">
+            <div class="position-relative">
+              <img src="{% static 'assets/images/about_us/cr001.webp' %}" alt="About us"
+                class="rounded-5 img-fluid w-100" style="object-fit: cover; min-height: 350px;" />
+
+              <div class="position-absolute top-0 end-0 me-n8 mt-n4">
+                <div class="bg-white shadow-sm rounded-pill d-flex align-items-center gap-3 px-3 py-2 mb-4 border"
+                  style="width: 200px;">
+                  <div class="icon-shape icon-md rounded-circle bg-primary bg-opacity-10 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" />
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column text-xs lh-sm">
+                    <span class="fw-bold">{% trans "24/7 Support" %}</span>
+                    <span>{% trans "Always here" %}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="position-absolute bottom-0 start-0 ms-n8 mb-n8">
+                <div class="bg-white shadow-sm rounded-pill d-flex align-items-center gap-3 px-3 py-2 mb-4 border"
+                  style="width: 200px;">
+                  <div class="icon-shape icon-md rounded-circle bg-primary bg-opacity-10 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+                      <path d="M3.6 9h16.8" />
+                      <path d="M3.6 15h16.8" />
+                      <path d="M11.5 3a17 17 0 0 0 0 18" />
+                      <path d="M12.5 3a17 17 0 0 1 0 18" />
+                    </svg>
+                  </div>
+                  <div class="d-flex flex-column text-xs lh-sm">
+                    <span class="fw-bold">{% trans "150+ Countries" %}</span>
+                    <span>{% trans "Worldwide reach" %}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </section>
+
+
+  <section class="py-lg-13 py-8 bg-light bg-opacity-25" id="mentor">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-5 mx-auto">
+          <div class="mb-10">
+            <span class="text-primary text-uppercase small fw-semibold" style="letter-spacing: .125rem;">{% trans "Group" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "Our" %}<span class="text-primary"> {% trans "Mentor" %}</span></h2>
+            <p class="mb-0">
+              {% trans "Experts section subtitle" %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Mentor Card 1 -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
+            <div style="aspect-ratio: 1/1;">
+              <img src="{% static 'assets/images/group/asliddin.jpg' %}" alt="Mentor 1"
+                class="w-100 h-100" style="object-fit: cover;" />
+            </div>
+            <div class="p-5 text-center">
+              <h3 class="h6 fw-bold mb-1">Asliddin Baxtiyorov</h3>
+              <span class="text-dark mb-3 d-block text-xs fw-medium">Web Development Expert</span>
+              <p class="mb-4 small">8+ years experience in data analysis and machine learning. Former Data Scientist at Facebook.</p>
+              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mentor Card 2 -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
+            <div style="aspect-ratio: 1/1;">
+              <img src="{% static 'assets/images/group/faxriddin.jpg' %}" alt="Mentor 2"
+                class="w-100 h-100" style="object-fit: cover;" />
+            </div>
+            <div class="p-5 text-center">
+              <h3 class="h6 fw-bold mb-1">Faxriddin Baxtiyorov</h3>
+              <span class="text-dark mb-3 d-block text-xs fw-medium">Python & Django Developer</span>
+              <p class="mb-4 small">1+ yil tajriba bilan Python va Django asosida web ilovalar ishlab chiquvchi. Backend va RESTful API yaratishga ixtisoslashgan.</p>
+              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mentor Card 3 -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
+            <div style="aspect-ratio: 1/1;">
+              <img src="{% static 'assets/images/avatar/avatar-6.jpg' %}" alt="Mentor 3"
+                class="w-100 h-100" style="object-fit: cover;" />
+            </div>
+            <div class="p-5 text-center">
+              <h3 class="h6 fw-bold mb-1">Mike Chen</h3>
+              <span class="text-dark mb-3 d-block text-xs fw-medium">Data Science Specialist</span>
+              <p class="mb-4 small">7+ years experience in data analysis and machine learning. Former Data Scientist at Facebook.</p>
+              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mentor Card 4 -->
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
+            <div style="aspect-ratio: 1/1;">
+              <img src="{% static 'assets/images/avatar/avatar-2.jpg' %}" alt="Mentor 4"
+                class="w-100 h-100" style="object-fit: cover;" />
+            </div>
+            <div class="p-5 text-center">
+              <h3 class="h6 fw-bold mb-1">Emma Davis</h3>
+              <span class="text-dark mb-3 d-block text-xs fw-medium">Graphic Design Artist</span>
+              <p class="mb-4 small">9+ years experience in graphic design and visual arts. Former Creative Director at Adobe.</p>
+              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
+                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- ─── Contact Section ────────────────────────────────── -->
+  <section class="py-lg-13 py-8 bg-light bg-opacity-25" id="contact">
+    <div class="container">
+
+      <!-- Heading -->
+      <div class="row text-center">
+        <div class="col-lg-6 mx-auto">
+          <div class="mb-10">
+            <span class="text-primary text-uppercase small fw-semibold"
+                  style="letter-spacing:.125rem;">{% trans "Contact" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">
+              {% trans "Contact section title" %}
+              <span class="text-primary"> {% trans "Contact section title highlight" %}</span>
+            </h2>
+            <p class="mb-0">{% trans "Contact section subtitle" %}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="row g-5 align-items-stretch">
+
+        <!-- Left: ambient video card -->
+        <div class="col-lg-5">
+          <div class="contact-video-wrap rounded-5 overflow-hidden h-100 position-relative shadow-sm">
+
+            <!-- Background video (autoplay, muted, loop) -->
+            <video
+              class="contact-video"
+              src="{% static 'assets/videos/tree.mp4' %}"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="auto"
+              aria-hidden="true"
+            ></video>
+
+            <!-- Layered gradient overlay -->
+            <div class="contact-video-overlay" aria-hidden="true"></div>
+
+            <!-- Top-left live badge -->
+            <div class="position-absolute top-0 start-0 p-5" style="z-index:3;">
+              <span class="contact-video-badge">
+                <span class="contact-video-dot" aria-hidden="true"></span>
+                {% trans "Contact" %}
+              </span>
+            </div>
+
+            <!-- Bottom text content -->
+            <div class="contact-video-content">
+              <h4 class="fw-bold mb-2 text-white">{% trans "Contact info title" %}</h4>
+              <p class="small mb-0" style="color:rgba(255,255,255,.72);">{% trans "Contact info subtitle" %}</p>
+
+              <!-- Quick contact links -->
+              <div class="d-flex flex-column gap-3 mt-5">
+                <a href="mailto:{{ contact_email }}"
+                   class="contact-video-link"
+                   title="{% trans 'Contact direct email label' %}">
+                  <span class="contact-video-link-icon">
+                    <i class="ti ti-mail"></i>
+                  </span>
+                  <span>{{ contact_email }}</span>
+                </a>
+                <a href="https://t.me/faxriddinbaxtiyorov"
+                   class="contact-video-link"
+                   target="_blank" rel="noopener noreferrer"
+                   title="{% trans 'Contact telegram label' %}">
+                  <span class="contact-video-link-icon">
+                    <i class="ti ti-brand-telegram"></i>
+                  </span>
+                  <span>@faxriddinbaxtiyorov</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="col-lg-7">
+          <div class="card rounded-5 shadow-sm border-0 p-6 p-lg-8 h-100">
+            <form method="post" action="{% url 'core:contact_submit' %}" novalidate>
+              {% csrf_token %}
+              <div class="row g-4">
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-medium text-dark">
+                    {% trans "Contact name label" %} <span class="text-danger">*</span>
+                  </label>
+                  {{ contact_form.name }}
+                </div>
+
+                <div class="col-md-6">
+                  <label class="form-label small fw-medium text-dark">
+                    {% trans "Contact email label" %} <span class="text-danger">*</span>
+                  </label>
+                  {{ contact_form.email }}
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label small fw-medium text-dark">
+                    {% trans "Contact subject label" %}
+                  </label>
+                  {{ contact_form.subject }}
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label small fw-medium text-dark">
+                    {% trans "Contact message label" %} <span class="text-danger">*</span>
+                  </label>
+                  {{ contact_form.message }}
+                </div>
+
+                <div class="col-12 pt-2">
+                  <button type="submit" class="btn btn-primary px-8 py-3 rounded-3 w-100">
+                    <span>{% trans "Contact send btn" %}</span>
+                    <i class="ti ti-send ms-2"></i>
+                  </button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {% comment %} <section class="py-lg-13 py-8 " id="pricing">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-center mb-10">
+            <span class="text-primary text-uppercase small fw-semibold" style="letter-spacing: .125rem;">Pricing</span>
+            <h2 class="fw-bold mt-4 mb-4">Simple, Transparent<span class="text-primary"> Pricing</span> </h2>
+            <p>Choose the plan that fits your learning goals. No hidden fees, cancel anytime.</p>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row g-4 mx-xxl-13">
+        <div class="col-lg-4">
+          <div class="card shadow-sm rounded-5 h-100">
+            <div class="card-body p-6">
+              <div class="text-center mt-5 mb-9">
+                <span class="text-dark fs-5 fw-bold">Starter</span>
+                <p class="mt-1">Perfect for beginners</p>
+
+                <h3 class="fw-bold h2">Free</h3>
+              </div>
+              <div class="mb-4">
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Access to 10 free courses</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Basic community access</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Email support</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Mobile app access</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Course completion certificates</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="d-grid">
+                <a href="#!" class="btn btn-light">
+                  Get Started
+                </a>
+              </div>
+
+
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="card shadow-sm rounded-5 h-100 border-primary">
+            <div class="card-body p-6">
+              <div class="text-center mt-5 mb-9">
+                <span class="text-dark fs-5 fw-bold">Pro</span>
+                <p class="mt-1">Most popular choice</p>
+                <div class="d-flex gap-0 justify-content-center align-items-end">
+                  <h3 class="fw-bold h2 mb-0">$29
+                  </h3>
+                  <span>/month</span>
+                </div>
+              </div>
+              <div class="mb-4">
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Unlimited course access</span>
+
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Full community features</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Priority support 24/7</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Downloadable resources</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Live Q&A sessions</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Project reviews</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Career coaching</span>
+                  </li>
+
+
+
+                </ul>
+              </div>
+              <div class="d-grid">
+                <a href="#!" class="btn btn-primary">
+                  Start Pro Trial
+                </a>
+              </div>
+
+
+
+
+
+            </div>
+            <div>
+              <span
+                class="badge bg-primary position-absolute top-0 start-50 translate-middle-x mt-n3 rounded-pill text-xs">
+                Most Popular
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="col-lg-4">
+          <div class="card shadow-sm rounded-5 h-100">
+            <div class="card-body p-6">
+              <div class="text-center mt-5 mb-9">
+                <span class="text-dark fs-5 fw-bold">Enterprise</span>
+                <p class="mt-1">For teams & organizations</p>
+                <div class="d-flex gap-0 justify-content-center align-items-end">
+                  <h3 class="fw-bold h2 mb-0">$99
+
+                  </h3>
+                  <span>/month</span>
+                </div>
+              </div>
+              <div class="mb-4">
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Everything in Pro</span>
+
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Custom learning paths</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Team analytics dashboard</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Dedicated success manager</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Custom integrations</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>SSO authentication</span>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <span class="icon-shape icon-xs bg-primary bg-opacity-10 text-primary rounded-circle">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="icon icon-tabler icons-tabler-outline icon-tabler-check">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M5 12l5 5l10 -10" />
+                      </svg>
+                    </span>
+                    <span>Invoice billing</span>
+                  </li>
+
+
+
+                </ul>
+              </div>
+              <div class="d-grid">
+                <a href="#!" class="btn btn-light">
+                  Contact Sales
+                </a>
+              </div>
+
+
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+      <div class="row mt-8">
+        <div class="col-12 text-center">
+
+
+          <p class="mb-0 small">All plans include a 14-day money-back guarantee. No questions asked.</p>
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-5">
+
+        <div class="modal-body p-6">
+          <div class=" mb-3">
+
+            <div class="d-flex justify-content-between">
+              <h1 class="card-title mb-5 h5">Create your account</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+          </div>
+
+          <form class="mt-3">
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full name</label>
+              <input id="fullName" type="text" class="form-control" placeholder="Jane Doe" required>
+              <div class="invalid-feedback">Please enter your name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input id="email" type="email" class="form-control" placeholder="name@example.com" required>
+              <div class="invalid-feedback">Please enter a valid email.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input id="password" type="password" class="form-control" placeholder="Create a password" required
+                minlength="6">
+              <div class="invalid-feedback">Please provide a password (min 6 characters).</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirm password</label>
+              <input id="confirmPassword" type="password" class="form-control" placeholder="Repeat password" required>
+              <div class="invalid-feedback">Passwords must match.</div>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input id="terms" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label small" for="terms">I agree to the <a href="#"
+                  class="text-decoration-none">terms and privacy</a></label>
+              <div class="invalid-feedback">You must agree before continuing.</div>
+            </div>
+            <div>
+
+              <button class="btn btn-primary" type="submit">Sign up</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+

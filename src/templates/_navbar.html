@@ -1,0 +1,72 @@
+{% load static i18n %}
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-inline-flex gap-2 align-items-center lh-1" href="{% url 'core:index' %}">
+        <span class="fw-bold fs-5">Platanus</span>
+        <img src="{% static 'assets/images/leaf.png' %}" alt="leaf" style="height:32px; width:auto;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a href="{% url 'core:index' %}#hero"    class="nav-link">{% trans "Home" %}</a></li>
+          <li class="nav-item"><a href="{% url 'core:index' %}#blog"    class="nav-link">{% trans "Blog Posts" %}</a></li>
+          <li class="nav-item"><a href="{% url 'core:index' %}#group"   class="nav-link">{% trans "About us" %}</a></li>
+          <li class="nav-item"><a href="{% url 'core:index' %}#mentor"  class="nav-link">{% trans "Mentor" %}</a></li>
+          <li class="nav-item"><a href="{% url 'core:index' %}#contact" class="nav-link">{% trans "Contact" %}</a></li>
+          <li class="nav-item"><a href="{% url 'dashboard:index' %}" class="nav-link fw-semibold text-success"><i class="ti ti-sparkles me-1"></i>{% trans "ESG AI" %}</a></li>
+        </ul>
+        <div class="d-flex gap-3 align-items-center">
+          <!-- Theme toggle -->
+          <button class="theme-toggle-btn" id="theme-toggle-btn" type="button"
+                  aria-label="Tungi rejimga o'tish">
+            <i class="ti ti-sun  theme-icon--sun"  aria-hidden="true"></i>
+            <i class="ti ti-moon theme-icon--moon" aria-hidden="true"></i>
+          </button>
+          <!-- Language switcher -->
+          {% get_current_language as CURRENT_LANG %}
+          {% get_available_languages as AVAIL_LANGS %}
+          {% get_language_info_list for AVAIL_LANGS as lang_list %}
+          <form action="{% url 'set_language' %}" method="post" id="lang-switch-form" class="lang-switcher-wrap mb-0">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+            <input type="hidden" name="language" id="lang-hidden-input" value="{{ CURRENT_LANG }}">
+            <div class="lang-dropdown" id="lang-dropdown">
+              <button type="button" class="lang-dropdown-toggle" id="lang-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                <span class="lang-switcher-icon" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 5h7" />
+                    <path d="M7 4c0 4.846 0 7 .5 8" />
+                    <path d="M4 9c2.667 0 4.667 -.667 6 -2" />
+                    <path d="M12 20l4 -9l4 9" />
+                    <path d="M19.1 18h-6.2" />
+                  </svg>
+                </span>
+                <span class="lang-dropdown-current">{% for lang in lang_list %}{% if lang.code == CURRENT_LANG %}{{ lang.name_local|capfirst }}{% endif %}{% endfor %}</span>
+                <span class="lang-dropdown-arrow" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </span>
+              </button>
+              <div class="lang-dropdown-menu" id="lang-dropdown-menu" role="listbox">
+                {% for lang in lang_list %}
+                <button type="button"
+                  class="lang-dropdown-item{% if lang.code == CURRENT_LANG %} active{% endif %}"
+                  role="option"
+                  aria-selected="{% if lang.code == CURRENT_LANG %}true{% else %}false{% endif %}"
+                  data-lang="{{ lang.code }}">
+                  <span>{{ lang.name_local|capfirst }}</span>
+                  {% if lang.code == CURRENT_LANG %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  {% endif %}
+                </button>
+                {% endfor %}
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Analysis history" %} — Platanus{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'assets/css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="esg-dash py-5">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 fw-bold mb-0">{% trans "Analysis history" %}</h1>
+      <a href="{% url 'dashboard:index' %}" class="btn btn-success">
+        <i class="ti ti-plus me-1"></i>{% trans "New analysis" %}
+      </a>
+    </div>
+
+    {% if analyses %}
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr class="text-secondary small text-uppercase">
+              <th class="ps-4">{% trans "Company" %}</th>
+              <th class="text-center">{% trans "Environmental" %}</th>
+              <th class="text-center">{% trans "Social" %}</th>
+              <th class="text-center">{% trans "Governance" %}</th>
+              <th class="text-center">{% trans "Overall" %}</th>
+              <th class="text-end pe-4">{% trans "Date" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in analyses %}
+            <tr class="esg-row" role="button" onclick="window.location='{% url 'dashboard:detail' a.pk %}'">
+              <td class="ps-4 fw-semibold">{{ a.company_name|default:_("Untitled") }}</td>
+              <td class="text-center">{{ a.environmental_score }}</td>
+              <td class="text-center">{{ a.social_score }}</td>
+              <td class="text-center">{{ a.governance_score }}</td>
+              <td class="text-center">
+                <span class="badge bg-success-subtle text-success-emphasis">{{ a.overall_score }} · {{ a.rating }}</span>
+              </td>
+              <td class="text-end pe-4 text-secondary small">{{ a.created_at|date:"d.m.Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% else %}
+    <div class="esg-empty text-center p-5 rounded-4 border border-2 border-dashed">
+      <i class="ti ti-inbox display-4 text-secondary mb-3"></i>
+      <h5 class="fw-semibold">{% trans "No analyses yet" %}</h5>
+      <p class="text-secondary mb-3">{% trans "Run your first ESG analysis to see it here." %}</p>
+      <a href="{% url 'dashboard:index' %}" class="btn btn-success">{% trans "Start now" %}</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

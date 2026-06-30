@@ -1,0 +1,14 @@
+# Local development overlay
+# Usage: docker compose -f docker-compose.yml -f docker-compose.local.yml up --build
+
+services:
+  web:
+    volumes:
+      - .:/app                          # bind mount — code changes reflect instantly
+      - static_volume:/app/staticfiles  # named volume wins over bind mount
+      - media_volume:/app/src/media     # named volume wins over bind mount
+    ports:
+      - "8000:8000"
+    environment:
+      GUNICORN_WORKERS: "1"
+      GUNICORN_RELOAD: "true"

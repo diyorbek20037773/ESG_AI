@@ -1,0 +1,466 @@
+# Russian translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+# Navbar
+msgid "Home"
+msgstr "Главная"
+
+msgid "News"
+msgstr "Новости"
+
+msgid "Group"
+msgstr "Команда"
+
+msgid "Mentor"
+msgstr "Эксперты"
+
+msgid "Testimonials"
+msgstr "Блог"
+
+msgid "Pricing"
+msgstr "Цены"
+
+msgid "Get Started"
+msgstr "Начать"
+
+# News List page
+msgid "All News"
+msgstr "Все новости"
+
+msgid "All Posts"
+msgstr "Все посты"
+
+msgid "Latest News"
+msgstr "Последние новости"
+
+msgid "Latest news subtitle"
+msgstr "Будьте в курсе последних новостей и событий платформы Platanus и сферы зелёной экономики."
+
+msgid "All"
+msgstr "Все"
+
+msgid "Event"
+msgstr "Мероприятие"
+
+msgid "Update"
+msgstr "Обновление"
+
+msgid "Report"
+msgstr "Отчёт"
+
+msgid "Partnership"
+msgstr "Партнёрство"
+
+msgid "Read more"
+msgstr "Подробнее"
+
+msgid "No news found"
+msgstr "Новости не найдены"
+
+msgid "No news yet"
+msgstr "Новостей пока нет. Пожалуйста, проверьте позже."
+
+# Breadcrumbs
+msgid "Home page"
+msgstr "Главная"
+
+msgid "News plural"
+msgstr "Новости"
+
+# News Detail page
+msgid "Images"
+msgstr "Фотографии"
+
+msgid "Back to all news"
+msgstr "Все новости"
+
+# Index page hero
+msgid "Hero badge"
+msgstr "Оцените зелёные проекты"
+
+msgid "Hero title"
+msgstr "Добро пожаловать на Platanus! Изучайте зелёное будущее"
+
+msgid "Hero subtitle"
+msgstr "Смотрите на будущее иначе через идеи новой эпохи и современные подходы. Каждый шаг с Platanus открывает новые возможности."
+
+# Index page (additional)
+msgid "Page title index"
+msgstr "Platanus — Зелёная Экономика"
+
+msgid "Hero title line1"
+msgstr "Добро пожаловать на"
+
+msgid "Hero title highlight"
+msgstr "Platanus!"
+
+msgid "Hero title line2"
+msgstr "Изучайте зелёное будущее"
+
+msgid "Start Learning"
+msgstr "Начать обучение"
+
+msgid "YouTube Channel"
+msgstr "YouTube Channel"
+
+msgid "Students"
+msgstr "Студентов"
+
+msgid "Courses"
+msgstr "Курсов"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "Join 50k+"
+msgstr "Присоединяйтесь"
+
+msgid "200+ Courses"
+msgstr "200+ Курсов"
+
+msgid "Available Now"
+msgstr "Доступно сейчас"
+
+msgid "Latest"
+msgstr "Последние"
+
+msgid "News section subtitle"
+msgstr "Последние новости и события платформы Platanus в области зелёной экономики и устойчивого развития."
+
+msgid "No news empty"
+msgstr "Новостей пока нет."
+
+msgid "About us"
+msgstr "О нас"
+
+msgid "Group section title"
+msgstr "Цифровая Зелёная Оценка"
+
+msgid "Group section subtitle"
+msgstr "Быстрая и точная платформа оценки проектов по зелёным критериям — ключевой инструмент для развития зелёных финансов в Узбекистане."
+
+msgid "Feature 1 title"
+msgstr "Инвестиционные решения"
+
+msgid "Feature 1 desc"
+msgstr "Укрепление инвестиционных решений и оптимизация процесса отбора проектов."
+
+msgid "Feature 2 title"
+msgstr "Декарбонизация"
+
+msgid "Feature 2 desc"
+msgstr "Обеспечение декарбонизации и экологической устойчивости национальной экономики."
+
+msgid "Feature 3 title"
+msgstr "Климатические обязательства"
+
+msgid "Feature 3 desc"
+msgstr "Система, способствующая выполнению международных климатических обязательств страны."
+
+msgid "Feature 4 title"
+msgstr "Автоматическая оценка"
+
+msgid "Feature 4 desc"
+msgstr "Быстрая и точная цифровая оценка проектов на основе зелёных критериев."
+
+msgid "Feature 5 title"
+msgstr "Зелёные финансы"
+
+msgid "Feature 5 desc"
+msgstr "Современная платформа для развития зелёных финансов в Узбекистане."
+
+msgid "Feature 6 title"
+msgstr "Устойчивое развитие"
+
+msgid "Feature 6 desc"
+msgstr "Создаёт прочную основу для долгосрочного зелёного экономического развития."
+
+msgid "Learn more"
+msgstr "Подробнее"
+
+msgid "24/7 Support"
+msgstr "Поддержка 24/7"
+
+msgid "Always here"
+msgstr "Всегда на связи"
+
+msgid "150+ Countries"
+msgstr "150+ Стран"
+
+msgid "Worldwide reach"
+msgstr "По всему миру"
+
+msgid "Our"
+msgstr "Наши"
+
+msgid "Experts section subtitle"
+msgstr "Команда Platanus состоит из опытных специалистов в области зелёной экономики, цифровых технологий и финансового анализа."
+
+# Contact section
+msgid "Contact"
+msgstr "Связь"
+
+msgid "Contact section title"
+msgstr "Свяжитесь"
+
+msgid "Contact section title highlight"
+msgstr "с нами"
+
+msgid "Contact section subtitle"
+msgstr "Есть вопросы или предложения? Свяжитесь с нами, и мы ответим в ближайшее время."
+
+msgid "Contact info title"
+msgstr "Контактная информация"
+
+msgid "Contact info subtitle"
+msgstr "Отправьте сообщение, мы ответим в течение 24 часов."
+
+msgid "Contact direct email label"
+msgstr "Электронная почта"
+
+msgid "Contact telegram label"
+msgstr "Telegram"
+
+msgid "Contact name label"
+msgstr "Ваше имя"
+
+msgid "Contact email label"
+msgstr "Ваш Email"
+
+msgid "Contact subject label"
+msgstr "Тема"
+
+msgid "Contact message label"
+msgstr "Ваше сообщение"
+
+msgid "Contact send btn"
+msgstr "Отправить сообщение"
+
+msgid "Contact success msg"
+msgstr "Ваше сообщение успешно отправлено! Мы скоро свяжемся с вами."
+
+msgid "Contact error msg"
+msgstr "Что-то пошло не так. Пожалуйста, заполните все обязательные поля и попробуйте ещё раз."
+
+msgid "Blog Posts"
+msgstr "Блог Посты"
+
+msgid "Blog section subtitle"
+msgstr "Статьи, написанные командой Platanus по темам зелёной экономики, устойчивого развития и экологических финансов."
+
+# Footer
+msgid "Footer description"
+msgstr "Платформа Platanus помогает миллионам пользователей по всему миру развивать зелёную экономику."
+
+msgid "Footer product"
+msgstr "Продукт"
+
+msgid "Footer features"
+msgstr "Возможности"
+
+msgid "Footer pricing"
+msgstr "Цены"
+
+msgid "Footer courses"
+msgstr "Курсы"
+
+msgid "Footer community"
+msgstr "Сообщество"
+
+msgid "Footer company"
+msgstr "Компания"
+
+msgid "Footer about us"
+msgstr "О нас"
+
+msgid "Footer careers"
+msgstr "Карьера"
+
+msgid "Footer blog"
+msgstr "Блог"
+
+msgid "Footer press"
+msgstr "Пресса"
+
+msgid "Footer support"
+msgstr "Поддержка"
+
+msgid "Footer help center"
+msgstr "Центр помощи"
+
+msgid "Footer contact us"
+msgstr "Связаться с нами"
+
+msgid "Footer privacy policy"
+msgstr "Политика конфиденциальности"
+
+msgid "Footer terms"
+msgstr "Условия использования"
+
+msgid "Footer resources"
+msgstr "Ресурсы"
+
+msgid "Footer web dev"
+msgstr "Веб-разработка"
+
+msgid "Footer uiux"
+msgstr "UI/UX Дизайн"
+
+msgid "Footer data science"
+msgstr "Data Science"
+
+msgid "Footer marketing"
+msgstr "Маркетинг"
+
+msgid "Footer copyright"
+msgstr "© 2026 Platanus. Все права защищены."
+
+msgid "Back btn"
+msgstr "Назад"
+
+msgid "Latest posts"
+msgstr "Последние посты"
+
+# ESG dashboard
+
+msgid "ESG AI"
+msgstr "ESG AI"
+
+msgid "ESG AI Dashboard"
+msgstr "ESG AI Панель"
+
+msgid "AI-powered ESG analysis"
+msgstr "ESG-анализ на базе ИИ"
+
+msgid "Upload a company report or paste text. AI evaluates Environmental, Social and Governance performance and gives you scores, risks and recommendations."
+msgstr "Загрузите отчёт компании или вставьте текст. ИИ оценивает экологические, социальные и управленческие показатели и выдаёт баллы, риски и рекомендации."
+
+msgid "New analysis"
+msgstr "Новый анализ"
+
+msgid "Company name"
+msgstr "Название компании"
+
+msgid "Document (PDF, PNG, JPG, WEBP)"
+msgstr "Документ (PDF, PNG, JPG, WEBP)"
+
+msgid "or"
+msgstr "или"
+
+msgid "Paste text"
+msgstr "Вставьте текст"
+
+msgid "Analyse"
+msgstr "Анализировать"
+
+msgid "Analysing..."
+msgstr "Анализируется..."
+
+msgid "Recent"
+msgstr "Недавние"
+
+msgid "View all"
+msgstr "Показать все"
+
+msgid "Untitled"
+msgstr "Без названия"
+
+msgid "Your ESG report appears here"
+msgstr "Ваш ESG-отчёт появится здесь"
+
+msgid "Submit a document or text on the left to get started."
+msgstr "Отправьте документ или текст слева, чтобы начать."
+
+msgid "ESG Assessment"
+msgstr "ESG-оценка"
+
+msgid "Untitled company"
+msgstr "Компания без названия"
+
+msgid "Environmental"
+msgstr "Экология"
+
+msgid "Social"
+msgstr "Социальное"
+
+msgid "Governance"
+msgstr "Управление"
+
+msgid "Key findings"
+msgstr "Ключевые выводы"
+
+msgid "Risks"
+msgstr "Риски"
+
+msgid "Recommendations"
+msgstr "Рекомендации"
+
+msgid "Back to history"
+msgstr "Назад к истории"
+
+msgid "Analysed on"
+msgstr "Дата анализа"
+
+msgid "ESG Analysis"
+msgstr "ESG-анализ"
+
+msgid "Analysis history"
+msgstr "История анализов"
+
+msgid "Company"
+msgstr "Компания"
+
+msgid "Overall"
+msgstr "Итого"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "No analyses yet"
+msgstr "Пока нет анализов"
+
+msgid "Run your first ESG analysis to see it here."
+msgstr "Запустите первый ESG-анализ, чтобы увидеть его здесь."
+
+msgid "Start now"
+msgstr "Начать"
+
+msgid "Company name (optional)"
+msgstr "Название компании (необязательно)"
+
+msgid "Or paste the report / company information here..."
+msgstr "Или вставьте сюда отчёт / информацию о компании..."
+
+msgid "Unsupported file type. Use PDF, PNG, JPG or WEBP."
+msgstr "Неподдерживаемый тип файла. Используйте PDF, PNG, JPG или WEBP."
+
+msgid "File is too large (max 20 MB)."
+msgstr "Файл слишком большой (макс. 20 МБ)."
+
+msgid "Upload a document or paste some text to analyse."
+msgstr "Загрузите документ или вставьте текст для анализа."
+
+msgid "AI engine is not configured."
+msgstr "ИИ-движок не настроен."
+
+msgid "Analysis complete."
+msgstr "Анализ завершён."
+
+msgid "Analysis failed: %(err)s"
+msgstr "Ошибка анализа: %(err)s"
+
+msgid "Document"
+msgstr "Документ"
+
+msgid "Text"
+msgstr "Текст"
+
+msgid "ESG analysis"
+msgstr "ESG-анализ"
+
+msgid "ESG analyses"
+msgstr "ESG-анализы"

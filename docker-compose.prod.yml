@@ -1,0 +1,70 @@
+# Production overlay
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+#
+# First-time SSL setup (run ONCE before prod-up):
+#   make prod-ssl-init
+
+services:
+
+  db:
+    restart: unless-stopped
+
+  # ── One-shot migration service ────────────────────────────────────────────
+  # Runs migrations to completion, then exits.
+  # "web" depends on this service finishing successfully before it starts,
+  # which eliminates the race condition of multiple replicas migrating at once.
+  migrate:
+    build: .
+    command: python manage.py migrate --noinput
+    env_file: .env
+    environment:
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: "no"
+
+  web:
+    restart: unless-stopped
+    environment:
+      GUNICORN_WORKERS: "5"
+      SKIP_MIGRATE: "true"       # migrations handled by the migrate service above
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  nginx:
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./compose/production/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_volume:/app/staticfiles:ro
+      - media_volume:/app/src/media:ro
+      - certbot_www:/var/www/certbot:ro          # ACME challenge webroot
+      - certbot_conf:/etc/letsencrypt:ro         # SSL certificates
+    depends_on:
+      web:
+        condition: service_healthy
+
+  # ── Certbot — automatic Let's Encrypt renewal ─────────────────────────────
+  # Checks for renewal every 12 hours (certs expire after 90 days).
+  # Run "make prod-ssl-init" once before first deploy to obtain certs.
+  certbot:
+    image: certbot/certbot:latest
+    restart: unless-stopped
+    volumes:
+      - certbot_www:/var/www/certbot      # shared with nginx for ACME challenge
+      - certbot_conf:/etc/letsencrypt     # stores certs + account keys
+    entrypoint: >
+      /bin/sh -c "trap exit TERM;
+        while :; do
+          certbot renew --quiet --webroot --webroot-path /var/www/certbot;
+          sleep 12h & wait $${!};
+        done"
+
+volumes:
+  certbot_www:
+  certbot_conf:

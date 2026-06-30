@@ -1,0 +1,38 @@
+# Version control
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment secrets (injected via docker-compose env_file)
+.env
+.env.*
+!.env.example
+
+# Generated static files (collectstatic runs at container startup)
+staticfiles/
+
+# User media (lives in a Docker volume)
+src/media/
+
+# Local DB
+db.sqlite3
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log

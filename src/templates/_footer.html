@@ -1,0 +1,54 @@
+{% load static i18n %}
+<footer class="footer-main">
+  <div class="container">
+
+    <!-- ── Top row: logo left · nav right ─────────────────── -->
+    <div class="footer-top">
+
+      <!-- Brand (navbar uslubida) -->
+      <a href="{% url 'core:index' %}" class="footer-brand" aria-label="Platanus">
+        <span class="footer-brand-name">Platanus</span>
+        <img src="{% static 'assets/images/leaf.png' %}" alt="" style="height:30px;width:auto;">
+      </a>
+
+      <!-- Primary nav -->
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="{% url 'core:index' %}#hero"    class="footer-nav-link">{% trans "Home" %}</a>
+        <a href="{% url 'core:index' %}#blog"    class="footer-nav-link">{% trans "Blog Posts" %}</a>
+        <a href="{% url 'core:index' %}#group"   class="footer-nav-link">{% trans "About us" %}</a>
+        <a href="{% url 'core:index' %}#mentor"  class="footer-nav-link">{% trans "Mentor" %}</a>
+        <a href="{% url 'core:index' %}#contact" class="footer-nav-link">{% trans "Contact" %}</a>
+      </nav>
+
+    </div>
+
+    <!-- ── Social icons ────────────────────────────────────── -->
+    <div class="footer-socials">
+      <a href="https://t.me/faxriddinbaxtiyorov"
+         class="footer-social-btn" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <i class="ti ti-brand-telegram"></i>
+      </a>
+      <a href="https://www.instagram.com/_faxriddin.b"
+         class="footer-social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="ti ti-brand-instagram"></i>
+      </a>
+      <a href="https://www.youtube.com/@ebiosifat"
+         class="footer-social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="ti ti-brand-youtube"></i>
+      </a>
+      <a href="https://github.com/faxriddinprof"
+         class="footer-social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="ti ti-brand-github"></i>
+      </a>
+    </div>
+
+    <!-- ── Divider ─────────────────────────────────────────── -->
+    <div class="footer-divider" role="separator"></div>
+
+    <!-- ── Copyright ──────────────────────────────────────── -->
+    <div class="footer-bottom">
+      <p class="footer-copy">{% trans "Footer copyright" %}</p>
+    </div>
+
+  </div>
+</footer>

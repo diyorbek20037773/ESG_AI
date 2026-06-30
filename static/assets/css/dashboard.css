@@ -1,0 +1,48 @@
+/* ESG AI Dashboard styles */
+
+.esg-dash {
+  background:
+    radial-gradient(1200px 400px at 50% -10%, rgba(22, 163, 74, .08), transparent 70%);
+  min-height: 70vh;
+}
+
+.esg-result-head {
+  background: linear-gradient(135deg, rgba(22, 163, 74, .10), rgba(37, 99, 235, .06));
+}
+
+.esg-pillar {
+  background: var(--bs-body-bg);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.esg-pillar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .06);
+}
+
+.esg-empty {
+  background: var(--bs-body-bg);
+  border-color: rgba(148, 163, 184, .4) !important;
+  min-height: 360px;
+}
+
+.esg-or {
+  position: relative;
+}
+.esg-or::before,
+.esg-or::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background: rgba(148, 163, 184, .35);
+}
+.esg-or::before { left: 0; }
+.esg-or::after  { right: 0; }
+
+.esg-row { cursor: pointer; transition: background .12s ease; }
+.esg-row:hover { background: rgba(22, 163, 74, .06); }
+
+.esg-list li span { line-height: 1.4; }
+
+.esg-overall { box-shadow: 0 .75rem 1.5rem rgba(22, 163, 74, .18); }
