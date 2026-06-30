@@ -1,0 +1,4 @@
+# Collect static files during BUILD (not at runtime) so the web process binds
+# $PORT immediately and can never crash-loop on a collectstatic error.
+[phases.build]
+cmds = ["python manage.py collectstatic --noinput"]

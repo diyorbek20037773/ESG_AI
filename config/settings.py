@@ -150,10 +150,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# WhiteNoise — serve compressed, hashed static files directly from the app (no nginx).
+# WhiteNoise — serve compressed static files directly from the app (no nginx).
+# Non-manifest storage: never raises on a missing/changed reference, so a single
+# odd third-party static file can't crash the whole app at request time.
 STORAGES = {
     'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
-    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
+    'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedStaticFilesStorage'},
 }
 
 # Media files
