@@ -10,14 +10,16 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(',')
 
-# Railway exposes the public domain at runtime — trust it automatically.
+# Railway: trust the public domain automatically (any *.railway.app host).
 RAILWAY_DOMAIN = config('RAILWAY_PUBLIC_DOMAIN', default='')
 if RAILWAY_DOMAIN:
     ALLOWED_HOSTS.append(RAILWAY_DOMAIN)
+ALLOWED_HOSTS += ['.railway.app', '.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',') if config('CSRF_TRUSTED_ORIGINS', default='') else []
 if RAILWAY_DOMAIN:
     CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
+CSRF_TRUSTED_ORIGINS += ['https://*.railway.app', 'https://*.up.railway.app']
 
 
 INSTALLED_APPS = [
@@ -85,14 +87,19 @@ if DATABASE_URL:
     }
 else:
     DB_ENGINE = config('DB_ENGINE', default='django.db.backends.sqlite3')
-    if DB_ENGINE == 'django.db.backends.postgresql' and config('DB_NAME', default=''):
+    DB_HOST = config('DB_HOST', default='')
+    # Only use manual Postgres when a REAL remote host is given (e.g. docker-compose
+    # "db"). Placeholder/localhost values on Railway fall back to SQLite so the app
+    # always boots instead of crashing on an unreachable DB.
+    if (DB_ENGINE == 'django.db.backends.postgresql' and config('DB_NAME', default='')
+            and DB_HOST and DB_HOST not in ('localhost', '127.0.0.1')):
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.postgresql',
                 'NAME': config('DB_NAME', default='esg_db'),
                 'USER': config('DB_USER', default='postgres'),
                 'PASSWORD': config('DB_PASSWORD', default=''),
-                'HOST': config('DB_HOST', default='localhost'),
+                'HOST': DB_HOST,
                 'PORT': config('DB_PORT', default='5432'),
             }
         }
