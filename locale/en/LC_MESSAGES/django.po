@@ -478,3 +478,83 @@ msgstr "Team"
 
 msgid "Team section subtitle"
 msgstr "Rare combination: sustainable finance expertise + AI engineering + Central Asian market depth."
+
+# ESG dashboard
+
+msgid "About the Project"
+msgstr "About the Project"
+
+msgid "project tagline"
+msgstr "AI-powered ESG assessment for green finance in Central Asia."
+
+msgid "project overview"
+msgstr "Platanus is an ESG (Environmental, Social, Governance) assessment platform. It analyses company reports and documents and produces objective ESG scores, key findings, material risks and actionable recommendations — helping banks, investors and companies make faster, more consistent green-finance decisions aligned with Uzbekistan’s national green taxonomy."
+
+msgid "The problem"
+msgstr "The problem"
+
+msgid "project problem text"
+msgstr "Green-finance decisions require ESG assessment, but manual review is slow, subjective and expensive. As Uzbekistan builds its national green taxonomy, banks and investors need a fast, consistent way to evaluate projects and companies against green criteria."
+
+msgid "Our solution"
+msgstr "Our solution"
+
+msgid "project solution text"
+msgstr "Upload a company report or paste text, and the platform evaluates it across all three ESG pillars in seconds — grounded in the document, in your language, with clear scores, material risks and recommendations you can act on."
+
+msgid "How it works"
+msgstr "How it works"
+
+msgid "Upload"
+msgstr "Upload"
+
+msgid "project step1 desc"
+msgstr "Upload a company report (PDF or image) or paste text."
+
+msgid "AI analysis"
+msgstr "AI analysis"
+
+msgid "project step2 desc"
+msgstr "The platform reads the document and evaluates Environmental, Social and Governance factors."
+
+msgid "Get scores"
+msgstr "Get scores"
+
+msgid "project step3 desc"
+msgstr "Receive E, S and G scores, an overall rating, key findings and risks."
+
+msgid "Take action"
+msgstr "Take action"
+
+msgid "project step4 desc"
+msgstr "Use the recommendations and saved history to make informed decisions."
+
+msgid "Who it is for"
+msgstr "Who it is for"
+
+msgid "Banks"
+msgstr "Banks"
+
+msgid "project aud banks desc"
+msgstr "Assess green-loan applications quickly and consistently."
+
+msgid "Investors"
+msgstr "Investors"
+
+msgid "project aud investors desc"
+msgstr "Screen companies and projects for ESG performance and risk."
+
+msgid "Companies"
+msgstr "Companies"
+
+msgid "project aud companies desc"
+msgstr "Understand and improve your own ESG standing."
+
+msgid "Regulators"
+msgstr "Regulators"
+
+msgid "project aud regulators desc"
+msgstr "Support green-taxonomy alignment and reporting."
+
+msgid "Try the ESG Dashboard"
+msgstr "Try the ESG Dashboard"

@@ -478,3 +478,83 @@ msgstr "Jamoa"
 
 msgid "Team section subtitle"
 msgstr "Noyob uyg‘unlik: barqaror moliya tajribasi + AI muhandisligi + Markaziy Osiyo bozorini chuqur bilish."
+
+# ESG dashboard
+
+msgid "About the Project"
+msgstr "Loyiha haqida"
+
+msgid "project tagline"
+msgstr "Markaziy Osiyoda yashil moliya uchun AI asosidagi ESG baholash."
+
+msgid "project overview"
+msgstr "Platanus — ESG (ekologik, ijtimoiy va boshqaruv) baholash platformasi. U kompaniya hisobotlari va hujjatlarini tahlil qilib, xolis ESG ballari, asosiy topilmalar, muhim risklar va amaliy tavsiyalar beradi — banklar, investorlar va kompaniyalarga O‘zbekistonning milliy yashil taksonomiyasiga muvofiq yashil moliya qarorlarini tezroq va izchil qabul qilishga yordam beradi."
+
+msgid "The problem"
+msgstr "Muammo"
+
+msgid "project problem text"
+msgstr "Yashil moliya qarorlari ESG baholashni talab qiladi, ammo qo‘lda tahlil sekin, sub’yektiv va qimmat. O‘zbekiston milliy yashil taksonomiyasini shakllantirar ekan, banklar va investorlarga loyiha va kompaniyalarni yashil mezonlar bo‘yicha tez va izchil baholash usuli kerak."
+
+msgid "Our solution"
+msgstr "Bizning yechim"
+
+msgid "project solution text"
+msgstr "Kompaniya hisobotini yuklang yoki matn kiriting — platforma uni bir necha soniyada uchala ESG ustuni bo‘yicha baholaydi: hujjatga asoslanib, sizning tilingizda, aniq ballar, muhim risklar va amal qilsa bo‘ladigan tavsiyalar bilan."
+
+msgid "How it works"
+msgstr "Qanday ishlaydi"
+
+msgid "Upload"
+msgstr "Yuklash"
+
+msgid "project step1 desc"
+msgstr "Kompaniya hisobotini (PDF yoki rasm) yuklang yoki matn kiriting."
+
+msgid "AI analysis"
+msgstr "AI tahlil"
+
+msgid "project step2 desc"
+msgstr "Platforma hujjatni o‘qib, ekologik, ijtimoiy va boshqaruv omillarini baholaydi."
+
+msgid "Get scores"
+msgstr "Ballarni oling"
+
+msgid "project step3 desc"
+msgstr "E, S va G ballari, umumiy reyting, asosiy topilmalar va risklarni oling."
+
+msgid "Take action"
+msgstr "Harakat qiling"
+
+msgid "project step4 desc"
+msgstr "Asosli qaror qabul qilish uchun tavsiyalar va saqlangan tarixdan foydalaning."
+
+msgid "Who it is for"
+msgstr "Kim uchun"
+
+msgid "Banks"
+msgstr "Banklar"
+
+msgid "project aud banks desc"
+msgstr "Yashil kredit arizalarini tez va izchil baholang."
+
+msgid "Investors"
+msgstr "Investorlar"
+
+msgid "project aud investors desc"
+msgstr "Kompaniya va loyihalarni ESG ko‘rsatkichlari va risklari bo‘yicha tekshiring."
+
+msgid "Companies"
+msgstr "Kompaniyalar"
+
+msgid "project aud companies desc"
+msgstr "O‘z ESG holatingizni tushuning va yaxshilang."
+
+msgid "Regulators"
+msgstr "Regulyatorlar"
+
+msgid "project aud regulators desc"
+msgstr "Yashil taksonomiyaga muvofiqlik va hisobotni qo‘llab-quvvatlang."
+
+msgid "Try the ESG Dashboard"
+msgstr "ESG panelini sinab ko‘ring"
