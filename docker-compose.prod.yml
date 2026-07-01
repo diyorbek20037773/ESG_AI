@@ -14,7 +14,9 @@ services:
   # "web" depends on this service finishing successfully before it starts,
   # which eliminates the race condition of multiple replicas migrating at once.
   migrate:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.vps
     command: python manage.py migrate --noinput
     env_file: .env
     environment:

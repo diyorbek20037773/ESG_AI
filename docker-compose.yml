@@ -20,7 +20,9 @@ services:
       retries: 10
 
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.vps
     volumes:
       - media_volume:/app/src/media
       - static_volume:/app/staticfiles
