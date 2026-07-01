@@ -31,49 +31,15 @@
           <p class="my-6 lead fw-normal">
             {% trans "Hero subtitle" %}
           </p>
-          <div class="social-links mt-2">
-            <a href="https://t.me/faxriddinbaxtiyorov"
-               class="social-link social-link--telegram"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Telegram">
-              <i class="ti ti-brand-telegram"></i>
-            </a>
-            <a href="https://www.instagram.com/_faxriddin.b"
-               class="social-link social-link--instagram"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Instagram">
-              <i class="ti ti-brand-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/@ebiosifat"
-               class="social-link social-link--youtube"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="YouTube">
-              <i class="ti ti-brand-youtube"></i>
-            </a>
-            <a href="https://github.com/faxriddinprof"
-               class="social-link social-link--github"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="GitHub">
-              <i class="ti ti-brand-github"></i>
-            </a>
-          </div>
+          <a href="{% url 'dashboard:index' %}" class="btn btn-primary btn-lg rounded-pill px-4">
+            <i class="ti ti-sparkles me-1"></i>{% trans "ESG AI" %}
+          </a>
         </div>
         <div class="col-lg-6">
           <div class="card p-3 rounded-5  shadow-sm">
             <div class="position-relative">
               <div class="position-relative">
                 <img src="{% static 'assets/images/hero-img.jpg' %}" alt="about" class="rounded-5 img-fluid" />
-
-                <a href="https://www.youtube.com/watch?v=CivuutI6lXY"
-                  class="play-btn glightbox position-absolute top-50 start-50 translate-middle icon-shape icon-xl rounded-circle text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
-                    class="icon icon-tabler icons-tabler-filled icon-tabler-player-play">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
-                  </svg>
-                </a>
-
-
               </div>
             </div>
 
@@ -474,7 +440,7 @@
           </div>
           <div class="row mt-10 about-us-cta-row">
             <div class="col-lg-12">
-              <a href="#!" class="btn btn-primary">{% trans "Learn more" %}</a>
+              <a href="{% url 'dashboard:index' %}" class="btn btn-primary">{% trans "Learn more" %}</a>
             </div>
 
           </div>

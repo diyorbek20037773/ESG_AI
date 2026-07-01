@@ -112,6 +112,16 @@ textarea.form-control { border-radius: 0.75rem; }
 .nav-link.active,
 .navbar .nav-link:hover { color: #09C82C !important; }
 
+/* Keep the navbar pinned to the top on every page while scrolling. */
+.navbar.sticky-top {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+/* Anchor links (#hero, #group, …) land below the sticky navbar, not under it. */
+html { scroll-padding-top: 84px; scroll-behavior: smooth; }
+
 /* ── Language Dropdown ── */
 .lang-switcher-wrap { margin-bottom: 0; }
 
