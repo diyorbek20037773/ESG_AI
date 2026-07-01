@@ -533,95 +533,84 @@
   <section class="py-lg-13 py-8 bg-light bg-opacity-25" id="mentor">
     <div class="container">
       <div class="row text-center">
-        <div class="col-lg-5 mx-auto">
+        <div class="col-lg-8 mx-auto">
           <div class="mb-10">
-            <span class="text-primary text-uppercase small fw-semibold" style="letter-spacing: .125rem;">{% trans "Group" %}</span>
-            <h2 class="fw-bold mt-4 mb-4">{% trans "Our" %}<span class="text-primary"> {% trans "Mentor" %}</span></h2>
-            <p class="mb-0">
-              {% trans "Experts section subtitle" %}
-            </p>
+            <span class="text-primary text-uppercase small fw-semibold" style="letter-spacing: .125rem;">{% trans "The Team" %}</span>
+            <h2 class="fw-bold mt-4 mb-4">{% trans "The" %} <span class="text-primary">{% trans "Team" %}</span></h2>
+            <p class="mb-0">{% trans "Team section subtitle" %}</p>
           </div>
         </div>
       </div>
 
-      <div class="row g-4">
-        <!-- Mentor Card 1 -->
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
-            <div style="aspect-ratio: 1/1;">
-              <img src="{% static 'assets/images/group/asliddin.jpg' %}" alt="Mentor 1"
-                class="w-100 h-100" style="object-fit: cover;" />
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/sarvar-talipov.jpg' %}" alt="Sarvar Talipov"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
-            <div class="p-5 text-center">
-              <h3 class="h6 fw-bold mb-1">Asliddin Baxtiyorov</h3>
-              <span class="text-dark mb-3 d-block text-xs fw-medium">Web Development Expert</span>
-              <p class="mb-4 small">8+ years experience in data analysis and machine learning. Former Data Scientist at Facebook.</p>
-              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
-              </div>
-            </div>
+            <h3 class="h6 fw-bold mb-1">Sarvar Talipov</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CEO, Co-founder</span>
+            <p class="mb-0 small text-secondary">Participated in the development of Uzbekistan’s green taxonomy. Senior Manager for Technical Assessment and Energy Efficiency.</p>
           </div>
         </div>
-        <!-- Mentor Card 2 -->
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
-            <div style="aspect-ratio: 1/1;">
-              <img src="{% static 'assets/images/group/faxriddin.jpg' %}" alt="Mentor 2"
-                class="w-100 h-100" style="object-fit: cover;" />
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/asliddin-bakhtiyorov.jpg' %}" alt="Asliddin Bakhtiyorov"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
-            <div class="p-5 text-center">
-              <h3 class="h6 fw-bold mb-1">Faxriddin Baxtiyorov</h3>
-              <span class="text-dark mb-3 d-block text-xs fw-medium">Python & Django Developer</span>
-              <p class="mb-4 small">1+ yil tajriba bilan Python va Django asosida web ilovalar ishlab chiquvchi. Backend va RESTful API yaratishga ixtisoslashgan.</p>
-              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
-              </div>
-            </div>
+            <h3 class="h6 fw-bold mb-1">Asliddin Bakhtiyorov</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CTO, Co-founder</span>
+            <p class="mb-0 small text-secondary">Program and Model Risk Assessment Management. 3 years of experience.</p>
           </div>
         </div>
-        <!-- Mentor Card 3 -->
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
-            <div style="aspect-ratio: 1/1;">
-              <img src="{% static 'assets/images/avatar/avatar-6.jpg' %}" alt="Mentor 3"
-                class="w-100 h-100" style="object-fit: cover;" />
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/doniyor-mamatkarimov.jpg' %}" alt="Doniyor Mamatkarimov"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
-            <div class="p-5 text-center">
-              <h3 class="h6 fw-bold mb-1">Mike Chen</h3>
-              <span class="text-dark mb-3 d-block text-xs fw-medium">Data Science Specialist</span>
-              <p class="mb-4 small">7+ years experience in data analysis and machine learning. Former Data Scientist at Facebook.</p>
-              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
-              </div>
-            </div>
+            <h3 class="h6 fw-bold mb-1">Doniyor Mamatkarimov</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">COO, Co-founder</span>
+            <p class="mb-0 small text-secondary">More than 4 years of experience in the construction and banking sectors.</p>
           </div>
         </div>
-        <!-- Mentor Card 4 -->
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card shadow-sm h-100 rounded-5 overflow-hidden card-lift">
-            <div style="aspect-ratio: 1/1;">
-              <img src="{% static 'assets/images/avatar/avatar-2.jpg' %}" alt="Mentor 4"
-                class="w-100 h-100" style="object-fit: cover;" />
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/abduganiev-gayrat.jpg' %}" alt="Abduganiev Gayrat"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
-            <div class="p-5 text-center">
-              <h3 class="h6 fw-bold mb-1">Emma Davis</h3>
-              <span class="text-dark mb-3 d-block text-xs fw-medium">Graphic Design Artist</span>
-              <p class="mb-4 small">9+ years experience in graphic design and visual arts. Former Creative Director at Adobe.</p>
-              <div class="d-flex flex-row align-items-center justify-content-center gap-2">
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 11v5"/><path d="M8 8v.01"/><path d="M12 16v-5"/><path d="M16 16v-3a2 2 0 1 0 -4 0"/><path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z"/></svg></a>
-                <a href="#" class="btn rounded-circle btn-light btn-icon btn-xs"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12 12 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"/></svg></a>
-              </div>
+            <h3 class="h6 fw-bold mb-1">Abduganiev Gayrat</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CFO, Co-founder</span>
+            <p class="mb-0 small text-secondary">10 years of experience in construction and manufacturing organizations, as well as in the banking sector.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/diyorbek-ibragimov.jpg' %}" alt="Diyorbek Ibragimov"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
+            <h3 class="h6 fw-bold mb-1">Diyorbek Ibragimov</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CTO, Co-founder</span>
+            <p class="mb-0 small text-secondary">ML Engineer at the State Customs Committee, Department of Targeting and Risk Monitoring.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card border-0 shadow-sm h-100 rounded-4 card-lift p-4 text-center">
+            <div class="rounded-circle overflow-hidden shadow-sm mx-auto mb-3" style="width:150px;height:150px;">
+              <img src="{% static 'assets/images/team/faxriddin-baxtiyorov.jpg' %}" alt="Faxriddin Baxtiyorov"
+                   class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
+            </div>
+            <h3 class="h6 fw-bold mb-1">Faxriddin Baxtiyorov</h3>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">Lead Specialist</span>
+            <p class="mb-0 small text-secondary">Lead Specialist at the Republican Center “Biosifat”.</p>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
 

@@ -464,3 +464,17 @@ msgstr "ESG analysis"
 
 msgid "ESG analyses"
 msgstr "ESG analyses"
+
+# ESG dashboard
+
+msgid "The Team"
+msgstr "The Team"
+
+msgid "The"
+msgstr "The"
+
+msgid "Team"
+msgstr "Team"
+
+msgid "Team section subtitle"
+msgstr "Rare combination: sustainable finance expertise + AI engineering + Central Asian market depth."

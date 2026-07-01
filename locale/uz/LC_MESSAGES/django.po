@@ -464,3 +464,17 @@ msgstr "ESG tahlil"
 
 msgid "ESG analyses"
 msgstr "ESG tahlillar"
+
+# ESG dashboard
+
+msgid "The Team"
+msgstr "Jamoa"
+
+msgid "The"
+msgstr "Bizning"
+
+msgid "Team"
+msgstr "Jamoa"
+
+msgid "Team section subtitle"
+msgstr "Noyob uyg‘unlik: barqaror moliya tajribasi + AI muhandisligi + Markaziy Osiyo bozorini chuqur bilish."

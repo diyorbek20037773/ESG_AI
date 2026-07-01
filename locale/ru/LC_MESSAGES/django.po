@@ -464,3 +464,17 @@ msgstr "ESG-анализ"
 
 msgid "ESG analyses"
 msgstr "ESG-анализы"
+
+# ESG dashboard
+
+msgid "The Team"
+msgstr "Команда"
+
+msgid "The"
+msgstr "Наша"
+
+msgid "Team"
+msgstr "Команда"
+
+msgid "Team section subtitle"
+msgstr "Редкое сочетание: экспертиза в устойчивом финансировании + AI-инженерия + глубокое знание рынка Центральной Азии."
