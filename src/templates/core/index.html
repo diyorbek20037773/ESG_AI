@@ -84,9 +84,9 @@
                 <span class="nv-fv-num">#2026 00042</span>
               </div>
               <div class="nv-fv-scores">
-                <div class="nv-fv-score"><i data-ring="90" style="--c:#059669"></i><b>90</b><span>E</span></div>
-                <div class="nv-fv-score"><i data-ring="74" style="--c:#12d67a"></i><b>74</b><span>S</span></div>
-                <div class="nv-fv-score"><i data-ring="82" style="--c:#0aa15a"></i><b>82</b><span>G</span></div>
+                <div class="nv-fv-score"><span class="nv-fv-ring"><i data-ring="90" style="--c:#059669"></i><b>90</b></span><span>E</span></div>
+                <div class="nv-fv-score"><span class="nv-fv-ring"><i data-ring="74" style="--c:#12d67a"></i><b>74</b></span><span>S</span></div>
+                <div class="nv-fv-score"><span class="nv-fv-ring"><i data-ring="82" style="--c:#0aa15a"></i><b>82</b></span><span>G</span></div>
               </div>
               <a href="{% url 'dashboard:index' %}" class="nv-fv-report">
                 <i class="ti ti-file-text"></i>{% trans "Download report" %}
@@ -361,23 +361,24 @@
         </div>
       </div>
 
-      <div class="row g-4 mb-9">
-        <div class="col-md-6">
-          <div class="card border-0 shadow-sm h-100 rounded-4 p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="rounded-circle bg-danger bg-opacity-10 text-danger d-inline-flex align-items-center justify-content-center" style="width:48px;height:48px;"><i class="ti ti-alert-triangle fs-4"></i></span>
-              <h3 class="h5 fw-bold mb-0">{% trans "The problem" %}</h3>
+      <div class="row justify-content-center mb-9">
+        <div class="col-lg-9">
+          <div class="nv-ps-stack">
+            <div class="nv-ps-card nv-ps-problem">
+              <div class="nv-ps-head">
+                <span class="nv-ps-ic danger"><i class="ti ti-alert-triangle"></i></span>
+                <h3 class="nv-ps-title">{% trans "The problem" %}</h3>
+              </div>
+              <p class="nv-ps-text">{% trans "project problem text" %}</p>
             </div>
-            <p class="mb-0 text-secondary">{% trans "project problem text" %}</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card border-0 shadow-sm h-100 rounded-4 p-4 p-lg-5">
-            <div class="d-flex align-items-center gap-3 mb-3">
-              <span class="rounded-circle bg-primary bg-opacity-10 text-primary d-inline-flex align-items-center justify-content-center" style="width:48px;height:48px;"><i class="ti ti-bulb fs-4"></i></span>
-              <h3 class="h5 fw-bold mb-0">{% trans "Our solution" %}</h3>
+            <div class="nv-ps-link" aria-hidden="true"><i class="ti ti-arrow-down"></i></div>
+            <div class="nv-ps-card nv-ps-solution">
+              <div class="nv-ps-head">
+                <span class="nv-ps-ic primary"><i class="ti ti-bulb"></i></span>
+                <h3 class="nv-ps-title">{% trans "Our solution" %}</h3>
+              </div>
+              <p class="nv-ps-text">{% trans "project solution text" %}</p>
             </div>
-            <p class="mb-0 text-secondary">{% trans "project solution text" %}</p>
           </div>
         </div>
       </div>

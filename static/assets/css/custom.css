@@ -15,10 +15,15 @@
 /* ─── 2. Global ─────────────────────────────────────────── */
 body {
   font-family: 'Geist', sans-serif;
-  font-size: 0.975rem;
-  color: #525252;
+  font-size: 1.06rem;
+  line-height: 1.65;
+  color: #3f463f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4, h5, h6 { color: #171717; font-weight: 600; }
+h1, h2, h3, h4, h5, h6 { color: #171717; font-weight: 700; letter-spacing: -.01em; }
+.lead { font-size: 1.22rem; }
+p { line-height: 1.7; }
 a { text-decoration: none; }
 
 /* ─── 3. CSS Variable Overrides (Bootstrap 5 color tokens) ─ */
@@ -30,8 +35,8 @@ a { text-decoration: none; }
   --bs-link-hover-color:           #09C82C;
   --bs-link-hover-color-rgb:       9, 200, 44;
   --bs-body-font-family:           'Geist', sans-serif;
-  --bs-body-color:                 #525252;
-  --bs-body-font-size:             0.975rem;
+  --bs-body-color:                 #3f463f;
+  --bs-body-font-size:             1.06rem;
   --bs-heading-color:              #171717;
   --bs-border-color:               #e5e5e5;
   --bs-border-color-translucent:   #e5e5e5;
@@ -1575,16 +1580,17 @@ html:not([data-bs-theme]) .theme-icon--moon { display: inline-block; }
 .nv-fv-badge i { font-size:16px; }
 .nv-fv-num { font-family:'Space Mono',monospace; font-size:12px; color:var(--h-ink2); }
 .nv-fv-scores { display:flex; gap:14px; justify-content:space-between; margin-bottom:18px; }
-.nv-fv-score { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; padding:14px 6px;
-  border-radius:14px; background:var(--h-chip); border:1px solid var(--h-line); position:relative; }
-.nv-fv-score i { width:44px; height:44px; border-radius:50%; display:block;
-  background:radial-gradient(closest-side,var(--h-card) 68%,transparent 69%),
-    conic-gradient(var(--c) calc(var(--r,0)*1%),color-mix(in srgb,var(--c) 16%,transparent) 0);
+.nv-fv-score { flex:1; display:flex; flex-direction:column; align-items:center; gap:9px; padding:16px 6px;
+  border-radius:14px; background:var(--h-chip); border:1px solid var(--h-line); }
+.nv-fv-ring { position:relative; width:60px; height:60px; display:grid; place-items:center; }
+.nv-fv-score i { position:absolute; inset:0; border-radius:50%; display:block;
+  background:conic-gradient(var(--c) calc(var(--r,0)*1%),color-mix(in srgb,var(--c) 16%,transparent) 0);
   transition:none; }
-.nv-fv-score b { font-family:'Geist'; font-weight:800; font-size:18px; color:var(--h-ink); margin-top:-30px;
-  position:relative; z-index:2; }
-.nv-fv-score span { font-size:11px; font-weight:700; color:var(--h-ink2); margin-top:14px;
-  text-transform:uppercase; letter-spacing:.05em; }
+.nv-fv-score i::after { content:""; position:absolute; inset:6px; border-radius:50%; background:var(--h-card); }
+.nv-fv-score b { position:relative; z-index:2; font-family:'Geist'; font-weight:800; font-size:20px;
+  color:var(--h-ink); font-variant-numeric:tabular-nums; line-height:1; }
+.nv-fv-score span { font-size:11.5px; font-weight:700; color:var(--h-ink2);
+  text-transform:uppercase; letter-spacing:.06em; }
 .nv-fv-report { display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
   padding:12px; border-radius:12px; font-weight:600; font-size:14px; color:var(--h-em);
   background:color-mix(in srgb,var(--h-em) 9%,transparent);
@@ -1678,3 +1684,45 @@ h2 .text-primary, h3 .text-primary {
 [data-bs-theme="dark"] .navbar .nav-link.text-success { color:#3dff8f !important; }
 [data-bs-theme="dark"] .navbar .nav-link.active,
 [data-bs-theme="dark"] .navbar .nav-link:hover { color:#3dff8f !important; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NovdAI — About section: problem/solution stacked (top->bottom), bigger type
+   ═══════════════════════════════════════════════════════════════════════════ */
+.nv-ps-stack { display:flex; flex-direction:column; align-items:stretch; gap:0; }
+.nv-ps-card {
+  background:var(--bs-card-bg,#fff); border:1px solid var(--bs-border-color,#e6ece8);
+  border-radius:20px; padding:28px 30px;
+  box-shadow:0 10px 34px rgba(16,40,28,.07);
+}
+[data-bs-theme="dark"] .nv-ps-card {
+  background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.09);
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+}
+.nv-ps-problem  { border-left:4px solid #e5484d; }
+.nv-ps-solution { border-left:4px solid #09C82C; }
+[data-bs-theme="dark"] .nv-ps-solution { border-left-color:#2bff88; }
+.nv-ps-head { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
+.nv-ps-ic { width:52px; height:52px; border-radius:14px; display:grid; place-items:center;
+  font-size:26px; flex:none; }
+.nv-ps-ic.danger  { color:#e5484d; background:rgba(229,72,77,.12); }
+.nv-ps-ic.primary { color:#09C82C; background:rgba(9,200,44,.12); }
+[data-bs-theme="dark"] .nv-ps-ic.primary { color:#2bff88; background:rgba(43,255,136,.14); }
+.nv-ps-title { font-family:'Geist',sans-serif; font-weight:700; font-size:1.4rem; margin:0;
+  color:var(--bs-heading-color,#171717); letter-spacing:-.01em; }
+.nv-ps-text { font-family:'Geist',sans-serif; font-size:1.12rem; line-height:1.7; margin:0;
+  color:var(--bs-body-color,#475247); }
+[data-bs-theme="dark"] .nv-ps-text { color:#b8c3d0; }
+
+/* vertical connector arrow between the two cards */
+.nv-ps-link { align-self:center; width:44px; height:44px; margin:14px 0; border-radius:50%;
+  display:grid; place-items:center; font-size:22px; color:#09C82C;
+  background:rgba(9,200,44,.1); border:1px solid rgba(9,200,44,.3);
+  box-shadow:0 0 0 6px rgba(9,200,44,.05); }
+[data-bs-theme="dark"] .nv-ps-link { color:#2bff88; background:rgba(43,255,136,.1);
+  border-color:rgba(43,255,136,.3); box-shadow:0 0 0 6px rgba(43,255,136,.06); }
+
+/* ── Bigger, more legible body text across the marketing page ─────────────── */
+#about-project .lead { font-size:1.28rem; }
+#about-project .fs-5 { font-size:1.18rem !important; line-height:1.7; }
+#about-project h2 { font-size:clamp(1.9rem,3.4vw,2.6rem); }
+#about-project { font-family:'Geist',sans-serif; }
