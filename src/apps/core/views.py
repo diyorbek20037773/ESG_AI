@@ -41,7 +41,7 @@ def contact_submit(request):
     if form.is_valid():
         contact = form.save()
         send_mail(
-            subject=f"[Platanus] Yangi xabar: {contact.subject or 'Mavzusiz'}",
+            subject=f"[NovdAI] Yangi xabar: {contact.subject or 'Mavzusiz'}",
             message=(
                 f"Ism: {contact.name}\n"
                 f"Email: {contact.email}\n"

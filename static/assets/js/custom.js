@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Anti-FOUC script in <head> already set data-bs-theme before render.
   // Here we just wire up the toggle button and sync aria-label.
   (function () {
-    const STORAGE_KEY = 'platanus-theme';
+    const STORAGE_KEY = 'novdai-theme';
     const html        = document.documentElement;
 
     function syncBtn(theme) {

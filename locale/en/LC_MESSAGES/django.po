@@ -38,7 +38,7 @@ msgid "Latest News"
 msgstr "Latest News"
 
 msgid "Latest news subtitle"
-msgstr "Stay informed about the latest news and events from the Platanus platform and the green economy sector."
+msgstr "Stay informed about the latest news and events from the NovdAI platform and the green economy sector."
 
 msgid "All"
 msgstr "All"
@@ -83,20 +83,20 @@ msgid "Hero badge"
 msgstr "Evaluate green projects"
 
 msgid "Hero title"
-msgstr "Welcome to Platanus! Explore a green future"
+msgstr "Welcome to NovdAI! Explore a green future"
 
 msgid "Hero subtitle"
-msgstr "See the future differently through new era ideas and modern approaches. Every step with Platanus opens new opportunities."
+msgstr "See the future differently through new era ideas and modern approaches. Every step with NovdAI opens new opportunities."
 
 # Index page (additional)
 msgid "Page title index"
-msgstr "Platanus — Green Economy"
+msgstr "NovdAI — Green Economy"
 
 msgid "Hero title line1"
 msgstr "Welcome to"
 
 msgid "Hero title highlight"
-msgstr "Platanus!"
+msgstr "NovdAI!"
 
 msgid "Hero title line2"
 msgstr "Explore a Green Future"
@@ -129,7 +129,7 @@ msgid "Latest"
 msgstr "Latest"
 
 msgid "News section subtitle"
-msgstr "The latest news and events in the Platanus platform, green economy and sustainable development."
+msgstr "The latest news and events in the NovdAI platform, green economy and sustainable development."
 
 msgid "No news empty"
 msgstr "No news yet."
@@ -198,7 +198,7 @@ msgid "Our"
 msgstr "Our"
 
 msgid "Experts section subtitle"
-msgstr "The Platanus team consists of experienced experts in the fields of green economy, digital technology, and financial analysis."
+msgstr "The NovdAI team consists of experienced experts in the fields of green economy, digital technology, and financial analysis."
 
 # Contact section
 msgid "Contact"
@@ -250,7 +250,7 @@ msgid "Blog Posts"
 msgstr "Blog Posts"
 
 msgid "Blog section subtitle"
-msgstr "Articles written by the Platanus team on green economy, sustainable development and ecological finance topics."
+msgstr "Articles written by the NovdAI team on green economy, sustainable development and ecological finance topics."
 
 # Footer
 msgid "Footer description"
@@ -317,7 +317,7 @@ msgid "Footer marketing"
 msgstr "Marketing"
 
 msgid "Footer copyright"
-msgstr "© 2026 Platanus. All rights reserved."
+msgstr "© 2026 NovdAI. All rights reserved."
 
 msgid "Back btn"
 msgstr "Back"
@@ -488,7 +488,7 @@ msgid "project tagline"
 msgstr "AI-powered ESG assessment for green finance in Central Asia."
 
 msgid "project overview"
-msgstr "Platanus is an ESG (Environmental, Social, Governance) assessment platform. It analyses company reports and documents and produces objective ESG scores, key findings, material risks and actionable recommendations — helping banks, investors and companies make faster, more consistent green-finance decisions aligned with Uzbekistan’s national green taxonomy."
+msgstr "NovdAI is an ESG (Environmental, Social, Governance) assessment platform. It analyses company reports and documents and produces objective ESG scores, key findings, material risks and actionable recommendations — helping banks, investors and companies make faster, more consistent green-finance decisions aligned with Uzbekistan’s national green taxonomy."
 
 msgid "The problem"
 msgstr "The problem"

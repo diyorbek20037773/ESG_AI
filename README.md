@@ -1,4 +1,4 @@
-# Platanus — ESG AI Platform
+# NovdAI — ESG AI Platform
 
 A Django web platform combining a green-economy content site (news, blog, contact) with
 an **ESG AI Dashboard**. The dashboard analyses company documents and text and produces
