@@ -5,15 +5,17 @@
 
 {% block content %}
 
-  <section class="nv-hero position-relative overflow-hidden" id="hero">
-    <!-- vaow layer: aurora mesh + grid + floating novda particles -->
-    <div class="nv-hero-aurora" aria-hidden="true"></div>
-    <div class="nv-hero-grid" aria-hidden="true"></div>
-    <div id="hero-particles" class="nv-hero-particles" aria-hidden="true"></div>
+  <section class="nv-hero" id="hero">
+    <div class="nv-hero-bg" aria-hidden="true">
+      <span class="nv-hero-blob nv-hero-blob-1"></span>
+      <span class="nv-hero-blob nv-hero-blob-2"></span>
+      <span class="nv-hero-mesh"></span>
+    </div>
 
     <div class="container position-relative nv-hero-inner">
-      <div class="row align-items-center gy-8">
-        <div class="col-lg-6 pt-lg-3">
+      <div class="row align-items-center gy-9">
+        <!-- Copy -->
+        <div class="col-lg-6 pt-lg-2">
           <span class="nv-hero-badge nv-reveal" style="--d:.05s">
             <span class="nv-hero-badge-dot"></span>
             {% trans "Hero badge" %}
@@ -51,26 +53,44 @@
           </div>
         </div>
 
+        <!-- Live verdict flow -->
         <div class="col-lg-6">
-          <div class="nv-hero-visual nv-reveal" style="--d:.24s">
-            <div class="nv-hero-orb"></div>
-            <div class="nv-hero-card nv-hero-card-main">
-              <div class="nv-hc-head">
-                <span class="nv-hc-brand">{% include 'brand/_novda_mark.html' with size=26 uid="hc" %} NovdAI</span>
-                <span class="nv-hc-verdict good"><span class="nv-dot-live"></span>{% trans "Green" %}</span>
+          <div class="nv-flow nv-reveal" style="--d:.24s" aria-hidden="true">
+            <!-- 1. document being scanned -->
+            <div class="nv-flow-doc">
+              <div class="nv-flow-doc-head">
+                <span class="nv-fd-dot"></span><span class="nv-fd-dot"></span><span class="nv-fd-dot"></span>
+                <span class="nv-fd-name">green_project.pdf</span>
               </div>
-              <div class="nv-hc-gauges">
-                <div class="nv-hc-gauge" style="--v:90;--c:#3dff8f"><span>E</span><b>90</b></div>
-                <div class="nv-hc-gauge" style="--v:74;--c:#12d67a"><span>S</span><b>74</b></div>
-                <div class="nv-hc-gauge" style="--v:82;--c:#059669"><span>G</span><b>82</b></div>
+              <div class="nv-fd-lines">
+                <span style="width:82%"></span><span style="width:94%"></span>
+                <span style="width:70%"></span><span style="width:88%"></span>
+                <span style="width:60%"></span>
               </div>
-              <div class="nv-hc-bar"><span style="--w:88%"></span></div>
-              <div class="nv-hc-bar"><span style="--w:64%"></span></div>
-              <div class="nv-hc-bar"><span style="--w:76%"></span></div>
+              <span class="nv-fd-scan"></span>
             </div>
-            <div class="nv-hero-card nv-hero-card-float">
-              <i class="ti ti-leaf"></i>
-              <div><b>{% trans "Green" %}</b><small>{% trans "Verdict" %}</small></div>
+
+            <!-- 2. AI pill -->
+            <div class="nv-flow-ai">
+              {% include 'brand/_novda_mark.html' with size=20 uid="flow" %}
+              <span>NovdAI</span>
+              <span class="nv-flow-ai-spin"><i class="ti ti-loader-2"></i></span>
+            </div>
+
+            <!-- 3. verdict card -->
+            <div class="nv-flow-verdict">
+              <div class="nv-fv-top">
+                <span class="nv-fv-badge"><i class="ti ti-circle-check"></i>{% trans "Green" %}</span>
+                <span class="nv-fv-num">#2026 00042</span>
+              </div>
+              <div class="nv-fv-scores">
+                <div class="nv-fv-score"><i data-ring="90" style="--c:#059669"></i><b>90</b><span>E</span></div>
+                <div class="nv-fv-score"><i data-ring="74" style="--c:#12d67a"></i><b>74</b><span>S</span></div>
+                <div class="nv-fv-score"><i data-ring="82" style="--c:#0aa15a"></i><b>82</b><span>G</span></div>
+              </div>
+              <a href="{% url 'dashboard:index' %}" class="nv-fv-report">
+                <i class="ti ti-file-text"></i>{% trans "Download report" %}
+              </a>
             </div>
           </div>
         </div>

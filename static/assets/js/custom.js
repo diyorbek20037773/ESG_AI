@@ -102,51 +102,30 @@ document.addEventListener('DOMContentLoaded', function () {
     langMenu.addEventListener('click', function (e) { e.stopPropagation(); });
   }
 
-  // Hero: rising novda particles (glowing sprouts / spores) — replaces maple leaves
+  // Hero verdict ring gauges: animate conic fill (--r) + number count-up
   (function () {
-    var container = document.getElementById('hero-particles');
-    if (!container) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var rnd  = function (a, b) { return Math.random() * (b - a) + a; };
-    var rndI = function (a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; };
-
-    // Tiny novda sprout, colored via currentColor
-    var SPROUT = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-      '<path d="M12 22V11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' +
-      '<path d="M12 14C7 14 4 11 4 6c5 0 8 3 8 8Z" fill="currentColor" fill-opacity=".35" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>' +
-      '<path d="M12 11C17 11 20 8 20 3c-5 0-8 3-8 8Z" fill="currentColor" fill-opacity=".5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
-
-    var greens = ['#3dff8f', '#2bff88', '#12d67a', '#5affa0', '#059669'];
-    var COUNT  = window.innerWidth < 768 ? 12 : 22;
-
-    for (var i = 0; i < COUNT; i++) {
-      var p = document.createElement('span');
-      p.className = 'nv-particle';
-      var isSpore = Math.random() < 0.45;
-      var sz  = isSpore ? rnd(4, 8) : rnd(12, 26);
-      var dur = rnd(9, 17);
-      var col = greens[rndI(0, greens.length - 1)];
-
-      p.style.cssText = [
-        'left:'  + rnd(2, 96).toFixed(2) + '%',
-        'bottom:-40px',
-        'width:'  + sz.toFixed(1) + 'px',
-        'height:' + sz.toFixed(1) + 'px',
-        'color:'  + col,
-        'animation:nv-float-up ' + dur.toFixed(1) + 's ' + rnd(0, dur).toFixed(1) + 's linear infinite',
-        '--spin:' + rndI(-260, 260) + 'deg'
-      ].join(';');
-
-      if (isSpore) {
-        p.style.borderRadius = '50%';
-        p.style.background = col;
-        p.style.boxShadow = '0 0 8px ' + col;
-      } else {
-        p.innerHTML = SPROUT;
+    var rings = document.querySelectorAll('.nv-fv-score i[data-ring]');
+    if (!rings.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rings.forEach(function (el, idx) {
+      var target = parseInt(el.getAttribute('data-ring'), 10) || 0;
+      var numEl  = el.parentElement.querySelector('b');
+      if (reduce) { el.style.setProperty('--r', target); if (numEl) numEl.textContent = target; return; }
+      var start = null, dur = 1300, delay = 500 + idx * 160;
+      function step(ts) {
+        if (!start) start = ts;
+        var t = ts - start - delay;
+        if (t < 0) { requestAnimationFrame(step); return; }
+        var pr = Math.min(t / dur, 1);
+        var e  = 1 - Math.pow(1 - pr, 3);
+        var v  = e * target;
+        el.style.setProperty('--r', v.toFixed(1));
+        if (numEl) numEl.textContent = Math.round(v);
+        if (pr < 1) requestAnimationFrame(step);
       }
-      container.appendChild(p);
-    }
+      if (numEl) numEl.textContent = 0;
+      requestAnimationFrame(step);
+    });
   })();
 
   // Hero stat count-up (fires once on load)
