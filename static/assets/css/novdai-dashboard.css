@@ -359,3 +359,108 @@ textarea.nv-input { resize: vertical; }
 .nv-flex { display: flex; align-items: center; }
 .nv-gap { gap: 10px; } .nv-mt { margin-top: 18px; } .nv-mb { margin-bottom: 18px; }
 .nv-between { justify-content: space-between; }
+
+/* ── Brand mark holds SVG novda (not letter) ─────────────────────────────── */
+.nv-brand-mark-svg { background: none !important; box-shadow: none !important;
+  width: 38px; height: 38px; display: grid; place-items: center; }
+.nv-brand-mark-svg .novda-mark { width: 34px; height: 34px; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NovdAI dashboard — vaow punch pass (glow, gradients, motion)
+   Layers on top of novdai-dashboard.css tokens. Both themes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Gradient page + card titles */
+.nv-page-title {
+  background: linear-gradient(100deg, var(--nv-emerald), var(--nv-green));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+:root[data-bs-theme="dark"] .nv-page-title { filter: drop-shadow(0 0 20px rgba(43,255,136,.22)); }
+
+/* Brand mark in sidebar: gradient + glow ring */
+.nv-brand-mark { position: relative; }
+.nv-brand-mark::after {
+  content:""; position:absolute; inset:-3px; border-radius:inherit;
+  background: radial-gradient(circle, var(--nv-neon), transparent 70%);
+  opacity:.0; transition:opacity .3s; z-index:-1; filter:blur(6px);
+}
+:root[data-bs-theme="dark"] .nv-brand-mark::after { opacity:.55; }
+
+/* Primary button glow + shimmer sweep */
+.nv-btn-primary { position: relative; overflow: hidden; }
+.nv-btn-primary::before {
+  content:""; position:absolute; top:0; left:-120%; width:60%; height:100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+  transform: skewX(-18deg); transition: left .6s;
+}
+.nv-btn-primary:hover::before { left:140%; }
+
+/* Active nav item: neon rail + glow (both themes) */
+.nv-nav-item.active {
+  position: relative;
+  background: linear-gradient(90deg, var(--nv-accent-soft), transparent);
+}
+.nv-nav-item.active::before {
+  content:""; position:absolute; left:0; top:20%; bottom:20%; width:3px; border-radius:3px;
+  background: linear-gradient(var(--nv-emerald), var(--nv-green));
+  box-shadow: 0 0 10px var(--nv-accent-rim);
+}
+
+/* Stat icon: gradient fill + subtle float */
+.nv-stat .nv-stat-ic {
+  background: linear-gradient(140deg, var(--nv-accent-soft), transparent);
+  animation: nv-ic-float 5s ease-in-out infinite;
+}
+@keyframes nv-ic-float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-3px);} }
+.nv-stat-val {
+  background: linear-gradient(120deg, var(--nv-ink), var(--nv-emerald) 140%);
+  -webkit-background-clip: text; background-clip: text;
+}
+:root[data-bs-theme="dark"] .nv-stat-val {
+  background: linear-gradient(120deg, #eafff4, var(--nv-green));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* Card: neon top-edge highlight on hover */
+.nv-card.lift { position: relative; }
+.nv-card.lift::after {
+  content:""; position:absolute; inset:0 0 auto 0; height:2px; border-radius:var(--nv-radius) var(--nv-radius) 0 0;
+  background: linear-gradient(90deg, transparent, var(--nv-green), transparent);
+  opacity:0; transition:opacity .25s;
+}
+.nv-card.lift:hover::after { opacity:.9; }
+
+/* Gauge value glow in dark */
+:root[data-bs-theme="dark"] .nv-gauge-val { filter: drop-shadow(0 0 8px rgba(43,255,136,.4)); }
+:root[data-bs-theme="dark"] .nv-gauge-arc { filter: drop-shadow(0 0 4px currentColor); }
+
+/* Verdict banner: animated glow ring for green */
+:root[data-bs-theme="dark"] .nv-verdict.good {
+  box-shadow: inset 0 0 0 1px rgba(43,255,136,.4), 0 0 40px rgba(43,255,136,.12);
+}
+.nv-verdict-ic { position: relative; }
+.nv-verdict.good .nv-verdict-ic::after {
+  content:""; position:absolute; inset:-4px; border-radius:inherit;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--nv-good) 30%, transparent);
+  animation: nv-ring 2.4s ease-out infinite;
+}
+@keyframes nv-ring { 0%{transform:scale(1);opacity:.8;} 100%{transform:scale(1.25);opacity:0;} }
+
+/* Light theme: give body a faint animated mesh so it isn't flat/pale */
+:root[data-bs-theme="light"] .nv-body::before,
+.nv-body::before {
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+  background:
+    radial-gradient(600px 400px at 12% 8%, rgba(9,200,44,.06), transparent 60%),
+    radial-gradient(700px 500px at 92% 96%, rgba(5,150,105,.06), transparent 62%);
+}
+:root[data-bs-theme="dark"] .nv-body::before {
+  opacity:.7;
+  background:
+    radial-gradient(700px 500px at 8% 4%, rgba(43,255,136,.08), transparent 60%),
+    radial-gradient(800px 560px at 96% 98%, rgba(5,150,105,.14), transparent 62%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nv-stat .nv-stat-ic, .nv-verdict.good .nv-verdict-ic::after { animation: none !important; }
+}

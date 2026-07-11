@@ -1,0 +1,37 @@
+{% comment %}
+NovdAI brand mark — "novda" (young sprout / new shoot). Replaces the old Platanus maple leaf.
+Two rising leaves on a stem, emerald→neon gradient, soft glow.
+Usage: {% include 'brand/_novda_mark.html' with size=34 uid="nav" %}
+  size : px (default 34)   uid : unique suffix so gradient/filter ids don't collide on a page
+{% endcomment %}
+<svg class="novda-mark" width="{{ size|default:34 }}" height="{{ size|default:34 }}" viewBox="0 0 48 48"
+     fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="NovdAI">
+  <defs>
+    <linearGradient id="nvg-{{ uid|default:'m' }}" x1="8" y1="42" x2="40" y2="6" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#059669"/>
+      <stop offset=".55" stop-color="#12d67a"/>
+      <stop offset="1" stop-color="#3dff8f"/>
+    </linearGradient>
+    <radialGradient id="nvglow-{{ uid|default:'m' }}" cx="50%" cy="42%" r="55%">
+      <stop offset="0" stop-color="#2bff88" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#2bff88" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="nvf-{{ uid|default:'m' }}" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- ambient glow -->
+  <circle cx="24" cy="21" r="20" fill="url(#nvglow-{{ uid|default:'m' }})"/>
+  <g filter="url(#nvf-{{ uid|default:'m' }})" stroke="url(#nvg-{{ uid|default:'m' }})"
+     stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- stem -->
+    <path d="M24 43 V22" fill="none"/>
+    <!-- left leaf -->
+    <path d="M24 27 C16 27 10 22 9 13 C18 13 24 18 24 27 Z"
+          fill="url(#nvg-{{ uid|default:'m' }})" fill-opacity=".16"/>
+    <!-- right leaf (higher, the new shoot) -->
+    <path d="M24 22 C32 22 39 16 40 6 C30 6 24 12 24 22 Z"
+          fill="url(#nvg-{{ uid|default:'m' }})" fill-opacity=".22"/>
+  </g>
+</svg>

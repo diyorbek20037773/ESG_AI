@@ -779,3 +779,11 @@ msgstr "G"
 
 msgid "ESG"
 msgstr "ESG"
+
+# NovdAI hero
+
+msgid "Stop factors"
+msgstr "Стоп-факторы"
+
+msgid "ESG scores"
+msgstr "ESG-баллы"

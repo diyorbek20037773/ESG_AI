@@ -102,70 +102,71 @@ document.addEventListener('DOMContentLoaded', function () {
     langMenu.addEventListener('click', function (e) { e.stopPropagation(); });
   }
 
-  // Hero falling leaves (3D)
+  // Hero: rising novda particles (glowing sprouts / spores) — replaces maple leaves
   (function () {
-    var container = document.getElementById('hero-leaves');
+    var container = document.getElementById('hero-particles');
     if (!container) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var leafUrl = container.dataset.leafUrl;
-    if (!leafUrl) return;
-
-    var COUNT = 18;
-    var rnd  = function (a, b) { return (Math.random() * (b - a) + a).toFixed(2); };
+    var rnd  = function (a, b) { return Math.random() * (b - a) + a; };
     var rndI = function (a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; };
 
-    // Colour/brightness filters for variety (green autumn tones)
-    var filters = [
-      'none',
-      'brightness(1.25) hue-rotate(12deg)',
-      'brightness(0.72) saturate(1.3)',
-      'brightness(1.1)  hue-rotate(-8deg)',
-      'brightness(0.85) hue-rotate(22deg)',
-      'brightness(1.35) saturate(0.75)',
-    ];
+    // Tiny novda sprout, colored via currentColor
+    var SPROUT = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<path d="M12 22V11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' +
+      '<path d="M12 14C7 14 4 11 4 6c5 0 8 3 8 8Z" fill="currentColor" fill-opacity=".35" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>' +
+      '<path d="M12 11C17 11 20 8 20 3c-5 0-8 3-8 8Z" fill="currentColor" fill-opacity=".5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+
+    var greens = ['#3dff8f', '#2bff88', '#12d67a', '#5affa0', '#059669'];
+    var COUNT  = window.innerWidth < 768 ? 12 : 22;
 
     for (var i = 0; i < COUNT; i++) {
-      var leaf = document.createElement('div');
-      leaf.className = 'falling-leaf';
+      var p = document.createElement('span');
+      p.className = 'nv-particle';
+      var isSpore = Math.random() < 0.45;
+      var sz  = isSpore ? rnd(4, 8) : rnd(12, 26);
+      var dur = rnd(9, 17);
+      var col = greens[rndI(0, greens.length - 1)];
 
-      var sz   = rnd(10, 26);
-      var dur  = rnd(7, 13);
-      var dly  = rnd(0, 11);
-      var lft  = rnd(3, 94);
-      var op   = rnd(0.38, 0.72);
-      var rzA  = rndI(0, 360);
-      var swA  = rnd(-55, 55);
-      var swB  = -1 * parseFloat(swA) + parseFloat(rnd(-20, 20));
-      var swC  = rnd(-40, 65);
-      var lf   = filters[rndI(0, filters.length - 1)];
-
-      var vars = [
-        '--sz:'   + sz   + 'px',
-        '--dur:'  + dur  + 's',
-        '--dly:'  + dly  + 's',
-        '--op:'   + op,
-        'left:'   + lft  + '%',
-        '--sw-a:' + swA  + 'px',
-        '--sw-b:' + swB  + 'px',
-        '--sw-c:' + swC  + 'px',
-        '--rz-a:' + rzA                           + 'deg',
-        '--rz-b:' + (rzA + rndI(90,  130))        + 'deg',
-        '--rz-c:' + (rzA + rndI(200, 250))        + 'deg',
-        '--rz-d:' + (rzA + rndI(300, 340))        + 'deg',
-        '--rz-e:' + (rzA + rndI(370, 420))        + 'deg',
-        '--rx-a:' + rndI(5,  22)                  + 'deg',
-        '--rx-b:' + rndI(28, 55)                  + 'deg',
-        '--rx-c:' + rndI(55, 75)                  + 'deg',
-        '--rx-d:' + rndI(70, 88)                  + 'deg',
-        '--rx-e:' + rndI(85, 105)                 + 'deg',
-        '--lf:'   + lf,
+      p.style.cssText = [
+        'left:'  + rnd(2, 96).toFixed(2) + '%',
+        'bottom:-40px',
+        'width:'  + sz.toFixed(1) + 'px',
+        'height:' + sz.toFixed(1) + 'px',
+        'color:'  + col,
+        'animation:nv-float-up ' + dur.toFixed(1) + 's ' + rnd(0, dur).toFixed(1) + 's linear infinite',
+        '--spin:' + rndI(-260, 260) + 'deg'
       ].join(';');
 
-      leaf.style.cssText = vars;
-      leaf.style.backgroundImage = 'url("' + leafUrl + '")';
-      container.appendChild(leaf);
+      if (isSpore) {
+        p.style.borderRadius = '50%';
+        p.style.background = col;
+        p.style.boxShadow = '0 0 8px ' + col;
+      } else {
+        p.innerHTML = SPROUT;
+      }
+      container.appendChild(p);
     }
+  })();
+
+  // Hero stat count-up (fires once on load)
+  (function () {
+    var nums = document.querySelectorAll('[data-countup]');
+    if (!nums.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    nums.forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-countup'), 10) || 0;
+      if (reduce) { el.textContent = target; return; }
+      var start = null, dur = 1100;
+      function step(ts) {
+        if (!start) start = ts;
+        var pr = Math.min((ts - start) / dur, 1);
+        var e  = 1 - Math.pow(1 - pr, 3);
+        el.textContent = Math.round(e * target);
+        if (pr < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
   })();
 
   // Custom cursor follower

@@ -5,47 +5,77 @@
 
 {% block content %}
 
-  <section class="py-lg-13 py-8 bg-white position-relative" id="hero">
-    <div class="circle-bg d-none d-lg-block"></div>
-    <div id="hero-leaves"
-         class="hero-leaves d-none d-lg-block"
-         aria-hidden="true"
-         data-leaf-url="{% static 'assets/images/leaf.png' %}"></div>
-    <div class="container">
-      <div class="row align-items-start gy-8">
+  <section class="nv-hero position-relative overflow-hidden" id="hero">
+    <!-- vaow layer: aurora mesh + grid + floating novda particles -->
+    <div class="nv-hero-aurora" aria-hidden="true"></div>
+    <div class="nv-hero-grid" aria-hidden="true"></div>
+    <div id="hero-particles" class="nv-hero-particles" aria-hidden="true"></div>
+
+    <div class="container position-relative nv-hero-inner">
+      <div class="row align-items-center gy-8">
         <div class="col-lg-6 pt-lg-3">
-          <span
-            class="badge bg-primary bg-opacity-10 text-primary px-4 py-3 fw-normal border border-primary rounded-pill">
-            <span><svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="currentColor"
-                class="icon icon-tabler icons-tabler-filled icon-tabler-circle">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" />
-              </svg></span>
-            <span class="ms-1">{% trans "Hero badge" %}</span></span>
-          <h1 class="display-4 fw-bold  mt-4">
+          <span class="nv-hero-badge nv-reveal" style="--d:.05s">
+            <span class="nv-hero-badge-dot"></span>
+            {% trans "Hero badge" %}
+          </span>
+          <h1 class="nv-hero-title nv-reveal" style="--d:.12s">
             {% trans "Hero title line1" %}
-            <span class="text-primary">{% trans "Hero title highlight" %}</span>
+            <span class="nv-hero-accent">{% trans "Hero title highlight" %}</span>
             {% trans "Hero title line2" %}
           </h1>
-
-          <p class="my-6 lead fw-normal">
+          <p class="nv-hero-sub nv-reveal" style="--d:.2s">
             {% trans "Hero subtitle" %}
           </p>
-          <a href="{% url 'dashboard:index' %}" class="btn btn-primary btn-lg rounded-pill px-4">
-            <i class="ti ti-sparkles me-1"></i>{% trans "ESG AI" %}
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <div class="card p-3 rounded-5  shadow-sm">
-            <div class="position-relative">
-              <div class="position-relative">
-                <img src="{% static 'assets/images/hero-img.jpg' %}" alt="about" class="rounded-5 img-fluid" />
-              </div>
+          <div class="nv-hero-cta nv-reveal" style="--d:.28s">
+            <a href="{% url 'dashboard:index' %}" class="nv-cta-btn">
+              <i class="ti ti-sparkles"></i>{% trans "ESG AI" %}
+              <span class="nv-cta-arrow"><i class="ti ti-arrow-right"></i></span>
+            </a>
+            <a href="#about-project" class="nv-cta-ghost">
+              <i class="ti ti-player-play"></i>{% trans "Learn more" %}
+            </a>
+          </div>
+          <div class="nv-hero-stats nv-reveal" style="--d:.36s">
+            <div class="nv-hero-stat">
+              <span class="nv-hero-stat-num" data-countup="9">0</span>
+              <span class="nv-hero-stat-lbl">{% trans "Green criteria" %}</span>
             </div>
+            <div class="nv-hero-stat">
+              <span class="nv-hero-stat-num" data-countup="12">0</span>
+              <span class="nv-hero-stat-lbl">{% trans "Stop factors" %}</span>
+            </div>
+            <div class="nv-hero-stat">
+              <span class="nv-hero-stat-num" data-countup="3">0</span>
+              <span class="nv-hero-stat-lbl">{% trans "ESG scores" %}</span>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-lg-6">
+          <div class="nv-hero-visual nv-reveal" style="--d:.24s">
+            <div class="nv-hero-orb"></div>
+            <div class="nv-hero-card nv-hero-card-main">
+              <div class="nv-hc-head">
+                <span class="nv-hc-brand">{% include 'brand/_novda_mark.html' with size=26 uid="hc" %} NovdAI</span>
+                <span class="nv-hc-verdict good"><span class="nv-dot-live"></span>{% trans "Green" %}</span>
+              </div>
+              <div class="nv-hc-gauges">
+                <div class="nv-hc-gauge" style="--v:90;--c:#3dff8f"><span>E</span><b>90</b></div>
+                <div class="nv-hc-gauge" style="--v:74;--c:#12d67a"><span>S</span><b>74</b></div>
+                <div class="nv-hc-gauge" style="--v:82;--c:#059669"><span>G</span><b>82</b></div>
+              </div>
+              <div class="nv-hc-bar"><span style="--w:88%"></span></div>
+              <div class="nv-hc-bar"><span style="--w:64%"></span></div>
+              <div class="nv-hc-bar"><span style="--w:76%"></span></div>
+            </div>
+            <div class="nv-hero-card nv-hero-card-float">
+              <i class="ti ti-leaf"></i>
+              <div><b>{% trans "Green" %}</b><small>{% trans "Verdict" %}</small></div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
 

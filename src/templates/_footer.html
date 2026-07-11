@@ -7,8 +7,8 @@
 
       <!-- Brand (navbar uslubida) -->
       <a href="{% url 'core:index' %}" class="footer-brand" aria-label="NovdAI">
-        <span class="footer-brand-name">NovdAI</span>
-        <img src="{% static 'assets/images/leaf.png' %}" alt="" style="height:30px;width:auto;">
+        {% include 'brand/_novda_mark.html' with size=30 uid="foot" %}
+        <span class="footer-brand-name">Novd<span class="nv-brand-ai">AI</span></span>
       </a>
 
       <!-- Primary nav -->
