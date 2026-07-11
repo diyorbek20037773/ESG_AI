@@ -1,0 +1,67 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "New analysis" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Green finance" %}</span>
+    <h1 class="nv-page-title">{% trans "New analysis" %}</h1>
+    <p class="nv-page-sub">{% trans "Upload a project's credit documents or paste text. The AI returns a green-finance verdict." %}</p>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <div class="nv-card" data-rise>
+    <form method="post" enctype="multipart/form-data" id="nv-analyze-form" novalidate>
+      {% csrf_token %}
+      <div class="nv-field">
+        <label class="nv-label">{% trans "Client" %}</label>
+        {{ form.client }}
+      </div>
+      <div class="nv-field">
+        <label class="nv-label">{% trans "New client (optional)" %}</label>
+        {{ form.new_client }}
+      </div>
+
+      <div class="nv-field">
+        <label class="nv-label">{% trans "Project documents (PDF, PNG, JPG, WEBP)" %}</label>
+        <div class="nv-drop" id="nv-drop">
+          <i class="ti ti-cloud-upload"></i>
+          <div style="margin-top:8px;font-weight:600;color:var(--nv-ink);">{% trans "Drop files here or click to browse" %}</div>
+          <div style="font-size:12.5px;margin-top:2px;">{% trans "Up to 10 files, 20 MB each" %}</div>
+        </div>
+        <input type="file" id="nv-docs" name="documents" multiple accept=".pdf,.png,.jpg,.jpeg,.webp" hidden>
+        <ul class="nv-file-list" id="nv-file-list"></ul>
+      </div>
+
+      <div class="nv-field" style="text-align:center;color:var(--nv-muted);font-size:13px;">{% trans "or" %}</div>
+
+      <div class="nv-field">
+        <label class="nv-label">{% trans "Paste text" %}</label>
+        {{ form.text }}
+      </div>
+
+      <button type="submit" class="nv-btn nv-btn-primary block" data-submit data-loading="{% trans 'Analysing...' %}">
+        <i class="ti ti-bolt"></i>{% trans "Run analysis" %}
+      </button>
+    </form>
+  </div>
+
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-route"></i>{% trans "How the verdict is reached" %}</div>
+    <div class="nv-crit"><div class="nv-crit-ic yes"><i class="ti ti-list-details"></i></div>
+      <div><div class="nv-crit-q">{% trans "1. Project information" %}</div>
+      <div class="nv-crit-e">{% trans "Borrower, credit amount, purpose, activity, equipment, green certificate." %}</div></div></div>
+    <div class="nv-crit"><div class="nv-crit-ic stop"><i class="ti ti-ban"></i></div>
+      <div><div class="nv-crit-q">{% trans "2. Exclusion (stop) factors" %}</div>
+      <div class="nv-crit-e">{% trans "12 excluded activities (weapons, fossil fuels, gambling…) + eco-expertise." %}</div></div></div>
+    <div class="nv-crit"><div class="nv-crit-ic yes"><i class="ti ti-leaf"></i></div>
+      <div><div class="nv-crit-q">{% trans "3. Green criteria" %}</div>
+      <div class="nv-crit-e">{% trans "9 renewable / low-emission criteria for green-finance eligibility." %}</div></div></div>
+    <div class="nv-crit" style="border-bottom:0;"><div class="nv-crit-ic" style="color:var(--nv-emerald);background:var(--nv-accent-soft);"><i class="ti ti-gavel"></i></div>
+      <div><div class="nv-crit-q">{% trans "4. Verdict" %}</div>
+      <div class="nv-crit-e">{% trans "Green, Not green, or Unknown — with a downloadable report." %}</div></div></div>
+  </div>
+</div>
+{% endblock %}

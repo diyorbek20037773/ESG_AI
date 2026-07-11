@@ -558,3 +558,224 @@ msgstr "Yashil taksonomiyaga muvofiqlik va hisobotni qo‘llab-quvvatlang."
 
 msgid "Try the ESG Dashboard"
 msgstr "ESG panelini sinab ko‘ring"
+
+# NovdAI dashboard
+
+msgid "ESG Dashboard"
+msgstr "ESG boshqaruv paneli"
+
+msgid "Overview"
+msgstr "Umumiy ko'rinish"
+
+msgid "Analyses"
+msgstr "Tahlillar"
+
+msgid "Clients"
+msgstr "Mijozlar"
+
+msgid "Analytics"
+msgstr "Analitika"
+
+msgid "General"
+msgstr "Umumiy"
+
+msgid "Public site"
+msgstr "Ommaviy sayt"
+
+msgid "Search analyses, clients..."
+msgstr "Tahlil, mijoz qidirish..."
+
+msgid "Search"
+msgstr "Qidirish"
+
+msgid "Toggle theme"
+msgstr "Mavzuni almashtirish"
+
+msgid "Language"
+msgstr "Til"
+
+msgid "Green finance"
+msgstr "Yashil moliya"
+
+msgid "AI-driven ESG verdicts for green-finance decisions."
+msgstr "Yashil moliya qarorlari uchun AI asosidagi ESG xulosalari."
+
+msgid "Total analyses"
+msgstr "Jami tahlillar"
+
+msgid "Green-approved rate"
+msgstr "Yashil tasdiq ulushi"
+
+msgid "approved"
+msgstr "tasdiqlangan"
+
+msgid "Average ESG score"
+msgstr "O'rtacha ESG ball"
+
+msgid "Average ESG performance"
+msgstr "O'rtacha ESG ko'rsatkichlari"
+
+msgid "Verdict distribution"
+msgstr "Xulosalar taqsimoti"
+
+msgid "Green"
+msgstr "Yashil"
+
+msgid "Not green"
+msgstr "Yashil emas"
+
+msgid "Unknown"
+msgstr "Noaniq"
+
+msgid "View analytics"
+msgstr "Analitikani ochish"
+
+msgid "Recent analyses"
+msgstr "So'nggi tahlillar"
+
+msgid "Client / Company"
+msgstr "Mijoz / Tashkilot"
+
+msgid "Verdict"
+msgstr "Xulosa"
+
+msgid "No analyses yet."
+msgstr "Hali tahlillar yo'q."
+
+msgid "Run your first analysis"
+msgstr "Birinchi tahlilingizni bajaring"
+
+msgid "Upload a project's credit documents or paste text. The AI returns a green-finance verdict."
+msgstr "Loyihaning kredit hujjatlarini yuklang yoki matn kiriting. AI yashil moliya xulosasini beradi."
+
+msgid "Client"
+msgstr "Mijoz"
+
+msgid "New client (optional)"
+msgstr "Yangi mijoz (ixtiyoriy)"
+
+msgid "or add a new client"
+msgstr "yoki yangi mijoz qo'shing"
+
+msgid "— No client —"
+msgstr "— Mijozsiz —"
+
+msgid "Project documents (PDF, PNG, JPG, WEBP)"
+msgstr "Loyiha hujjatlari (PDF, PNG, JPG, WEBP)"
+
+msgid "Drop files here or click to browse"
+msgstr "Fayllarni bu yerga tashlang yoki bosing"
+
+msgid "Up to 10 files, 20 MB each"
+msgstr "10 tagacha fayl, har biri 20 MB"
+
+msgid "Or paste the project / credit information here..."
+msgstr "Yoki loyiha / kredit ma'lumotini shu yerga kiriting..."
+
+msgid "Run analysis"
+msgstr "Tahlilni boshlash"
+
+msgid "How the verdict is reached"
+msgstr "Xulosa qanday chiqariladi"
+
+msgid "1. Project information"
+msgstr "1. Loyiha ma'lumotlari"
+
+msgid "Borrower, credit amount, purpose, activity, equipment, green certificate."
+msgstr "Qarz oluvchi, kredit miqdori, maqsad, faoliyat, uskuna, yashil sertifikat."
+
+msgid "2. Exclusion (stop) factors"
+msgstr "2. Stop-faktorlar (istisnolar)"
+
+msgid "12 excluded activities (weapons, fossil fuels, gambling…) + eco-expertise."
+msgstr "12 istisno faoliyat (qurol, yoqilg'i, qimor…) + eko-ekspertiza."
+
+msgid "3. Green criteria"
+msgstr "3. Yashil mezonlar"
+
+msgid "9 renewable / low-emission criteria for green-finance eligibility."
+msgstr "Yashil moliya uchun 9 ta qayta tiklanuvchi / kam emissiya mezoni."
+
+msgid "4. Verdict"
+msgstr "4. Xulosa"
+
+msgid "Green, Not green, or Unknown — with a downloadable report."
+msgstr "Yashil, Yashil emas yoki Noaniq — yuklab olinadigan hisobot bilan."
+
+msgid "Analysis"
+msgstr "Tahlil"
+
+msgid "file(s)"
+msgstr "fayl"
+
+msgid "Download report"
+msgstr "Hisobotni yuklab olish"
+
+msgid "ESG performance"
+msgstr "ESG ko'rsatkichlari"
+
+msgid "ESG score"
+msgstr "ESG ball"
+
+msgid "ESG rating"
+msgstr "ESG reyting"
+
+msgid "Project information"
+msgstr "Loyiha ma'lumotlari"
+
+msgid "Not found"
+msgstr "Topilmadi"
+
+msgid "Exclusion (stop) factors"
+msgstr "Stop-faktorlar (istisnolar)"
+
+msgid "triggered"
+msgstr "aniqlangan"
+
+msgid "Green criteria"
+msgstr "Yashil mezonlar"
+
+msgid "matched"
+msgstr "mos keldi"
+
+msgid "All green-finance ESG analyses."
+msgstr "Barcha yashil moliya ESG tahlillari."
+
+msgid "Portfolio"
+msgstr "Portfel"
+
+msgid "Bank clients and their green-finance projects."
+msgstr "Bank mijozlari va ularning yashil moliya loyihalari."
+
+msgid "analyses"
+msgstr "tahlil"
+
+msgid "No clients yet."
+msgstr "Hali mijozlar yo'q."
+
+msgid "No analyses for this client yet."
+msgstr "Bu mijoz uchun hali tahlillar yo'q."
+
+msgid "Insights"
+msgstr "Ko'rsatkichlar"
+
+msgid "Portfolio-wide green-finance trends."
+msgstr "Portfel bo'yicha yashil moliya tendensiyalari."
+
+msgid "Green approved"
+msgstr "Yashil tasdiqlangan"
+
+msgid "STIR"
+msgstr "STIR"
+
+msgid "E"
+msgstr "E"
+
+msgid "S"
+msgstr "S"
+
+msgid "G"
+msgstr "G"
+
+msgid "ESG"
+msgstr "ESG"

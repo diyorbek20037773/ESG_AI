@@ -1,0 +1,105 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Overview" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Green finance" %}</span>
+    <h1 class="nv-page-title">{% trans "Overview" %}</h1>
+    <p class="nv-page-sub">{% trans "AI-driven ESG verdicts for green-finance decisions." %}</p>
+  </div>
+  <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+</div>
+
+<div class="nv-grid nv-stats nv-mb">
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-file-analytics"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.total }}">0</div>
+    <div class="nv-stat-label">{% trans "Total analyses" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-leaf"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.green_rate }}" data-suffix="%">0</div>
+    <div class="nv-stat-label">{% trans "Green-approved rate" %}</div>
+    <div class="nv-stat-delta up">{{ stats.green }} {% trans "approved" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-award"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.avg_overall }}">0</div>
+    <div class="nv-stat-label">{% trans "Average ESG score" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-users-group"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.clients }}">0</div>
+    <div class="nv-stat-label">{% trans "Clients" %}</div>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2 nv-mb">
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-chart-donut"></i>{% trans "Average ESG performance" %}</div>
+    <div class="nv-gauges">
+      {% include 'dashboard/_gauge.html' with value=stats.avg_e label=_("Environmental") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_s label=_("Social") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_g label=_("Governance") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_overall label=_("Overall") %}
+    </div>
+  </div>
+
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-scale"></i>{% trans "Verdict distribution" %}</div>
+    <div class="nv-bar-row">
+      <span class="nv-bar-label">{% trans "Green" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.green verdict_max 100 %}" data-bar-color="var(--nv-good)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.green }}</span>
+    </div>
+    <div class="nv-bar-row">
+      <span class="nv-bar-label">{% trans "Not green" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.not_green verdict_max 100 %}" data-bar-color="var(--nv-bad)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.not_green }}</span>
+    </div>
+    <div class="nv-bar-row">
+      <span class="nv-bar-label">{% trans "Unknown" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.unknown verdict_max 100 %}" data-bar-color="var(--nv-warn)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.unknown }}</span>
+    </div>
+    <a href="{% url 'dashboard:analytics' %}" class="nv-btn nv-btn-ghost block nv-mt"><i class="ti ti-chart-histogram"></i>{% trans "View analytics" %}</a>
+  </div>
+</div>
+
+<div class="nv-card" data-rise>
+  <div class="nv-flex nv-between nv-mb">
+    <div class="nv-card-title" style="margin:0;"><i class="ti ti-history"></i>{% trans "Recent analyses" %}</div>
+    <a href="{% url 'dashboard:analyses' %}" class="nv-pill neutral">{% trans "View all" %} <i class="ti ti-arrow-right"></i></a>
+  </div>
+  {% if recent %}
+  <div class="nv-table-wrap">
+    <table class="nv-table">
+      <thead><tr>
+        <th>№</th><th>{% trans "Client / Company" %}</th><th>{% trans "Verdict" %}</th>
+        <th>{% trans "ESG" %}</th><th>{% trans "Rating" %}</th><th>{% trans "Date" %}</th>
+      </tr></thead>
+      <tbody>
+        {% for a in recent %}
+        <tr onclick="location='{% url 'dashboard:analysis_detail' a.pk %}'">
+          <td class="num">{{ a.number }}</td>
+          <td>{{ a.client.name|default:a.company_name|default:_("Untitled") }}</td>
+          <td>{% include 'dashboard/_verdict_pill.html' with a=a %}</td>
+          <td class="num">{{ a.overall_score }}</td>
+          <td><span class="nv-pill neutral">{{ a.rating }}</span></td>
+          <td class="num">{{ a.created_at|date:"d.m.Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="nv-empty">
+    <i class="ti ti-inbox"></i>
+    <p>{% trans "No analyses yet." %}</p>
+    <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "Run your first analysis" %}</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

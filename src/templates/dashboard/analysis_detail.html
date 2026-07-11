@@ -1,0 +1,12 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{{ analysis.number }} — NovdAI{% endblock %}
+
+{% block content %}
+{% with a=analysis %}
+{% if a.verdict == 'green' %}{% with vc='good' vi='ti-circle-check' %}{% include 'dashboard/_detail_body.html' %}{% endwith %}
+{% elif a.verdict == 'not_green' %}{% with vc='bad' vi='ti-circle-x' %}{% include 'dashboard/_detail_body.html' %}{% endwith %}
+{% else %}{% with vc='warn' vi='ti-help-circle' %}{% include 'dashboard/_detail_body.html' %}{% endwith %}
+{% endif %}
+{% endwith %}
+{% endblock %}

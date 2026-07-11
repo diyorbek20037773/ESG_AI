@@ -1,0 +1,78 @@
+{% load i18n %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Analysis" %} · <span class="nv-mono">{{ a.number }}</span></span>
+    <h1 class="nv-page-title">{{ a.client.name|default:a.company_name|default:_("Untitled") }}</h1>
+    <p class="nv-page-sub">
+      {% if a.company_name and a.client %}{{ a.company_name }} · {% endif %}{{ a.created_at|date:"d.m.Y H:i" }}
+      {% if a.filenames %}· {{ a.filenames|length }} {% trans "file(s)" %}{% endif %}
+    </p>
+  </div>
+  <a href="{% url 'dashboard:download_pdf' a.pk %}" class="nv-btn nv-btn-ghost"><i class="ti ti-download"></i>{% trans "Download report" %}</a>
+</div>
+
+<div class="nv-verdict {{ vc }} nv-mb" data-rise>
+  <div class="nv-verdict-ic"><i class="ti {{ vi }}"></i></div>
+  <div>
+    <div class="nv-verdict-title {{ vc }}">{{ a.verdict_title|default:a.get_verdict_display }}</div>
+    <div style="color:var(--nv-ink-2);font-size:14px;margin-top:4px;">{{ a.summary }}</div>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2 nv-mb">
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-chart-donut"></i>{% trans "ESG performance" %}</div>
+    <div class="nv-gauges">
+      {% include 'dashboard/_gauge.html' with value=a.environmental_score label=_("Environmental") %}
+      {% include 'dashboard/_gauge.html' with value=a.social_score label=_("Social") %}
+      {% include 'dashboard/_gauge.html' with value=a.governance_score label=_("Governance") %}
+    </div>
+  </div>
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-gauge"></i>{% trans "Overall" %}</div>
+    <div style="display:flex;align-items:center;gap:20px;">
+      {% include 'dashboard/_gauge.html' with value=a.overall_score label=_("ESG score") %}
+      <div>
+        <div class="nv-mono" style="font-size:40px;font-weight:800;font-family:var(--nv-display);">{{ a.rating }}</div>
+        <div style="color:var(--nv-muted);font-size:13px;">{% trans "ESG rating" %}</div>
+        <div style="margin-top:12px;">{% include 'dashboard/_verdict_pill.html' with a=a %}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nv-card nv-mb" data-rise>
+  <div class="nv-card-title"><i class="ti ti-list-details"></i>{% trans "Project information" %}</div>
+  {% for i in a.info_answers %}
+  <div class="nv-crit">
+    <div class="nv-crit-ic yes"><i class="ti ti-point"></i></div>
+    <div><div class="nv-crit-q">{{ i.question }}</div><div class="nv-crit-e">{{ i.answer|default:_("Not found") }}</div></div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-ban"></i>{% trans "Exclusion (stop) factors" %}
+      <span class="nv-pill {% if a.triggered_stops %}bad{% else %}good{% endif %}" style="margin-left:auto;">{{ a.triggered_stops|length }} {% trans "triggered" %}</span>
+    </div>
+    {% for s in a.stop_factors %}
+    <div class="nv-crit">
+      <div class="nv-crit-ic {% if s.value %}stop{% else %}no{% endif %}"><i class="ti {% if s.value %}ti-alert-triangle-filled{% else %}ti-minus{% endif %}"></i></div>
+      <div><div class="nv-crit-q">{{ s.question }}</div>{% if s.evidence %}<div class="nv-crit-e">{{ s.evidence }}</div>{% endif %}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-leaf"></i>{% trans "Green criteria" %}
+      <span class="nv-pill {% if a.matched_green %}good{% else %}neutral{% endif %}" style="margin-left:auto;">{{ a.matched_green|length }} {% trans "matched" %}</span>
+    </div>
+    {% for g in a.green_criteria %}
+    <div class="nv-crit">
+      <div class="nv-crit-ic {% if g.value %}yes{% else %}no{% endif %}"><i class="ti {% if g.value %}ti-circle-check-filled{% else %}ti-minus{% endif %}"></i></div>
+      <div><div class="nv-crit-q">{{ g.question }}</div>{% if g.evidence %}<div class="nv-crit-e">{{ g.evidence }}</div>{% endif %}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

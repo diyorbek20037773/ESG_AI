@@ -1,0 +1,41 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{{ client.name }} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <a href="{% url 'dashboard:clients' %}" class="nv-eyebrow"><i class="ti ti-arrow-left"></i> {% trans "Clients" %}</a>
+    <h1 class="nv-page-title">{{ client.name }}</h1>
+    <p class="nv-page-sub">
+      {{ client.industry|default:"—" }}{% if client.region %} · {{ client.region }}{% endif %}
+      {% if client.stir %} · {% trans "STIR" %} {{ client.stir }}{% endif %}
+    </p>
+  </div>
+  <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+</div>
+
+<div class="nv-card" data-rise>
+  <div class="nv-card-title"><i class="ti ti-file-analytics"></i>{% trans "Analyses" %}</div>
+  {% if analyses %}
+  <div class="nv-table-wrap">
+    <table class="nv-table">
+      <thead><tr><th>№</th><th>{% trans "Verdict" %}</th><th>{% trans "ESG" %}</th><th>{% trans "Rating" %}</th><th>{% trans "Date" %}</th></tr></thead>
+      <tbody>
+        {% for a in analyses %}
+        <tr onclick="location='{% url 'dashboard:analysis_detail' a.pk %}'">
+          <td class="num">{{ a.number }}</td>
+          <td>{% include 'dashboard/_verdict_pill.html' with a=a %}</td>
+          <td class="num">{{ a.overall_score }}</td>
+          <td><span class="nv-pill neutral">{{ a.rating }}</span></td>
+          <td class="num">{{ a.created_at|date:"d.m.Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="nv-empty"><i class="ti ti-inbox"></i><p>{% trans "No analyses for this client yet." %}</p></div>
+  {% endif %}
+</div>
+{% endblock %}

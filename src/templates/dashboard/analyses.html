@@ -1,0 +1,48 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Analyses" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Green finance" %}</span>
+    <h1 class="nv-page-title">{% trans "Analyses" %}</h1>
+    <p class="nv-page-sub">{% trans "All green-finance ESG analyses." %}</p>
+  </div>
+  <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+</div>
+
+<div class="nv-card" data-rise>
+  {% if analyses %}
+  <div class="nv-table-wrap">
+    <table class="nv-table">
+      <thead><tr>
+        <th>№</th><th>{% trans "Client / Company" %}</th><th>{% trans "Verdict" %}</th>
+        <th>{% trans "E" %}</th><th>{% trans "S" %}</th><th>{% trans "G" %}</th>
+        <th>{% trans "ESG" %}</th><th>{% trans "Rating" %}</th><th>{% trans "Date" %}</th>
+      </tr></thead>
+      <tbody>
+        {% for a in analyses %}
+        <tr onclick="location='{% url 'dashboard:analysis_detail' a.pk %}'">
+          <td class="num">{{ a.number }}</td>
+          <td>{{ a.client.name|default:a.company_name|default:_("Untitled") }}</td>
+          <td>{% include 'dashboard/_verdict_pill.html' with a=a %}</td>
+          <td class="num">{{ a.environmental_score }}</td>
+          <td class="num">{{ a.social_score }}</td>
+          <td class="num">{{ a.governance_score }}</td>
+          <td class="num">{{ a.overall_score }}</td>
+          <td><span class="nv-pill neutral">{{ a.rating }}</span></td>
+          <td class="num">{{ a.created_at|date:"d.m.Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="nv-empty">
+    <i class="ti ti-inbox"></i><p>{% trans "No analyses yet." %}</p>
+    <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "Run your first analysis" %}</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

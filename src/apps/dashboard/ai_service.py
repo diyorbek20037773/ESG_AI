@@ -1,8 +1,9 @@
-"""AI-based ESG analysis engine.
+"""AI green-finance ESG analysis engine.
 
-The engine reads PDF/image documents and free text directly (multimodal, long context),
-so no separate OCR, embedding or vector-store step is required. Requests rotate across
-multiple API keys and models with rate-limit fallback.
+Reads project documents (PDF/image) or text directly — multimodal, long context, so no
+OCR / embeddings / vector store is needed. Requests rotate across multiple API keys and
+models with rate-limit fallback. The AI extracts structured answers; the final verdict is
+computed deterministically in `constants.compute_verdict` (ported from the risk platform).
 """
 import json
 import logging
@@ -14,19 +15,15 @@ from django.conf import settings
 from google import genai
 from google.genai import types
 
+from . import constants
+
 logger = logging.getLogger(__name__)
 
-
-# ──────────────────────────────────────────────
-# Multi-key + multi-model fallback
-# ──────────────────────────────────────────────
-
 MODELS = [
-    "gemini-2.5-flash-lite",  # fastest — higher RPM/RPD
-    "gemini-2.5-flash",       # fallback — stronger reasoning
+    "gemini-2.5-flash",       # strong default for reasoning-heavy verdicts
+    "gemini-2.5-flash-lite",  # fast fallback
 ]
 
-# Remember rate-limited (key_index, model) pairs; cleared after 24h.
 _rate_limited: dict[tuple[int, str], float] = {}
 
 LANGUAGE_NAMES = {
@@ -36,31 +33,21 @@ LANGUAGE_NAMES = {
 }
 
 
-def _get_api_keys() -> list[str]:
-    """Collect every configured API key.
+# ── keys / rotation ────────────────────────────────────────────
 
-    Supports:
-      - GEMINI_API_KEY / GEMINI_API_KEY_2 / GEMINI_API_KEY_3 (separate)
-      - GEMINI_API_KEYS (one variable, comma/space/newline separated)
-    """
+def _get_api_keys() -> list[str]:
     keys: list[str] = []
-    for single in (
-        getattr(settings, "GEMINI_API_KEY", ""),
-        getattr(settings, "GEMINI_API_KEY_2", ""),
-        getattr(settings, "GEMINI_API_KEY_3", ""),
-    ):
+    for single in (getattr(settings, "GEMINI_API_KEY", ""),
+                   getattr(settings, "GEMINI_API_KEY_2", ""),
+                   getattr(settings, "GEMINI_API_KEY_3", "")):
         if single and single.strip():
             keys.append(single.strip())
-
     multi = getattr(settings, "GEMINI_API_KEYS", "")
     if multi:
         for part in re.split(r"[,\s]+", multi):
-            part = part.strip()
-            if part:
-                keys.append(part)
-
-    seen: set[str] = set()
-    unique: list[str] = []
+            if part.strip():
+                keys.append(part.strip())
+    seen, unique = set(), []
     for k in keys:
         if k not in seen:
             seen.add(k)
@@ -68,7 +55,7 @@ def _get_api_keys() -> list[str]:
     return unique
 
 
-def _is_rate_limited(key_idx: int, model: str) -> bool:
+def _is_rate_limited(key_idx, model):
     key = (key_idx, model)
     if key not in _rate_limited:
         return False
@@ -78,20 +65,14 @@ def _is_rate_limited(key_idx: int, model: str) -> bool:
     return True
 
 
-def _mark_rate_limited(key_idx: int, model: str):
+def _mark_rate_limited(key_idx, model):
     _rate_limited[(key_idx, model)] = time.time()
 
 
-def _ask_ai(
-    system_prompt: str,
-    user_message: str,
-    file_bytes: bytes | None = None,
-    file_mime: str = "application/pdf",
-    max_tokens: int = 4096,
-) -> str:
-    """Send a request to the AI engine, trying every key and model until one succeeds.
+def _ask_ai(system_prompt, user_message, files=None, max_tokens=8192):
+    """Send a request to the AI, trying every key and model until one succeeds.
 
-    If file_bytes is given (PDF or image), the request is multimodal.
+    `files` is an optional list of (bytes, mime_type) tuples for multimodal input.
     Returns the raw response text (JSON string).
     """
     keys = _get_api_keys()
@@ -99,200 +80,207 @@ def _ask_ai(
         raise ValueError("AI API keys are not configured (set GEMINI_API_KEYS)")
 
     last_error = None
-
     for key_idx, api_key in enumerate(keys):
         for model in MODELS:
             if _is_rate_limited(key_idx, model):
                 continue
-
             try:
                 client_kwargs = {"api_key": api_key}
                 if hasattr(types, "HttpOptions"):
                     try:
-                        # Per-attempt cap so a slow/stuck key fails over fast.
-                        client_kwargs["http_options"] = types.HttpOptions(timeout=45000)
+                        client_kwargs["http_options"] = types.HttpOptions(timeout=90000)
                     except Exception:
                         pass
                 client = genai.Client(**client_kwargs)
-
                 cfg_kwargs = dict(
                     system_instruction=system_prompt,
-                    temperature=0.3,
+                    temperature=0.2,
                     max_output_tokens=max_tokens,
                     response_mime_type="application/json",
                 )
                 if model.startswith("gemini-2.5-flash") and hasattr(types, "ThinkingConfig"):
                     cfg_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=0)
 
-                if file_bytes:
-                    contents = [
-                        types.Part.from_bytes(data=file_bytes, mime_type=file_mime),
-                        user_message,
-                    ]
+                if files:
+                    contents = [types.Part.from_bytes(data=data, mime_type=mime)
+                                for (data, mime) in files]
+                    contents.append(user_message)
                 else:
                     contents = user_message
 
                 response = client.models.generate_content(
-                    model=model,
-                    contents=contents,
+                    model=model, contents=contents,
                     config=types.GenerateContentConfig(**cfg_kwargs),
                 )
-                result_text = (response.text or "").strip()
-                result_text = re.sub(r"^```(?:json)?\s*\n?", "", result_text)
-                result_text = re.sub(r"\n?```\s*$", "", result_text)
-
-                logger.info("[key%s:%s] ESG ok (first 200): %s",
-                            key_idx, model, result_text[:200])
-                return result_text
-
+                text = (response.text or "").strip()
+                text = re.sub(r"^```(?:json)?\s*\n?", "", text)
+                text = re.sub(r"\n?```\s*$", "", text)
+                logger.info("[key%s:%s] ok (%d chars)", key_idx, model, len(text))
+                return text
             except Exception as e:
-                error_msg = str(e)
+                msg = str(e)
                 last_error = e
-                logger.warning("[key%s:%s] error: %s", key_idx, model, error_msg[:160])
-
-                if "429" in error_msg or "RESOURCE_EXHAUSTED" in error_msg:
+                logger.warning("[key%s:%s] error: %s", key_idx, model, msg[:160])
+                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
                     _mark_rate_limited(key_idx, model)
                     continue
-                if any(c in error_msg for c in (
-                    "403", "PERMISSION_DENIED", "400", "API_KEY_INVALID", "INVALID_ARGUMENT",
-                )):
-                    for m in MODELS:
-                        _mark_rate_limited(key_idx, m)
-                    break
-                # Any other error (5xx, timeout): skip this key, move on.
                 for m in MODELS:
                     _mark_rate_limited(key_idx, m)
                 break
-
     if last_error:
         raise last_error
     raise ValueError("No AI API key configured")
 
 
-def _parse_json(text: str) -> dict | None:
-    """Safely extract a JSON object from the AI response."""
+def _parse_json(text):
     try:
         start = text.index("{")
         end = text.rindex("}") + 1
-        json_str = text[start:end]
+        js = text[start:end]
     except ValueError:
-        logger.error("No JSON braces found in: %s", text[:200])
+        logger.error("No JSON braces in: %s", text[:200])
         return None
-
     try:
-        return json.loads(json_str)
+        return json.loads(js)
     except json.JSONDecodeError:
         pass
-
-    # Uzbek apostrophe inside words breaks JSON — replace with a typographic one.
     try:
-        fixed = re.sub(r"(?<=[\w])'(?=[\w])", "’", json_str)
-        return json.loads(fixed)
+        return json.loads(re.sub(r"(?<=[\w])'(?=[\w])", "’", js))
     except json.JSONDecodeError as e:
-        logger.error("JSON parse failed: %s. Text: %s", e, json_str[:300])
+        logger.error("JSON parse failed: %s", e)
         return None
 
 
-# ──────────────────────────────────────────────
-# ESG analysis
-# ──────────────────────────────────────────────
-
-def _clamp_score(value) -> int:
+def _clamp(value):
     try:
-        n = int(round(float(value)))
+        return max(0, min(100, int(round(float(value)))))
     except (TypeError, ValueError):
         return 0
-    return max(0, min(100, n))
 
 
-def _build_system_prompt(language: str) -> str:
-    lang_name = LANGUAGE_NAMES.get(language, LANGUAGE_NAMES["en"])
-    return f"""You are an expert ESG (Environmental, Social, Governance) analyst.
-You are given a company document (report, filing, sustainability report) or free text.
-Analyse it and produce a rigorous ESG assessment.
+def _as_bool(v):
+    if isinstance(v, bool):
+        return v
+    if isinstance(v, str):
+        return v.strip().lower() in ("true", "ha", "yes", "1")
+    return bool(v)
 
-Score each pillar from 0 to 100 (higher = better ESG performance). Base every score and
-finding ONLY on evidence in the provided content. If the content lacks information for a
-pillar, give a low-confidence mid-range score and say so in that pillar's summary — do not
-invent facts.
 
-Write ALL human-readable text (summaries, findings, risks, recommendations) in {lang_name}.
+# ── green-finance analysis ─────────────────────────────────────
 
-Respond with ONLY a JSON object, no other text, in exactly this shape:
+def _build_prompt(language):
+    lang = LANGUAGE_NAMES.get(language, LANGUAGE_NAMES["en"])
+    info_q = "\n".join(f"{i+1}. {q}" for i, q in enumerate(constants.INFO_QUESTIONS))
+    stop_q = "\n".join(
+        f"{i}. {q}  [kalit so'zlar: {', '.join(kt)}]"
+        for i, (q, kt) in enumerate(constants.STOP_FACTORS))
+    green_q = "\n".join(
+        f"{i}. {q}  [kalit so'zlar: {', '.join(kt)}]"
+        for i, (q, kt) in enumerate(constants.GREEN_CRITERIA))
+    return f"""You are a rigorous green-finance ESG analyst for a bank in Uzbekistan.
+You are given a borrower's project/credit documents (or text). Analyse ONLY what the
+documents actually state — never invent facts. If information is missing, say so and set
+boolean values to false.
+
+Answer these INFORMATION questions (Uzbek), quoting exact figures/names when present:
+{info_q}
+
+Evaluate ECO-EXPERTISE:
+- required: {constants.ECO_EXPERTISE_REQUIRED[0]}
+- obtained: {constants.ECO_EXPERTISE_OBTAINED[0]}
+
+Evaluate each STOP-FACTOR (exclusion activity). value=true ONLY if that activity is
+genuinely part of the project:
+{stop_q}
+
+Evaluate each GREEN CRITERION (renewable/green activity). value=true ONLY if genuinely present:
+{green_q}
+
+Also give ESG pillar scores 0-100 (higher = better ESG). Write all `evidence`, `answer` and
+`summary` text in {lang}.
+
+Respond with ONLY this JSON (no other text):
 {{
-  "company_name": "<detected company name or empty string>",
-  "environmental_score": <int 0-100>,
-  "social_score": <int 0-100>,
-  "governance_score": <int 0-100>,
-  "overall_score": <int 0-100>,
-  "overall_summary": "<3-5 sentence overall ESG summary>",
-  "environmental_summary": "<2-3 sentences on the Environmental pillar>",
-  "social_summary": "<2-3 sentences on the Social pillar>",
-  "governance_summary": "<2-3 sentences on the Governance pillar>",
-  "key_findings": ["<finding>", "..."],
-  "risks": ["<material ESG risk>", "..."],
-  "recommendations": ["<concrete, actionable recommendation>", "..."]
-}}
-
-Give 3-6 items each for key_findings, risks, and recommendations. overall_score should
-roughly reflect the three pillar scores."""
+  "company_name": "<detected borrower name or empty>",
+  "info": [{{"question": "<the question>", "answer": "<answer or 'Ma'lumot topilmadi'>"}} ... 7 items in order],
+  "eco_expertise_required": {{"value": <bool>, "evidence": "<short>"}},
+  "eco_expertise_obtained": {{"value": <bool>, "evidence": "<short>"}},
+  "stop_factors": [{{"index": <int 0-11>, "value": <bool>, "evidence": "<short>"}} ... 12 items],
+  "green_criteria": [{{"index": <int 0-8>, "value": <bool>, "evidence": "<short>"}} ... 9 items],
+  "environmental_score": <int>, "social_score": <int>, "governance_score": <int>,
+  "overall_score": <int>,
+  "summary": "<3-5 sentence overall ESG summary>"
+}}"""
 
 
-def analyze_esg(
-    *,
-    text: str | None = None,
-    file_bytes: bytes | None = None,
-    file_mime: str | None = None,
-    company_name: str = "",
-    language: str = "uz",
-) -> dict:
-    """Run an ESG analysis.
+def analyze_green_finance(*, files=None, text=None, client_name="", language="uz"):
+    """Run the full green-finance ESG evaluation.
 
-    Provide either `text` or (`file_bytes` + `file_mime`). Returns a normalized dict with
-    integer scores plus the structured analysis fields. Raises on total API failure.
+    `files`: list of (bytes, mime). Or `text`. Returns a normalized result dict with the
+    deterministic verdict attached. Raises on total API failure.
     """
-    system = _build_system_prompt(language)
-
-    hint = f"Company name hint: {company_name}\n\n" if company_name else ""
-    if file_bytes:
-        user_msg = (
-            f"{hint}Analyse the attached document and produce the ESG assessment JSON."
-        )
-        raw = _ask_ai(system, user_msg, file_bytes=file_bytes,
-                      file_mime=file_mime or "application/pdf")
+    system = _build_prompt(language)
+    hint = f"Client (borrower) name hint: {client_name}\n\n" if client_name else ""
+    if files:
+        user_msg = f"{hint}Analyse the attached project documents and produce the JSON."
+        raw = _ask_ai(system, user_msg, files=files)
     else:
-        user_msg = (
-            f"{hint}Analyse the following content and produce the ESG assessment JSON:\n\n"
-            f"{text or ''}"
-        )
+        user_msg = f"{hint}Analyse the following project content and produce the JSON:\n\n{text or ''}"
         raw = _ask_ai(system, user_msg)
 
     parsed = _parse_json(raw) or {}
 
-    env = _clamp_score(parsed.get("environmental_score"))
-    soc = _clamp_score(parsed.get("social_score"))
-    gov = _clamp_score(parsed.get("governance_score"))
-    overall = parsed.get("overall_score")
-    overall = _clamp_score(overall) if overall is not None else round((env + soc + gov) / 3)
+    # Attach canonical question text by index; normalize booleans.
+    stop_by_idx = {}
+    for item in parsed.get("stop_factors", []) or []:
+        try:
+            stop_by_idx[int(item.get("index"))] = item
+        except (TypeError, ValueError):
+            continue
+    green_by_idx = {}
+    for item in parsed.get("green_criteria", []) or []:
+        try:
+            green_by_idx[int(item.get("index"))] = item
+        except (TypeError, ValueError):
+            continue
 
-    def _as_list(v):
-        if isinstance(v, list):
-            return [str(x) for x in v if str(x).strip()]
-        if isinstance(v, str) and v.strip():
-            return [v.strip()]
-        return []
+    stop_factors = []
+    for i, (q, _kt) in enumerate(constants.STOP_FACTORS):
+        it = stop_by_idx.get(i, {})
+        stop_factors.append({"question": q, "value": _as_bool(it.get("value")),
+                             "evidence": (it.get("evidence") or "").strip()})
+    green_criteria = []
+    for i, (q, _kt) in enumerate(constants.GREEN_CRITERIA):
+        it = green_by_idx.get(i, {})
+        green_criteria.append({"question": q, "value": _as_bool(it.get("value")),
+                               "evidence": (it.get("evidence") or "").strip()})
+
+    eco_req = parsed.get("eco_expertise_required") or {}
+    eco_obt = parsed.get("eco_expertise_obtained") or {}
+    eco_required = {"value": _as_bool(eco_req.get("value")), "evidence": (eco_req.get("evidence") or "").strip()}
+    eco_obtained = {"value": _as_bool(eco_obt.get("value")), "evidence": (eco_obt.get("evidence") or "").strip()}
+
+    info = []
+    parsed_info = parsed.get("info") or []
+    for i, q in enumerate(constants.INFO_QUESTIONS):
+        ans = parsed_info[i].get("answer") if i < len(parsed_info) and isinstance(parsed_info[i], dict) else ""
+        info.append({"question": q, "answer": (ans or "").strip()})
+
+    env = _clamp(parsed.get("environmental_score"))
+    soc = _clamp(parsed.get("social_score"))
+    gov = _clamp(parsed.get("governance_score"))
+    overall = parsed.get("overall_score")
+    overall = _clamp(overall) if overall is not None else round((env + soc + gov) / 3)
+
+    verdict = constants.compute_verdict(eco_required, eco_obtained, stop_factors, green_criteria)
 
     return {
-        "company_name": (parsed.get("company_name") or company_name or "").strip(),
-        "environmental_score": env,
-        "social_score": soc,
-        "governance_score": gov,
-        "overall_score": overall,
-        "overall_summary": (parsed.get("overall_summary") or "").strip(),
-        "environmental_summary": (parsed.get("environmental_summary") or "").strip(),
-        "social_summary": (parsed.get("social_summary") or "").strip(),
-        "governance_summary": (parsed.get("governance_summary") or "").strip(),
-        "key_findings": _as_list(parsed.get("key_findings")),
-        "risks": _as_list(parsed.get("risks")),
-        "recommendations": _as_list(parsed.get("recommendations")),
+        "company_name": (parsed.get("company_name") or client_name or "").strip(),
+        "verdict": verdict,
+        "environmental_score": env, "social_score": soc,
+        "governance_score": gov, "overall_score": overall,
+        "summary": (parsed.get("summary") or verdict["summary"]).strip(),
+        "info": info,
+        "eco_required": eco_required, "eco_obtained": eco_obtained,
+        "stop_factors": stop_factors, "green_criteria": green_criteria,
     }

@@ -1,0 +1,1 @@
+{% load i18n %}{% if a.verdict == 'green' %}<span class="nv-pill good"><span class="nv-dot"></span>{% trans "Green" %}</span>{% elif a.verdict == 'not_green' %}<span class="nv-pill bad"><span class="nv-dot"></span>{% trans "Not green" %}</span>{% else %}<span class="nv-pill warn"><span class="nv-dot"></span>{% trans "Unknown" %}</span>{% endif %}

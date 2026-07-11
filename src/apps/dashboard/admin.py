@@ -1,14 +1,20 @@
 from django.contrib import admin
 
-from .models import ESGAnalysis
+from .models import Analysis, Client
 
 
-@admin.register(ESGAnalysis)
-class ESGAnalysisAdmin(admin.ModelAdmin):
-    list_display = (
-        'id', 'company_name', 'overall_score', 'environmental_score',
-        'social_score', 'governance_score', 'language', 'created_at',
-    )
-    list_filter = ('language', 'source_type', 'created_at')
-    search_fields = ('company_name', 'original_filename', 'summary')
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('name', 'stir', 'industry', 'region', 'analyses_count', 'created_at')
+    search_fields = ('name', 'stir', 'industry', 'region')
+    list_filter = ('industry', 'region')
+
+
+@admin.register(Analysis)
+class AnalysisAdmin(admin.ModelAdmin):
+    list_display = ('number', 'client', 'company_name', 'verdict', 'overall_score',
+                    'environmental_score', 'social_score', 'governance_score',
+                    'language', 'created_at')
+    list_filter = ('verdict', 'language', 'created_at')
+    search_fields = ('number', 'company_name', 'client__name', 'summary')
     readonly_fields = ('created_at', 'result_json')

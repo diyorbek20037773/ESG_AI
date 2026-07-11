@@ -1,6 +1,8 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from .models import Client
+
 ALLOWED_MIME = {
     'application/pdf': 'application/pdf',
     'image/png': 'image/png',
@@ -10,46 +12,29 @@ ALLOWED_MIME = {
 }
 ALLOWED_EXT = ('.pdf', '.png', '.jpg', '.jpeg', '.webp')
 MAX_FILE_MB = 20
+MAX_FILES = 10
 
 
-class ESGAnalysisForm(forms.Form):
-    company_name = forms.CharField(
-        required=False,
-        max_length=255,
-        widget=forms.TextInput(attrs={
-            'class': 'form-control form-control-lg',
-            'placeholder': _('Company name (optional)'),
-        }),
+class GreenFinanceForm(forms.Form):
+    """Kick off a green-finance analysis: pick/create a client, upload docs or paste text.
+
+    Uploaded files are read in the view via ``request.FILES.getlist('documents')``.
+    """
+    client = forms.ModelChoiceField(
+        queryset=Client.objects.all(), required=False,
+        empty_label=_('— No client —'),
+        widget=forms.Select(attrs={'class': 'nv-input'}),
     )
-    document = forms.FileField(
-        required=False,
-        widget=forms.ClearableFileInput(attrs={
-            'class': 'form-control',
-            'accept': '.pdf,.png,.jpg,.jpeg,.webp',
-        }),
+    new_client = forms.CharField(
+        required=False, max_length=255,
+        widget=forms.TextInput(attrs={'class': 'nv-input',
+                                      'placeholder': _('or add a new client')}),
     )
     text = forms.CharField(
         required=False,
-        widget=forms.Textarea(attrs={
-            'class': 'form-control',
-            'rows': 8,
-            'placeholder': _('Or paste the report / company information here...'),
-        }),
+        widget=forms.Textarea(attrs={'class': 'nv-input', 'rows': 7,
+                                     'placeholder': _('Or paste the project / credit information here...')}),
     )
 
-    def clean_document(self):
-        f = self.cleaned_data.get('document')
-        if not f:
-            return f
-        name = (f.name or '').lower()
-        if not name.endswith(ALLOWED_EXT):
-            raise forms.ValidationError(_('Unsupported file type. Use PDF, PNG, JPG or WEBP.'))
-        if f.size > MAX_FILE_MB * 1024 * 1024:
-            raise forms.ValidationError(_('File is too large (max 20 MB).'))
-        return f
-
-    def clean(self):
-        cleaned = super().clean()
-        if not cleaned.get('document') and not (cleaned.get('text') or '').strip():
-            raise forms.ValidationError(_('Upload a document or paste some text to analyse.'))
-        return cleaned
+    def clean_new_client(self):
+        return (self.cleaned_data.get('new_client') or '').strip()

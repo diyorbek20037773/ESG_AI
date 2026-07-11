@@ -1,0 +1,33 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Clients" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Portfolio" %}</span>
+    <h1 class="nv-page-title">{% trans "Clients" %}</h1>
+    <p class="nv-page-sub">{% trans "Bank clients and their green-finance projects." %}</p>
+  </div>
+</div>
+
+{% if clients %}
+<div class="nv-grid nv-cols-3">
+  {% for c in clients %}
+  <a href="{% url 'dashboard:client_detail' c.pk %}" class="nv-card lift" data-rise>
+    <div class="nv-flex nv-between">
+      <div class="nv-stat-ic" style="margin-bottom:0;"><i class="ti ti-building"></i></div>
+      <span class="nv-pill neutral">{{ c.n }} {% trans "analyses" %}</span>
+    </div>
+    <div style="font-weight:700;font-size:16px;margin-top:14px;">{{ c.name }}</div>
+    <div style="color:var(--nv-muted);font-size:13px;margin-top:4px;">
+      {{ c.industry|default:"—" }}{% if c.region %} · {{ c.region }}{% endif %}
+    </div>
+    {% if c.stir %}<div class="nv-mono" style="color:var(--nv-muted);font-size:12px;margin-top:6px;">{% trans "STIR" %}: {{ c.stir }}</div>{% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<div class="nv-card"><div class="nv-empty"><i class="ti ti-users-group"></i><p>{% trans "No clients yet." %}</p></div></div>
+{% endif %}
+{% endblock %}

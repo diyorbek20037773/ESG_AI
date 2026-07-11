@@ -558,3 +558,224 @@ msgstr "Support green-taxonomy alignment and reporting."
 
 msgid "Try the ESG Dashboard"
 msgstr "Try the ESG Dashboard"
+
+# NovdAI dashboard
+
+msgid "ESG Dashboard"
+msgstr "ESG Dashboard"
+
+msgid "Overview"
+msgstr "Overview"
+
+msgid "Analyses"
+msgstr "Analyses"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Analytics"
+msgstr "Analytics"
+
+msgid "General"
+msgstr "General"
+
+msgid "Public site"
+msgstr "Public site"
+
+msgid "Search analyses, clients..."
+msgstr "Search analyses, clients..."
+
+msgid "Search"
+msgstr "Search"
+
+msgid "Toggle theme"
+msgstr "Toggle theme"
+
+msgid "Language"
+msgstr "Language"
+
+msgid "Green finance"
+msgstr "Green finance"
+
+msgid "AI-driven ESG verdicts for green-finance decisions."
+msgstr "AI-driven ESG verdicts for green-finance decisions."
+
+msgid "Total analyses"
+msgstr "Total analyses"
+
+msgid "Green-approved rate"
+msgstr "Green-approved rate"
+
+msgid "approved"
+msgstr "approved"
+
+msgid "Average ESG score"
+msgstr "Average ESG score"
+
+msgid "Average ESG performance"
+msgstr "Average ESG performance"
+
+msgid "Verdict distribution"
+msgstr "Verdict distribution"
+
+msgid "Green"
+msgstr "Green"
+
+msgid "Not green"
+msgstr "Not green"
+
+msgid "Unknown"
+msgstr "Unknown"
+
+msgid "View analytics"
+msgstr "View analytics"
+
+msgid "Recent analyses"
+msgstr "Recent analyses"
+
+msgid "Client / Company"
+msgstr "Client / Company"
+
+msgid "Verdict"
+msgstr "Verdict"
+
+msgid "No analyses yet."
+msgstr "No analyses yet."
+
+msgid "Run your first analysis"
+msgstr "Run your first analysis"
+
+msgid "Upload a project's credit documents or paste text. The AI returns a green-finance verdict."
+msgstr "Upload a project's credit documents or paste text. The AI returns a green-finance verdict."
+
+msgid "Client"
+msgstr "Client"
+
+msgid "New client (optional)"
+msgstr "New client (optional)"
+
+msgid "or add a new client"
+msgstr "or add a new client"
+
+msgid "— No client —"
+msgstr "— No client —"
+
+msgid "Project documents (PDF, PNG, JPG, WEBP)"
+msgstr "Project documents (PDF, PNG, JPG, WEBP)"
+
+msgid "Drop files here or click to browse"
+msgstr "Drop files here or click to browse"
+
+msgid "Up to 10 files, 20 MB each"
+msgstr "Up to 10 files, 20 MB each"
+
+msgid "Or paste the project / credit information here..."
+msgstr "Or paste the project / credit information here..."
+
+msgid "Run analysis"
+msgstr "Run analysis"
+
+msgid "How the verdict is reached"
+msgstr "How the verdict is reached"
+
+msgid "1. Project information"
+msgstr "1. Project information"
+
+msgid "Borrower, credit amount, purpose, activity, equipment, green certificate."
+msgstr "Borrower, credit amount, purpose, activity, equipment, green certificate."
+
+msgid "2. Exclusion (stop) factors"
+msgstr "2. Exclusion (stop) factors"
+
+msgid "12 excluded activities (weapons, fossil fuels, gambling…) + eco-expertise."
+msgstr "12 excluded activities (weapons, fossil fuels, gambling…) + eco-expertise."
+
+msgid "3. Green criteria"
+msgstr "3. Green criteria"
+
+msgid "9 renewable / low-emission criteria for green-finance eligibility."
+msgstr "9 renewable / low-emission criteria for green-finance eligibility."
+
+msgid "4. Verdict"
+msgstr "4. Verdict"
+
+msgid "Green, Not green, or Unknown — with a downloadable report."
+msgstr "Green, Not green, or Unknown — with a downloadable report."
+
+msgid "Analysis"
+msgstr "Analysis"
+
+msgid "file(s)"
+msgstr "file(s)"
+
+msgid "Download report"
+msgstr "Download report"
+
+msgid "ESG performance"
+msgstr "ESG performance"
+
+msgid "ESG score"
+msgstr "ESG score"
+
+msgid "ESG rating"
+msgstr "ESG rating"
+
+msgid "Project information"
+msgstr "Project information"
+
+msgid "Not found"
+msgstr "Not found"
+
+msgid "Exclusion (stop) factors"
+msgstr "Exclusion (stop) factors"
+
+msgid "triggered"
+msgstr "triggered"
+
+msgid "Green criteria"
+msgstr "Green criteria"
+
+msgid "matched"
+msgstr "matched"
+
+msgid "All green-finance ESG analyses."
+msgstr "All green-finance ESG analyses."
+
+msgid "Portfolio"
+msgstr "Portfolio"
+
+msgid "Bank clients and their green-finance projects."
+msgstr "Bank clients and their green-finance projects."
+
+msgid "analyses"
+msgstr "analyses"
+
+msgid "No clients yet."
+msgstr "No clients yet."
+
+msgid "No analyses for this client yet."
+msgstr "No analyses for this client yet."
+
+msgid "Insights"
+msgstr "Insights"
+
+msgid "Portfolio-wide green-finance trends."
+msgstr "Portfolio-wide green-finance trends."
+
+msgid "Green approved"
+msgstr "Green approved"
+
+msgid "STIR"
+msgstr "STIR"
+
+msgid "E"
+msgstr "E"
+
+msgid "S"
+msgstr "S"
+
+msgid "G"
+msgstr "G"
+
+msgid "ESG"
+msgstr "ESG"

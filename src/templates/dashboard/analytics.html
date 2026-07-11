@@ -1,0 +1,61 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Analytics" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "Insights" %}</span>
+    <h1 class="nv-page-title">{% trans "Analytics" %}</h1>
+    <p class="nv-page-sub">{% trans "Portfolio-wide green-finance trends." %}</p>
+  </div>
+</div>
+
+<div class="nv-grid nv-stats nv-mb">
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic" style="color:var(--nv-good);background:var(--nv-good-soft);box-shadow:none;"><i class="ti ti-leaf"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.green }}">0</div>
+    <div class="nv-stat-label">{% trans "Green approved" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic" style="color:var(--nv-bad);background:var(--nv-bad-soft);box-shadow:none;"><i class="ti ti-circle-x"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.not_green }}">0</div>
+    <div class="nv-stat-label">{% trans "Not green" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic" style="color:var(--nv-warn);background:var(--nv-warn-soft);box-shadow:none;"><i class="ti ti-help-circle"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.unknown }}">0</div>
+    <div class="nv-stat-label">{% trans "Unknown" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-percentage"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ stats.green_rate }}" data-suffix="%">0</div>
+    <div class="nv-stat-label">{% trans "Green-approved rate" %}</div>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-chart-donut"></i>{% trans "Average ESG performance" %}</div>
+    <div class="nv-gauges">
+      {% include 'dashboard/_gauge.html' with value=stats.avg_e label=_("Environmental") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_s label=_("Social") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_g label=_("Governance") %}
+      {% include 'dashboard/_gauge.html' with value=stats.avg_overall label=_("Overall") %}
+    </div>
+  </div>
+
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-scale"></i>{% trans "Verdict distribution" %}</div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Green" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.green verdict_max 100 %}" data-bar-color="var(--nv-good)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.green }}</span></div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Not green" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.not_green verdict_max 100 %}" data-bar-color="var(--nv-bad)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.not_green }}</span></div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Unknown" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio stats.unknown verdict_max 100 %}" data-bar-color="var(--nv-warn)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ stats.unknown }}</span></div>
+  </div>
+</div>
+{% endblock %}
