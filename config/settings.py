@@ -14,12 +14,13 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1,localhost').split(','
 RAILWAY_DOMAIN = config('RAILWAY_PUBLIC_DOMAIN', default='')
 if RAILWAY_DOMAIN:
     ALLOWED_HOSTS.append(RAILWAY_DOMAIN)
-ALLOWED_HOSTS += ['.railway.app', '.up.railway.app']
+ALLOWED_HOSTS += ['.railway.app', '.up.railway.app', 'novdai.uz', 'www.novdai.uz']
 
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='').split(',') if config('CSRF_TRUSTED_ORIGINS', default='') else []
 if RAILWAY_DOMAIN:
     CSRF_TRUSTED_ORIGINS.append(f'https://{RAILWAY_DOMAIN}')
-CSRF_TRUSTED_ORIGINS += ['https://*.railway.app', 'https://*.up.railway.app']
+CSRF_TRUSTED_ORIGINS += ['https://*.railway.app', 'https://*.up.railway.app',
+                         'https://novdai.uz', 'https://www.novdai.uz']
 
 
 INSTALLED_APPS = [
