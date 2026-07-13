@@ -1,0 +1,411 @@
+{% load static %}<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovdAI × UzCombinator</title>
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon_io/favicon-32x32.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF8F3;
+    --cream-deep:#F7EFE6;
+    --ink:#0F0E0D;
+    --ink-soft:#5A544E;
+    --orange:#FF6A00;
+    --orange-soft:#FFF0E4;
+    --line:#E8DDD1;
+    --white:#FFFFFF;
+    --r:18px;
+    --shadow:0 4px 24px rgba(30,20,10,.06);
+    --shadow-lift:0 12px 40px rgba(255,106,0,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(15,14,13,.09) 1px, transparent 0);
+    background-size:24px 24px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .glow{
+    position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(60% 45% at 50% 0%, rgba(255,106,0,.10), transparent 70%),
+      radial-gradient(50% 40% at 100% 100%, rgba(255,106,0,.06), transparent 70%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- eyebrow ---------- */
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--orange);display:flex;align-items:center;gap:12px;justify-content:center;
+  }
+  .eyebrow::before{content:"";width:28px;height:1.5px;background:var(--orange)}
+
+  /* ---------- hero ---------- */
+  header{padding:88px 0 56px;text-align:center;position:relative}
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;font-size:clamp(40px,6.4vw,72px);
+    line-height:1.02;letter-spacing:-.03em;margin:26px 0 20px;
+  }
+  h1 em{font-style:normal;color:var(--orange)}
+  .lede{
+    font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);
+    max-width:600px;margin:0 auto;
+  }
+  .lede b{color:var(--ink);font-weight:600}
+
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:15px 28px;border-radius:14px;
+    font-weight:600;font-size:15px;text-decoration:none;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 6px 20px rgba(255,106,0,.28)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lift)}
+  .btn-ghost{background:var(--white);color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+  /* ---------- signature: floating stat badges ---------- */
+  .badges{
+    display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:52px;
+  }
+  .badge{
+    display:flex;align-items:center;gap:12px;
+    background:var(--white);border:1px solid var(--line);
+    border-radius:16px;padding:13px 20px 13px 14px;
+    box-shadow:var(--shadow);
+    animation:float 5s ease-in-out infinite;
+  }
+  .badge:nth-child(2){animation-delay:.7s}
+  .badge:nth-child(3){animation-delay:1.4s}
+  .badge .ico{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--orange-soft);display:grid;place-items:center;
+    font-size:16px;flex-shrink:0;
+  }
+  .badge .num{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:19px;letter-spacing:-.02em;line-height:1.1;
+  }
+  .badge .lab{
+    font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @media (prefers-reduced-motion:reduce){
+    .badge{animation:none}
+    *{transition:none!important}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:76px 0;border-top:1px solid var(--line)}
+  .sec-head{text-align:center;margin-bottom:44px}
+  h2{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(28px,3.4vw,38px);letter-spacing:-.025em;margin-top:16px;
+  }
+
+  /* problem / solution */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .card{
+    background:var(--white);border:1px solid var(--line);
+    border-radius:var(--r);padding:32px;
+  }
+  .card.hot{border-color:var(--orange);box-shadow:var(--shadow-lift)}
+  .card .tag{
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .card.hot .tag{color:var(--orange)}
+  .card h3{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;
+    letter-spacing:-.02em;margin:12px 0 14px;
+  }
+  .card p{color:var(--ink-soft);font-size:15px}
+  .card ul{list-style:none;margin-top:16px}
+  .card li{
+    color:var(--ink-soft);font-size:15px;padding-left:22px;position:relative;margin-bottom:9px;
+  }
+  .card li::before{
+    content:"→";position:absolute;left:0;color:var(--orange);font-weight:700;
+  }
+
+  /* traction grid */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .stat{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+    padding:30px;text-align:center;transition:transform .2s ease,box-shadow .2s ease;
+  }
+  .stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift);border-color:var(--orange)}
+  .stat .big{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:42px;letter-spacing:-.03em;line-height:1;color:var(--orange);
+  }
+  .stat .cap{margin-top:12px;font-weight:600;font-size:15px}
+  .stat .sub{margin-top:5px;font-size:13px;color:var(--ink-soft)}
+
+  /* team */
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .member{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--r);
+    padding:26px;display:flex;gap:16px;align-items:center;
+  }
+  .avatar{
+    width:56px;height:56px;border-radius:50%;flex-shrink:0;
+    background:var(--orange);color:#fff;display:grid;place-items:center;
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;
+    overflow:hidden;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .member .nm{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px}
+  .member .rl{
+    font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-top:2px;
+  }
+  .member .bio{font-size:14px;color:var(--ink-soft);margin-top:6px}
+
+  /* links */
+  .links{display:grid;grid-template-columns:1fr;gap:14px;max-width:520px;margin:0 auto}
+  .link{
+    background:var(--white);border:1px solid var(--line);border-radius:14px;
+    padding:20px;text-decoration:none;color:var(--ink);
+    display:flex;justify-content:space-between;align-items:center;
+    transition:all .18s ease;
+  }
+  .link:hover{border-color:var(--orange);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .link .t{font-weight:600;font-size:15px}
+  .link .s{font-size:12px;color:var(--ink-soft);margin-top:2px}
+  .link .arw{color:var(--orange);font-weight:700}
+
+  /* footer cta */
+  .final{
+    background:var(--ink);border-radius:24px;padding:60px 40px;text-align:center;color:#fff;
+    margin:76px 0;
+  }
+  .final h2{color:#fff;margin-bottom:14px}
+  .final p{color:#A69E96;max-width:520px;margin:0 auto 28px;font-size:16px}
+  .final .btn-ghost{background:transparent;color:#fff;border-color:#3A3531}
+  .final .btn-ghost:hover{border-color:var(--orange)}
+
+  footer{
+    padding:0 0 60px;text-align:center;
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink-soft);
+    letter-spacing:.06em;
+  }
+
+  @media(max-width:760px){
+    header{padding:60px 0 40px}
+    .split,.team,.grid3,.links{grid-template-columns:1fr}
+    .final{padding:44px 24px}
+    section{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header>
+    <div class="eyebrow">NovdAI · UzCombinator 2026 arizasi</div>
+
+    <h1>Salom, <em>UzCombinator</em>.<br>Biz NovdAI’miz.</h1>
+
+    <p class="lede">
+      Banklarga loyihalarni <b>yashil moliyaga</b> mosligini hujjatlar asosida
+      avtomatik baholab beradigan <b>sun’iy idrok</b> platformasi.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#havolalar">Mahsulotni ko‘rish →</a>
+      <a class="btn btn-ghost" href="#jamoa">Jamoa bilan tanishish</a>
+    </div>
+
+    <!-- SIGNATURE: raqamsiz, faqat haqiqiy faktlar -->
+    <div class="badges">
+      <div class="badge">
+        <div class="ico">🌱</div>
+        <div>
+          <div class="num">Yashil taksonomiya</div>
+          <div class="lab">Milliy standart asosida</div>
+        </div>
+      </div>
+      <div class="badge">
+        <div class="ico">⚙️</div>
+        <div>
+          <div class="num">Ishlaydigan MVP</div>
+          <div class="lab">Jonli platforma</div>
+        </div>
+      </div>
+      <div class="badge">
+        <div class="ico">👥</div>
+        <div>
+          <div class="num">6 kishilik jamoa</div>
+          <div class="lab">Bank · risk · ML</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MUAMMO / YECHIM ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Muammo va yechim</div>
+      <h2>Yashil moliya qarori — sekin va sub’yektiv</h2>
+    </div>
+    <div class="split">
+      <div class="card">
+        <div class="tag">Hozir</div>
+        <h3>Banklar uchun og‘riq</h3>
+        <ul>
+          <li>Loyihaning yashil moliyaga mosligi qo‘lda, uzoq baholanadi</li>
+          <li>Baho ekspert tanloviga qarab sub’yektiv bo‘ladi</li>
+          <li>Milliy yashil taksonomiya endi shakllanmoqda — tajriba yetishmaydi</li>
+          <li>Har bir loyiha uchun alohida ekspert vaqti va xarajat</li>
+        </ul>
+      </div>
+      <div class="card hot">
+        <div class="tag">NovdAI bilan</div>
+        <h3>Hujjatdan xulosaga — bir necha soniyada</h3>
+        <ul>
+          <li>Kredit hujjatlarini yuklang — AI matnni o‘zi o‘qiydi</li>
+          <li>7 ma’lumot · 12 stop-faktor · 9 yashil mezon avtomatik tekshiriladi</li>
+          <li>Xulosa <b>deterministik</b> — bir xil hujjat har doim bir xil natija</li>
+          <li>Yashil / Yashil emas / Noaniq xulosa + yuklab olinadigan hisobot</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NIMA TAYYOR ============ -->
+  <section>
+    <div class="sec-head">
+      <div class="eyebrow">Hozir qayerdamiz</div>
+      <h2>Slayd emas — ishlaydigan mahsulot</h2>
+    </div>
+    <div class="grid3">
+      <div class="stat">
+        <div class="big">MVP</div>
+        <div class="cap">Jonli platforma</div>
+        <div class="sub">Bank green-finance oqimi to‘liq ishlaydi</div>
+      </div>
+      <div class="stat">
+        <div class="big">ESG</div>
+        <div class="cap">E / S / G ballari</div>
+        <div class="sub">Har loyihaga verdikt va hisobot</div>
+      </div>
+      <div class="stat">
+        <div class="big">3 til</div>
+        <div class="cap">O‘zbek · rus · ingliz</div>
+        <div class="sub">Light / dark, mobil moslashuvchi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JAMOA ============ -->
+  <section id="jamoa">
+    <div class="sec-head">
+      <div class="eyebrow">Jamoa</div>
+      <h2>Nega aynan biz</h2>
+    </div>
+    <div class="team">
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/sarvar-talipov.jpg' %}" alt="Sarvar Talipov"></div>
+        <div>
+          <div class="nm">Sarvar Talipov</div>
+          <div class="rl">Asoschi · CEO</div>
+          <div class="bio">O‘zbekiston yashil taksonomiyasini ishlab chiqishda qatnashgan; texnik baholash va energiya samaradorligi bo‘yicha bosh menejer.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/asliddin-bakhtiyorov.jpg' %}" alt="Asliddin Baxtiyorov"></div>
+        <div>
+          <div class="nm">Asliddin Baxtiyorov</div>
+          <div class="rl">Asoschi · CTO</div>
+          <div class="bio">Dastur va model risklarini baholashni boshqarish bo‘yicha 3 yillik tajriba.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/doniyor-mamatkarimov.jpg' %}" alt="Doniyor Mamatkarimov"></div>
+        <div>
+          <div class="nm">Doniyor Mamatkarimov</div>
+          <div class="rl">Asoschi · COO</div>
+          <div class="bio">Qurilish va bank sohalarida 4 yildan ortiq tajriba.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/abduganiev-gayrat.jpg' %}" alt="Gayrat Abduganiev"></div>
+        <div>
+          <div class="nm">Gayrat Abduganiev</div>
+          <div class="rl">Asoschi · CFO</div>
+          <div class="bio">Qurilish, ishlab chiqarish va bank sohasida 10 yillik tajriba.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/diyorbek-ibragimov.jpg' %}" alt="Diyorbek Ibragimov"></div>
+        <div>
+          <div class="nm">Diyorbek Ibragimov</div>
+          <div class="rl">Asoschi · CTO</div>
+          <div class="bio">Davlat Bojxona Qo‘mitasi, Nishonlash va risk monitoringi bo‘limida ML muhandis.</div>
+        </div>
+      </div>
+      <div class="member">
+        <div class="avatar"><img src="{% static 'assets/images/team/faxriddin-baxtiyorov.jpg' %}" alt="Faxriddin Baxtiyorov"></div>
+        <div>
+          <div class="nm">Faxriddin Baxtiyorov</div>
+          <div class="rl">Asoschi · CTO</div>
+          <div class="bio">Respublika “Biosifat” markazining yetakchi mutaxassisi.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HAVOLALAR ============ -->
+  <section id="havolalar">
+    <div class="sec-head">
+      <div class="eyebrow">Materiallar</div>
+      <h2>Mahsulotni sinab ko‘ring</h2>
+    </div>
+    <div class="links">
+      <a class="link" href="https://novdai.uz" target="_blank" rel="noopener">
+        <div>
+          <div class="t">MVP — sinab ko‘ring</div>
+          <div class="s">novdai.uz · ishlaydigan platforma</div>
+        </div>
+        <span class="arw">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FINAL ============ -->
+  <div class="final">
+    <div class="eyebrow" style="justify-content:center">Nega aynan hozir</div>
+    <h2>Yashil moliya endi majburiy bo‘lmoqda</h2>
+    <p>
+      O‘zbekiston milliy yashil taksonomiyasi endi shakllantirilmoqda va banklardan
+      loyihalarni yashil mezonlar bo‘yicha baholash talab etilmoqda. Standart yangi —
+      shu bois avtomatlashtirilgan, izchil baholash vositasiga ehtiyoj aynan hozir tug‘ildi.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://t.me/diyorbek_7377" target="_blank" rel="noopener">Telegram orqali bog‘lanish</a>
+      <a class="btn btn-ghost" href="mailto:diyorbek20037377@gmail.com">Email yozish</a>
+    </div>
+  </div>
+
+  <footer>NovdAI — 2026 · TOSHKENT, O‘ZBEKISTON</footer>
+
+</div>
+</body>
+</html>

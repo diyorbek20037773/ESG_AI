@@ -12,6 +12,11 @@ from src.apps.news.models import News
 from .forms import ContactForm
 
 
+def uzc(request):
+    """Standalone UzCombinator application landing (own HTML shell, no base.html)."""
+    return render(request, 'core/uzc.html')
+
+
 def index(request):
     order = ['hisobot', 'yangilanish', 'tadbir', 'hamkorlik']
     latest_news = []

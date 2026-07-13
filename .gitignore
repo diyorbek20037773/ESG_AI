@@ -48,3 +48,4 @@ docs/superpowers/
 # NOVDAI reference codebases (not shipped; contains secrets in its .env.example)
 NOVDAI/
 co_founders/
+scratch_out/
