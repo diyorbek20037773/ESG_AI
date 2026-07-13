@@ -797,13 +797,13 @@ msgid "enterprise title"
 msgstr "Deploy NovdAI on your own bank infrastructure"
 
 msgid "enterprise lead"
-msgstr "For banks with strict data-privacy requirements, NovdAI is available as a fully on-premise, offline deployment — running on your own high-performance GPU servers, so sensitive credit documents never leave your network."
+msgstr "For banks with strict data-privacy requirements, NovdAI is available as a fully on-premise, offline deployment — running on your own GPU servers, so sensitive credit documents never leave your network."
 
 msgid "ent feat1 t"
 msgstr "On-premise deployment"
 
 msgid "ent feat1 d"
-msgstr "Runs entirely inside the bank's own data center or private cloud."
+msgstr "Runs entirely inside the bank's own data center."
 
 msgid "ent feat2 t"
 msgstr "Offline & air-gapped"
@@ -821,7 +821,7 @@ msgid "ent feat4 t"
 msgstr "Your GPU servers"
 
 msgid "ent feat4 d"
-msgstr "Optimised local models on high-performance GPU infrastructure."
+msgstr "Optimised local models on your GPU infrastructure."
 
 msgid "ent badge"
 msgstr "On-premise ready"

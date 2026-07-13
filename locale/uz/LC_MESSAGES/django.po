@@ -797,13 +797,13 @@ msgid "enterprise title"
 msgstr "NovdAI'ni o'z bank infratuzilmangizga joylashtiring"
 
 msgid "enterprise lead"
-msgstr "Ma'lumot maxfiyligiga qat'iy talab qo'yadigan banklar uchun NovdAI to'liq lokal, offline joylashtirish sifatida mavjud — o'zingizning yuqori unumdor GPU serverlaringizda ishlaydi, shu bois maxfiy kredit hujjatlari hech qachon tarmog'ingizdan chiqmaydi."
+msgstr "Ma'lumot maxfiyligiga qat'iy talab qo'yadigan banklar uchun NovdAI to'liq lokal, offline joylashtirish sifatida mavjud — o'zingizning GPU serverlaringizda ishlaydi, shu bois maxfiy kredit hujjatlari hech qachon tarmog'ingizdan chiqmaydi."
 
 msgid "ent feat1 t"
 msgstr "Lokal joylashtirish"
 
 msgid "ent feat1 d"
-msgstr "To'liq bankning o'z ma'lumot markazi yoki xususiy bulutida ishlaydi."
+msgstr "To'liq bankning o'z ma'lumot markazida ishlaydi."
 
 msgid "ent feat2 t"
 msgstr "Offline, tashqi tarmoqsiz"
@@ -821,7 +821,7 @@ msgid "ent feat4 t"
 msgstr "Sizning GPU serverlaringiz"
 
 msgid "ent feat4 d"
-msgstr "Yuqori unumdor GPU infratuzilmasida optimallashtirilgan lokal modellar."
+msgstr "Sizning GPU infratuzilmangizda optimallashtirilgan lokal modellar."
 
 msgid "ent badge"
 msgstr "Lokal joylashtirishga tayyor"
