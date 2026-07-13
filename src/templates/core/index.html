@@ -459,6 +459,35 @@
         </div>
       </div>
 
+      <!-- Enterprise / on-premise deployment for banks -->
+      <div class="nv-ent" id="enterprise">
+        <div class="nv-ent-inner">
+          <div class="nv-ent-copy">
+            <span class="nv-ent-eyebrow"><i class="ti ti-shield-lock"></i>{% trans "For banks" %}</span>
+            <h3 class="nv-ent-title">{% trans "enterprise title" %}</h3>
+            <p class="nv-ent-lead">{% trans "enterprise lead" %}</p>
+            <ul class="nv-ent-list">
+              <li><i class="ti ti-server-2"></i><div><b>{% trans "ent feat1 t" %}</b><span>{% trans "ent feat1 d" %}</span></div></li>
+              <li><i class="ti ti-wifi-off"></i><div><b>{% trans "ent feat2 t" %}</b><span>{% trans "ent feat2 d" %}</span></div></li>
+              <li><i class="ti ti-lock-check"></i><div><b>{% trans "ent feat3 t" %}</b><span>{% trans "ent feat3 d" %}</span></div></li>
+              <li><i class="ti ti-cpu"></i><div><b>{% trans "ent feat4 t" %}</b><span>{% trans "ent feat4 d" %}</span></div></li>
+            </ul>
+          </div>
+          <div class="nv-ent-card">
+            <div class="nv-ent-badge"><span class="nv-ent-pulse"></span>{% trans "ent badge" %}</div>
+            <div class="nv-ent-diagram">
+              <div class="nv-ent-node bank"><i class="ti ti-building-bank"></i><span>{% trans "ent node bank" %}</span></div>
+              <div class="nv-ent-wire"><i class="ti ti-arrows-exchange"></i></div>
+              <div class="nv-ent-node core"><i class="ti ti-server-cog"></i><span>{% trans "ent node server" %}</span></div>
+            </div>
+            <p class="nv-ent-note"><i class="ti ti-info-circle"></i>{% trans "ent note" %}</p>
+            <a href="{% url 'core:index' %}#contact" class="nv-ent-cta">
+              <i class="ti ti-message-2"></i>{% trans "ent cta" %}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="text-center">
         <a href="{% url 'dashboard:index' %}" class="btn btn-primary btn-lg rounded-pill px-5">
           <i class="ti ti-sparkles me-1"></i>{% trans "Try the ESG Dashboard" %}

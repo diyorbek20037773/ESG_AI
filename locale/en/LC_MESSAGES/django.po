@@ -787,3 +787,53 @@ msgstr "Stop factors"
 
 msgid "ESG scores"
 msgstr "ESG scores"
+
+# NovdAI enterprise
+
+msgid "For banks"
+msgstr "For banks"
+
+msgid "enterprise title"
+msgstr "Deploy NovdAI on your own bank infrastructure"
+
+msgid "enterprise lead"
+msgstr "For banks with strict data-privacy requirements, NovdAI is available as a fully on-premise, offline deployment — running on your own high-performance GPU servers, so sensitive credit documents never leave your network."
+
+msgid "ent feat1 t"
+msgstr "On-premise deployment"
+
+msgid "ent feat1 d"
+msgstr "Runs entirely inside the bank's own data center or private cloud."
+
+msgid "ent feat2 t"
+msgstr "Offline & air-gapped"
+
+msgid "ent feat2 d"
+msgstr "No external API calls — the AI models run locally on your hardware."
+
+msgid "ent feat3 t"
+msgstr "Data stays with you"
+
+msgid "ent feat3 d"
+msgstr "Credit documents and results never leave the bank's perimeter."
+
+msgid "ent feat4 t"
+msgstr "Your GPU servers"
+
+msgid "ent feat4 d"
+msgstr "Optimised local models on high-performance GPU infrastructure."
+
+msgid "ent badge"
+msgstr "On-premise ready"
+
+msgid "ent node bank"
+msgstr "Your bank"
+
+msgid "ent node server"
+msgstr "Local AI server"
+
+msgid "ent note"
+msgstr "The public demo runs in the cloud for accessibility; the private on-premise, offline edition is provided under a bank partnership agreement."
+
+msgid "ent cta"
+msgstr "Request on-premise deployment"

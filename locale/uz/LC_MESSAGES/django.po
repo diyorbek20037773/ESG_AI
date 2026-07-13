@@ -787,3 +787,53 @@ msgstr "Stop-faktorlar"
 
 msgid "ESG scores"
 msgstr "ESG ballari"
+
+# NovdAI enterprise
+
+msgid "For banks"
+msgstr "Banklar uchun"
+
+msgid "enterprise title"
+msgstr "NovdAI'ni o'z bank infratuzilmangizga joylashtiring"
+
+msgid "enterprise lead"
+msgstr "Ma'lumot maxfiyligiga qat'iy talab qo'yadigan banklar uchun NovdAI to'liq lokal, offline joylashtirish sifatida mavjud — o'zingizning yuqori unumdor GPU serverlaringizda ishlaydi, shu bois maxfiy kredit hujjatlari hech qachon tarmog'ingizdan chiqmaydi."
+
+msgid "ent feat1 t"
+msgstr "Lokal joylashtirish"
+
+msgid "ent feat1 d"
+msgstr "To'liq bankning o'z ma'lumot markazi yoki xususiy bulutida ishlaydi."
+
+msgid "ent feat2 t"
+msgstr "Offline, tashqi tarmoqsiz"
+
+msgid "ent feat2 d"
+msgstr "Tashqi API'ga murojaat yo'q — AI modellari sizning qurilmangizda lokal ishlaydi."
+
+msgid "ent feat3 t"
+msgstr "Ma'lumot sizda qoladi"
+
+msgid "ent feat3 d"
+msgstr "Kredit hujjatlari va natijalar bank perimetridan chiqmaydi."
+
+msgid "ent feat4 t"
+msgstr "Sizning GPU serverlaringiz"
+
+msgid "ent feat4 d"
+msgstr "Yuqori unumdor GPU infratuzilmasida optimallashtirilgan lokal modellar."
+
+msgid "ent badge"
+msgstr "Lokal joylashtirishga tayyor"
+
+msgid "ent node bank"
+msgstr "Sizning bank"
+
+msgid "ent node server"
+msgstr "Lokal AI server"
+
+msgid "ent note"
+msgstr "Ommaviy demo qulaylik uchun bulutda ishlaydi; xususiy lokal, offline versiya bank bilan hamkorlik shartnomasi asosida taqdim etiladi."
+
+msgid "ent cta"
+msgstr "Lokal joylashtirishni so'rash"
