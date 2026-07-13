@@ -12,9 +12,10 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Analysis)
 class AnalysisAdmin(admin.ModelAdmin):
-    list_display = ('number', 'client', 'company_name', 'verdict', 'overall_score',
-                    'environmental_score', 'social_score', 'governance_score',
-                    'language', 'created_at')
-    list_filter = ('verdict', 'language', 'created_at')
-    search_fields = ('number', 'company_name', 'client__name', 'summary')
+    list_display = ('number', 'kind', 'created_by', 'client', 'company_name', 'verdict',
+                    'overall_score', 'environmental_score', 'social_score',
+                    'governance_score', 'language', 'created_at')
+    list_filter = ('kind', 'verdict', 'language', 'created_at')
+    search_fields = ('number', 'company_name', 'client__name', 'summary',
+                     'created_by__username', 'created_by__email')
     readonly_fields = ('created_at', 'result_json')

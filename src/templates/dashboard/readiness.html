@@ -1,0 +1,66 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "ESG readiness" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-testmode"><i class="ti ti-flask"></i>{% trans "This feature runs in test mode." %}</div>
+
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "For entrepreneurs" %}</span>
+    <h1 class="nv-page-title">{% trans "ESG readiness check" %}</h1>
+    <p class="nv-page-sub">{% trans "Upload your project and see how ready it is for green finance — on a red / yellow / green scale." %}</p>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <div class="nv-card" data-rise>
+    <form method="post" enctype="multipart/form-data" id="nv-analyze-form" novalidate>
+      {% csrf_token %}
+      <div class="nv-field">
+        <label class="nv-label">{% trans "Project documents (PDF, PNG, JPG, WEBP)" %}</label>
+        <div class="nv-drop" id="nv-drop">
+          <i class="ti ti-cloud-upload"></i>
+          <div style="margin-top:8px;font-weight:600;color:var(--nv-ink);">{% trans "Drop files here or click to browse" %}</div>
+          <div style="font-size:12.5px;margin-top:2px;">{% trans "Up to 10 files, 20 MB each" %}</div>
+        </div>
+        <input type="file" id="nv-docs" name="documents" multiple accept=".pdf,.png,.jpg,.jpeg,.webp" hidden>
+        <ul class="nv-file-list" id="nv-file-list"></ul>
+      </div>
+
+      <div class="nv-field" style="text-align:center;color:var(--nv-muted);font-size:13px;">{% trans "or" %}</div>
+
+      <div class="nv-field">
+        <label class="nv-label">{% trans "Describe your project" %}</label>
+        {{ form.text }}
+      </div>
+
+      <button type="submit" class="nv-btn nv-btn-primary block" data-submit data-loading="{% trans 'Checking...' %}">
+        <i class="ti ti-gauge"></i>{% trans "Check readiness" %}
+      </button>
+      {% if not user.is_authenticated %}
+      <p class="nv-auth-alt" style="margin-top:12px;">{% trans "You'll be asked to log in before your check runs." %}</p>
+      {% endif %}
+    </form>
+  </div>
+
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-info-circle"></i>{% trans "What we check" %}</div>
+    <div class="nv-crit"><div class="nv-crit-ic yes"><i class="ti ti-leaf"></i></div>
+      <div><div class="nv-crit-q">{% trans "Green criteria" %}</div>
+      <div class="nv-crit-e">{% trans "Does your project match renewable / low-emission activities?" %}</div></div></div>
+    <div class="nv-crit"><div class="nv-crit-ic stop"><i class="ti ti-ban"></i></div>
+      <div><div class="nv-crit-q">{% trans "Exclusion factors" %}</div>
+      <div class="nv-crit-e">{% trans "Any activity that would disqualify green financing." %}</div></div></div>
+    <div class="nv-crit" style="border-bottom:0;"><div class="nv-crit-ic" style="color:var(--nv-emerald);background:var(--nv-accent-soft);"><i class="ti ti-gauge"></i></div>
+      <div><div class="nv-crit-q">{% trans "Readiness score" %}</div>
+      <div class="nv-crit-e">{% trans "A single 0–100 readiness level with a clear next step." %}</div></div></div>
+
+    {% if latest %}
+    <a href="{% url 'dashboard:readiness_detail' latest.pk %}" class="nv-btn nv-btn-ghost block" style="margin-top:16px;">
+      <i class="ti ti-history"></i>{% trans "View your last check" %}
+    </a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

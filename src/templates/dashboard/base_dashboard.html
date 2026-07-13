@@ -25,11 +25,23 @@
     </a>
 
     <nav class="nv-nav">
-      <a href="{% url 'dashboard:index' %}" class="nv-nav-item {% if url_name == 'index' %}active{% endif %}"><i class="ti ti-layout-dashboard"></i>{% trans "Overview" %}</a>
-      <a href="{% url 'dashboard:new' %}" class="nv-nav-item {% if url_name == 'new' %}active{% endif %}"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
-      <a href="{% url 'dashboard:analyses' %}" class="nv-nav-item {% if url_name == 'analyses' or url_name == 'analysis_detail' %}active{% endif %}"><i class="ti ti-file-analytics"></i>{% trans "Analyses" %}</a>
-      <a href="{% url 'dashboard:clients' %}" class="nv-nav-item {% if url_name == 'clients' or url_name == 'client_detail' %}active{% endif %}"><i class="ti ti-users-group"></i>{% trans "Clients" %}</a>
-      <a href="{% url 'dashboard:analytics' %}" class="nv-nav-item {% if url_name == 'analytics' %}active{% endif %}"><i class="ti ti-chart-histogram"></i>{% trans "Analytics" %}</a>
+      {% if user.is_authenticated and user.profile.is_entrepreneur and not user.is_superuser %}
+        {# Entrepreneur nav #}
+        <a href="{% url 'dashboard:readiness' %}" class="nv-nav-item {% if url_name == 'readiness' or url_name == 'readiness_detail' %}active{% endif %}"><i class="ti ti-gauge"></i>{% trans "ESG readiness" %}</a>
+        <a href="{% url 'dashboard:my_checks' %}" class="nv-nav-item {% if url_name == 'my_checks' %}active{% endif %}"><i class="ti ti-history"></i>{% trans "My checks" %}</a>
+      {% else %}
+        {# Bank / superuser nav #}
+        <a href="{% url 'dashboard:index' %}" class="nv-nav-item {% if url_name == 'index' %}active{% endif %}"><i class="ti ti-layout-dashboard"></i>{% trans "Overview" %}</a>
+        <a href="{% url 'dashboard:new' %}" class="nv-nav-item {% if url_name == 'new' %}active{% endif %}"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+        <a href="{% url 'dashboard:analyses' %}" class="nv-nav-item {% if url_name == 'analyses' or url_name == 'analysis_detail' %}active{% endif %}"><i class="ti ti-file-analytics"></i>{% trans "Analyses" %}</a>
+        <a href="{% url 'dashboard:clients' %}" class="nv-nav-item {% if url_name == 'clients' or url_name == 'client_detail' %}active{% endif %}"><i class="ti ti-users-group"></i>{% trans "Clients" %}</a>
+        <a href="{% url 'dashboard:analytics' %}" class="nv-nav-item {% if url_name == 'analytics' %}active{% endif %}"><i class="ti ti-chart-histogram"></i>{% trans "Analytics" %}</a>
+      {% endif %}
+      {% if user.is_superuser %}
+        <span class="nv-nav-label">{% trans "Admin" %}</span>
+        <a href="{% url 'dashboard:admin_insights' %}" class="nv-nav-item {% if url_name == 'admin_insights' %}active{% endif %}"><i class="ti ti-shield-lock"></i>{% trans "Admin insights" %}</a>
+        <a href="/admin/" class="nv-nav-item"><i class="ti ti-settings"></i>{% trans "Django admin" %}</a>
+      {% endif %}
       <span class="nv-nav-label">{% trans "General" %}</span>
       <a href="{% url 'core:index' %}" class="nv-nav-item"><i class="ti ti-world"></i>{% trans "Public site" %}</a>
     </nav>
@@ -46,7 +58,11 @@
       </label>
       <div class="nv-topbar-spacer"></div>
 
+      {% if user.is_authenticated and user.profile.is_entrepreneur and not user.is_superuser %}
+      <a href="{% url 'dashboard:readiness' %}" class="nv-btn nv-btn-primary" style="padding:10px 18px;"><i class="ti ti-gauge"></i><span class="d-none-mobile">{% trans "New check" %}</span></a>
+      {% else %}
       <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary" style="padding:10px 18px;"><i class="ti ti-plus"></i><span class="d-none-mobile">{% trans "New analysis" %}</span></a>
+      {% endif %}
 
       <button class="nv-icon-btn" id="nv-theme-btn" type="button" aria-label="{% trans 'Toggle theme' %}">
         <i class="ti ti-sun theme-icon--sun"></i><i class="ti ti-moon theme-icon--moon"></i>
@@ -68,6 +84,27 @@
           </form>
         </div>
       </div>
+
+      {% if user.is_authenticated %}
+      <div class="nv-lang" id="nv-user">
+        <button class="nv-user-btn" id="nv-user-btn" type="button" aria-label="{% trans 'Account' %}">
+          <span class="nv-user-av">{{ user.first_name|first|default:user.username|first|upper }}</span>
+          <span class="nv-user-meta d-none-mobile">
+            <b>{{ user.get_full_name|default:user.username }}</b>
+            <small>{% if user.is_superuser %}{% trans "Admin" %}{% elif user.profile.is_entrepreneur %}{% trans "Entrepreneur" %}{% else %}{% trans "Bank employee" %}{% endif %}</small>
+          </span>
+          <i class="ti ti-chevron-down d-none-mobile"></i>
+        </button>
+        <div class="nv-lang-menu">
+          <form action="{% url 'users:logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="nv-lang-item"><span>{% trans "Log out" %}</span><i class="ti ti-logout"></i></button>
+          </form>
+        </div>
+      </div>
+      {% else %}
+      <a href="{% url 'users:login' %}" class="nv-btn nv-btn-ghost" style="padding:10px 16px;"><i class="ti ti-login-2"></i><span class="d-none-mobile">{% trans "Log in" %}</span></a>
+      {% endif %}
     </header>
 
     <main class="nv-content">

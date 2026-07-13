@@ -1,0 +1,41 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "My checks" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow">{% trans "For entrepreneurs" %}</span>
+    <h1 class="nv-page-title">{% trans "My checks" %}</h1>
+    <p class="nv-page-sub">{% trans "Your past ESG-readiness checks." %}</p>
+  </div>
+  <a href="{% url 'dashboard:readiness' %}" class="nv-btn nv-btn-primary"><i class="ti ti-gauge"></i>{% trans "New check" %}</a>
+</div>
+
+<div class="nv-card" data-rise>
+  {% if checks %}
+  <div class="nv-table-wrap">
+    <table class="nv-table">
+      <thead><tr><th>№</th><th>{% trans "Project" %}</th><th>{% trans "Readiness" %}</th><th>{% trans "Level" %}</th><th>{% trans "Date" %}</th></tr></thead>
+      <tbody>
+        {% for c in checks %}
+        <tr onclick="location='{% url 'dashboard:readiness_detail' c.pk %}'">
+          <td class="num">{{ c.number }}</td>
+          <td>{{ c.company_name|default:"—" }}</td>
+          <td class="num">{{ c.readiness_percent }}%</td>
+          <td><span class="nv-pill {{ c.readiness_band }}">
+            {% if c.readiness_band == 'good' %}{% trans "Ready" %}{% elif c.readiness_band == 'warn' %}{% trans "Partial" %}{% else %}{% trans "Not ready" %}{% endif %}
+          </span></td>
+          <td class="num">{{ c.created_at|date:"d.m.Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="nv-empty"><i class="ti ti-inbox"></i><p>{% trans "No checks yet." %}</p>
+    <a href="{% url 'dashboard:readiness' %}" class="nv-btn nv-btn-primary"><i class="ti ti-gauge"></i>{% trans "Run your first check" %}</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

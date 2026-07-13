@@ -61,11 +61,12 @@
     var r = arc.r.baseVal.value, c = 2 * Math.PI * r;
     arc.style.strokeDasharray = c;
     arc.style.strokeDashoffset = c;
-    var stroke = val >= 70 ? 'var(--nv-good)' : val >= 45 ? 'var(--nv-warn)' : 'var(--nv-bad)';
-    arc.style.stroke = 'var(--nv-emerald)';
+    // E/S/G gauges stay emerald; readiness gauges use the r/y/g threshold color.
+    var threshold = val >= 70 ? 'var(--nv-good)' : val >= 45 ? 'var(--nv-warn)' : 'var(--nv-bad)';
+    arc.style.stroke = el.hasAttribute('data-gauge-band') ? threshold : 'var(--nv-emerald)';
     // reveal after a tick so the transition runs
     requestAnimationFrame(function () {
-      arc.style.strokeDashoffset = reduce ? (c * (1 - val / 100)) : (c * (1 - val / 100));
+      arc.style.strokeDashoffset = c * (1 - val / 100);
     });
     var lbl = el.querySelector('.nv-gauge-val');
     if (lbl) countUp(lbl);
@@ -78,13 +79,49 @@
     if (fill) { fill.style.background = color; requestAnimationFrame(function () { fill.style.width = val + '%'; }); }
   }
 
+  function setSpeedo(el) {
+    var val = Math.max(0, Math.min(100, parseFloat(el.getAttribute('data-speedo')) || 0));
+    var fill = el.querySelector('.nv-speedo-fill');
+    var needle = el.querySelector('.nv-speedo-needle');
+    // arc path length ≈ 270 (half-circle r=86). Fill proportionally.
+    if (fill) {
+      var len = 270;
+      try { len = fill.getTotalLength(); } catch (e) {}
+      fill.style.strokeDasharray = len;
+      fill.style.strokeDashoffset = len;
+      requestAnimationFrame(function () { fill.style.strokeDashoffset = len * (1 - val / 100); });
+    }
+    if (needle) {
+      // −90° (empty, points left) → +90° (full, points right)
+      var deg = -90 + (val / 100) * 180;
+      requestAnimationFrame(function () { needle.style.transform = 'rotate(' + deg + 'deg)'; });
+    }
+  }
+
+  function setMiniBars() {
+    document.querySelectorAll('.nv-minibar-fill[data-bar]').forEach(function (el) {
+      var val = parseFloat(el.getAttribute('data-bar')) || 0;
+      requestAnimationFrame(function () { el.style.height = val + '%'; });
+    });
+  }
+
   function animate() {
     document.querySelectorAll('[data-gauge]').forEach(setGauge);
-    document.querySelectorAll('[data-bar]').forEach(setBar);
+    document.querySelectorAll('.nv-bar[data-bar]').forEach(setBar);
+    document.querySelectorAll('[data-speedo]').forEach(setSpeedo);
+    setMiniBars();
   }
 
   document.querySelectorAll('[data-count]').forEach(countUp);
   animate();
+
+  /* ── User menu dropdown ───────────────────────────────── */
+  var userWrap = document.getElementById('nv-user');
+  var userBtn = document.getElementById('nv-user-btn');
+  if (userBtn) userBtn.addEventListener('click', function (e) {
+    e.stopPropagation(); userWrap.classList.toggle('open');
+  });
+  document.addEventListener('click', function () { if (userWrap) userWrap.classList.remove('open'); });
 
   /* ── Staggered rise ───────────────────────────────────── */
   if (!reduce) document.querySelectorAll('[data-rise]').forEach(function (el, i) {

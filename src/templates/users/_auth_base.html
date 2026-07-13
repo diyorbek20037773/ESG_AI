@@ -1,0 +1,48 @@
+{% load static i18n %}
+{% get_current_language as CURRENT_LANG %}
+<!DOCTYPE html>
+<html lang="{{ CURRENT_LANG }}" class="nv-html">
+<head>
+  <meta charset="UTF-8">
+  <script>!function(){try{var t=localStorage.getItem('novdai-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-bs-theme',t)}catch(e){}}();</script>
+  <title>{% block title %}NovdAI{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/images/favicon_io/favicon-32x32.png' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.35.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="{% static 'assets/css/novdai-dashboard.css' %}">
+</head>
+<body class="nv-body nv-auth-body">
+  <div class="nv-auth">
+    <!-- Left brand panel -->
+    <aside class="nv-auth-aside" aria-hidden="true">
+      <div class="nv-auth-aside-glow"></div>
+      <a href="{% url 'core:index' %}" class="nv-auth-brand">
+        {% include 'brand/_novda_mark.html' with size=40 uid="auth" %}
+        <span>Novd<b>AI</b></span>
+      </a>
+      <div class="nv-auth-aside-copy">
+        <h2>{% trans "auth aside title" %}</h2>
+        <p>{% trans "auth aside sub" %}</p>
+        <ul class="nv-auth-points">
+          <li><i class="ti ti-circle-check"></i>{% trans "auth point1" %}</li>
+          <li><i class="ti ti-circle-check"></i>{% trans "auth point2" %}</li>
+          <li><i class="ti ti-circle-check"></i>{% trans "auth point3" %}</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Right form panel -->
+    <main class="nv-auth-main">
+      <div class="nv-auth-card">
+        {% if messages %}
+        <div class="nv-auth-msgs">
+          {% for m in messages %}<div class="nv-pill {% if m.tags == 'success' %}good{% elif m.tags == 'error' %}bad{% else %}neutral{% endif %}">{{ m }}</div>{% endfor %}
+        </div>
+        {% endif %}
+        {% block auth_content %}{% endblock %}
+      </div>
+      <a href="{% url 'core:index' %}" class="nv-auth-back"><i class="ti ti-arrow-left"></i>{% trans "Back to site" %}</a>
+    </main>
+  </div>
+</body>
+</html>

@@ -837,3 +837,278 @@ msgstr "The public demo runs in the cloud for accessibility; the private on-prem
 
 msgid "ent cta"
 msgstr "Request on-premise deployment"
+
+# NovdAI auth/roles/readiness/admin
+
+msgid "auth aside title"
+msgstr "AI-driven ESG for green finance"
+
+msgid "auth aside sub"
+msgstr "Assess projects against Uzbekistan's national green taxonomy — fast, consistent, evidence-based."
+
+msgid "auth point1"
+msgstr "9 green criteria · 12 stop-factors"
+
+msgid "auth point2"
+msgstr "E / S / G scores and a clear verdict"
+
+msgid "auth point3"
+msgstr "Downloadable report"
+
+msgid "Back to site"
+msgstr "Back to site"
+
+msgid "Log in"
+msgstr "Log in"
+
+msgid "Log out"
+msgstr "Log out"
+
+msgid "Welcome back — sign in to continue."
+msgstr "Welcome back — sign in to continue."
+
+msgid "Incorrect email or password. Please try again."
+msgstr "Incorrect email or password. Please try again."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "No account yet?"
+msgstr "No account yet?"
+
+msgid "Create one"
+msgstr "Create one"
+
+msgid "Create account"
+msgstr "Create account"
+
+msgid "Choose your account type and get started."
+msgstr "Choose your account type and get started."
+
+msgid "Bank employee"
+msgstr "Bank employee"
+
+msgid "Risk department — full green-finance analysis"
+msgstr "Risk department — full green-finance analysis"
+
+msgid "Entrepreneur"
+msgstr "Entrepreneur"
+
+msgid "Check your project's green-finance readiness"
+msgstr "Check your project's green-finance readiness"
+
+msgid "Test mode"
+msgstr "Test mode"
+
+msgid "Full name"
+msgstr "Full name"
+
+msgid "Your name"
+msgstr "Your name"
+
+msgid "Confirm password"
+msgstr "Confirm password"
+
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+msgid "Account type"
+msgstr "Account type"
+
+msgid "An account with this email already exists."
+msgstr "An account with this email already exists."
+
+msgid "Passwords do not match."
+msgstr "Passwords do not match."
+
+msgid "Welcome to NovdAI!"
+msgstr "Welcome to NovdAI!"
+
+msgid "New check"
+msgstr "New check"
+
+msgid "Account"
+msgstr "Account"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Admin insights"
+msgstr "Admin insights"
+
+msgid "Django admin"
+msgstr "Django admin"
+
+msgid "ESG readiness"
+msgstr "ESG readiness"
+
+msgid "My checks"
+msgstr "My checks"
+
+msgid "For entrepreneurs"
+msgstr "For entrepreneurs"
+
+msgid "This feature runs in test mode."
+msgstr "This feature runs in test mode."
+
+msgid "ESG readiness check"
+msgstr "ESG readiness check"
+
+msgid "Upload your project and see how ready it is for green finance — on a red / yellow / green scale."
+msgstr "Upload your project and see how ready it is for green finance — on a red / yellow / green scale."
+
+msgid "Describe your project"
+msgstr "Describe your project"
+
+msgid "Checking..."
+msgstr "Checking..."
+
+msgid "Check readiness"
+msgstr "Check readiness"
+
+msgid "You'll be asked to log in before your check runs."
+msgstr "You'll be asked to log in before your check runs."
+
+msgid "What we check"
+msgstr "What we check"
+
+msgid "Does your project match renewable / low-emission activities?"
+msgstr "Does your project match renewable / low-emission activities?"
+
+msgid "Exclusion factors"
+msgstr "Exclusion factors"
+
+msgid "Any activity that would disqualify green financing."
+msgstr "Any activity that would disqualify green financing."
+
+msgid "Readiness score"
+msgstr "Readiness score"
+
+msgid "A single 0–100 readiness level with a clear next step."
+msgstr "A single 0–100 readiness level with a clear next step."
+
+msgid "View your last check"
+msgstr "View your last check"
+
+msgid "Readiness result"
+msgstr "Readiness result"
+
+msgid "Your project"
+msgstr "Your project"
+
+msgid "Green-finance readiness"
+msgstr "Green-finance readiness"
+
+msgid "Readiness level"
+msgstr "Readiness level"
+
+msgid "Ready for green finance"
+msgstr "Ready for green finance"
+
+msgid "Partially ready"
+msgstr "Partially ready"
+
+msgid "Not ready yet"
+msgstr "Not ready yet"
+
+msgid "Your project matches green-finance criteria. You can approach a bank."
+msgstr "Your project matches green-finance criteria. You can approach a bank."
+
+msgid "Some criteria are met. Address the gaps below to improve your readiness."
+msgstr "Some criteria are met. Address the gaps below to improve your readiness."
+
+msgid "Key requirements are missing or an exclusion applies. See the items below."
+msgstr "Key requirements are missing or an exclusion applies. See the items below."
+
+msgid "No exclusion factors triggered."
+msgstr "No exclusion factors triggered."
+
+msgid "Readiness check complete."
+msgstr "Readiness check complete."
+
+msgid "Your past ESG-readiness checks."
+msgstr "Your past ESG-readiness checks."
+
+msgid "Project"
+msgstr "Project"
+
+msgid "Readiness"
+msgstr "Readiness"
+
+msgid "Level"
+msgstr "Level"
+
+msgid "Ready"
+msgstr "Ready"
+
+msgid "Partial"
+msgstr "Partial"
+
+msgid "Not ready"
+msgstr "Not ready"
+
+msgid "No checks yet."
+msgstr "No checks yet."
+
+msgid "Run your first check"
+msgstr "Run your first check"
+
+msgid "Users, activity and uploads across the platform."
+msgstr "Users, activity and uploads across the platform."
+
+msgid "Total users"
+msgstr "Total users"
+
+msgid "Bank employees"
+msgstr "Bank employees"
+
+msgid "Entrepreneurs"
+msgstr "Entrepreneurs"
+
+msgid "Total logins"
+msgstr "Total logins"
+
+msgid "Registrations (recent days)"
+msgstr "Registrations (recent days)"
+
+msgid "No data yet."
+msgstr "No data yet."
+
+msgid "Analyses by type"
+msgstr "Analyses by type"
+
+msgid "Bank verdicts"
+msgstr "Bank verdicts"
+
+msgid "Readiness checks"
+msgstr "Readiness checks"
+
+msgid "Most active users"
+msgstr "Most active users"
+
+msgid "No activity yet."
+msgstr "No activity yet."
+
+msgid "Bank"
+msgstr "Bank"
+
+msgid "Recent uploads"
+msgstr "Recent uploads"
+
+msgid "User"
+msgstr "User"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Files"
+msgstr "Files"
+
+msgid "No uploads yet."
+msgstr "No uploads yet."
+
+msgid "Total"
+msgstr "Total"

@@ -837,3 +837,278 @@ msgstr "Ommaviy demo qulaylik uchun bulutda ishlaydi; xususiy lokal, offline ver
 
 msgid "ent cta"
 msgstr "Lokal joylashtirishni so'rash"
+
+# NovdAI auth/roles/readiness/admin
+
+msgid "auth aside title"
+msgstr "Yashil moliya uchun AI asosidagi ESG"
+
+msgid "auth aside sub"
+msgstr "Loyihalarni O'zbekiston milliy yashil taksonomiyasi bo'yicha baholang — tez, izchil, dalilga asoslangan."
+
+msgid "auth point1"
+msgstr "9 yashil mezon · 12 stop-faktor"
+
+msgid "auth point2"
+msgstr "E / S / G ballari va aniq xulosa"
+
+msgid "auth point3"
+msgstr "Yuklab olinadigan hisobot"
+
+msgid "Back to site"
+msgstr "Saytga qaytish"
+
+msgid "Log in"
+msgstr "Kirish"
+
+msgid "Log out"
+msgstr "Chiqish"
+
+msgid "Welcome back — sign in to continue."
+msgstr "Xush kelibsiz — davom etish uchun kiring."
+
+msgid "Incorrect email or password. Please try again."
+msgstr "Email yoki parol noto'g'ri. Qaytadan urinib ko'ring."
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "No account yet?"
+msgstr "Akkaunt yo'qmi?"
+
+msgid "Create one"
+msgstr "Yaratish"
+
+msgid "Create account"
+msgstr "Akkaunt yaratish"
+
+msgid "Choose your account type and get started."
+msgstr "Akkaunt turini tanlab, boshlang."
+
+msgid "Bank employee"
+msgstr "Bank xodimi"
+
+msgid "Risk department — full green-finance analysis"
+msgstr "Risk bo'limi — to'liq yashil moliya tahlili"
+
+msgid "Entrepreneur"
+msgstr "Tadbirkor"
+
+msgid "Check your project's green-finance readiness"
+msgstr "Loyihangizning yashil moliyaga tayyorligini tekshiring"
+
+msgid "Test mode"
+msgstr "Test rejimi"
+
+msgid "Full name"
+msgstr "To'liq ism"
+
+msgid "Your name"
+msgstr "Ismingiz"
+
+msgid "Confirm password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Already have an account?"
+msgstr "Akkauntingiz bormi?"
+
+msgid "Account type"
+msgstr "Akkaunt turi"
+
+msgid "An account with this email already exists."
+msgstr "Bu email bilan akkaunt allaqachon mavjud."
+
+msgid "Passwords do not match."
+msgstr "Parollar mos kelmadi."
+
+msgid "Welcome to NovdAI!"
+msgstr "NovdAI'ga xush kelibsiz!"
+
+msgid "New check"
+msgstr "Yangi tekshiruv"
+
+msgid "Account"
+msgstr "Akkaunt"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Admin insights"
+msgstr "Admin tahlili"
+
+msgid "Django admin"
+msgstr "Django admin"
+
+msgid "ESG readiness"
+msgstr "ESG tayyorlik"
+
+msgid "My checks"
+msgstr "Mening tekshiruvlarim"
+
+msgid "For entrepreneurs"
+msgstr "Tadbirkorlar uchun"
+
+msgid "This feature runs in test mode."
+msgstr "Bu funksiya test rejimida ishlayapti."
+
+msgid "ESG readiness check"
+msgstr "ESG tayyorlik tekshiruvi"
+
+msgid "Upload your project and see how ready it is for green finance — on a red / yellow / green scale."
+msgstr "Loyihangizni yuklang va uning yashil moliyaga tayyorligini ko'ring — qizil / sariq / yashil shkalada."
+
+msgid "Describe your project"
+msgstr "Loyihangizni tavsiflang"
+
+msgid "Checking..."
+msgstr "Tekshirilmoqda..."
+
+msgid "Check readiness"
+msgstr "Tayyorlikni tekshirish"
+
+msgid "You'll be asked to log in before your check runs."
+msgstr "Tekshiruvdan oldin tizimga kirish so'raladi."
+
+msgid "What we check"
+msgstr "Nimani tekshiramiz"
+
+msgid "Does your project match renewable / low-emission activities?"
+msgstr "Loyihangiz qayta tiklanuvchi / kam emissiya faoliyatiga mos keladimi?"
+
+msgid "Exclusion factors"
+msgstr "Stop-faktorlar"
+
+msgid "Any activity that would disqualify green financing."
+msgstr "Yashil moliyani istisno qiladigan har qanday faoliyat."
+
+msgid "Readiness score"
+msgstr "Tayyorlik bali"
+
+msgid "A single 0–100 readiness level with a clear next step."
+msgstr "0–100 oralig'idagi yagona tayyorlik darajasi va aniq keyingi qadam."
+
+msgid "View your last check"
+msgstr "Oxirgi tekshiruvni ko'rish"
+
+msgid "Readiness result"
+msgstr "Tayyorlik natijasi"
+
+msgid "Your project"
+msgstr "Sizning loyihangiz"
+
+msgid "Green-finance readiness"
+msgstr "Yashil moliyaga tayyorlik"
+
+msgid "Readiness level"
+msgstr "Tayyorlik darajasi"
+
+msgid "Ready for green finance"
+msgstr "Yashil moliyaga tayyor"
+
+msgid "Partially ready"
+msgstr "Qisman tayyor"
+
+msgid "Not ready yet"
+msgstr "Hali tayyor emas"
+
+msgid "Your project matches green-finance criteria. You can approach a bank."
+msgstr "Loyihangiz yashil moliya mezonlariga mos. Bankka murojaat qilishingiz mumkin."
+
+msgid "Some criteria are met. Address the gaps below to improve your readiness."
+msgstr "Ba'zi mezonlar bajarilgan. Tayyorlikni oshirish uchun quyidagi kamchiliklarni bartaraf eting."
+
+msgid "Key requirements are missing or an exclusion applies. See the items below."
+msgstr "Asosiy talablar yo'q yoki istisno qo'llaniladi. Quyidagilarni ko'ring."
+
+msgid "No exclusion factors triggered."
+msgstr "Stop-faktorlar aniqlanmadi."
+
+msgid "Readiness check complete."
+msgstr "Tayyorlik tekshiruvi tugallandi."
+
+msgid "Your past ESG-readiness checks."
+msgstr "O'tgan ESG tayyorlik tekshiruvlaringiz."
+
+msgid "Project"
+msgstr "Loyiha"
+
+msgid "Readiness"
+msgstr "Tayyorlik"
+
+msgid "Level"
+msgstr "Daraja"
+
+msgid "Ready"
+msgstr "Tayyor"
+
+msgid "Partial"
+msgstr "Qisman"
+
+msgid "Not ready"
+msgstr "Tayyor emas"
+
+msgid "No checks yet."
+msgstr "Hali tekshiruvlar yo'q."
+
+msgid "Run your first check"
+msgstr "Birinchi tekshiruvingizni bajaring"
+
+msgid "Users, activity and uploads across the platform."
+msgstr "Platforma bo'yicha foydalanuvchilar, faollik va yuklamalar."
+
+msgid "Total users"
+msgstr "Jami foydalanuvchilar"
+
+msgid "Bank employees"
+msgstr "Bank xodimlari"
+
+msgid "Entrepreneurs"
+msgstr "Tadbirkorlar"
+
+msgid "Total logins"
+msgstr "Jami kirishlar"
+
+msgid "Registrations (recent days)"
+msgstr "Ro'yxatdan o'tishlar (so'nggi kunlar)"
+
+msgid "No data yet."
+msgstr "Hali ma'lumot yo'q."
+
+msgid "Analyses by type"
+msgstr "Tahlillar turi bo'yicha"
+
+msgid "Bank verdicts"
+msgstr "Bank xulosalari"
+
+msgid "Readiness checks"
+msgstr "Tayyorlik tekshiruvlari"
+
+msgid "Most active users"
+msgstr "Eng faol foydalanuvchilar"
+
+msgid "No activity yet."
+msgstr "Hali faollik yo'q."
+
+msgid "Bank"
+msgstr "Bank"
+
+msgid "Recent uploads"
+msgstr "So'nggi yuklamalar"
+
+msgid "User"
+msgstr "Foydalanuvchi"
+
+msgid "Type"
+msgstr "Turi"
+
+msgid "Files"
+msgstr "Fayllar"
+
+msgid "No uploads yet."
+msgstr "Hali yuklamalar yo'q."
+
+msgid "Total"
+msgstr "Jami"

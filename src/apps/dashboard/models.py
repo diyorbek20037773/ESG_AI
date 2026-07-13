@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -12,6 +13,10 @@ class Client(models.Model):
     industry = models.CharField(_('Industry'), max_length=128, blank=True)
     region = models.CharField(_('Region'), max_length=128, blank=True)
     notes = models.TextField(_('Notes'), blank=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='clients', verbose_name=_('Created by'),
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -43,6 +48,19 @@ class Analysis(models.Model):
         (constants.VERDICT_NOT_GREEN, _('Not green')),
         (constants.VERDICT_UNKNOWN, _('Unknown')),
     ]
+
+    KIND_BANK = 'bank'
+    KIND_READINESS = 'readiness'
+    KIND_CHOICES = [
+        (KIND_BANK, _('Bank verdict')),
+        (KIND_READINESS, _('Entrepreneur readiness')),
+    ]
+
+    kind = models.CharField(max_length=12, choices=KIND_CHOICES, default=KIND_BANK, db_index=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='analyses', verbose_name=_('Created by'),
+    )
 
     client = models.ForeignKey(
         Client, on_delete=models.SET_NULL, null=True, blank=True,
@@ -121,3 +139,21 @@ class Analysis(models.Model):
     @property
     def matched_green(self):
         return [g for g in self.green_criteria if g.get('value')]
+
+    # ── Entrepreneur readiness (speedometer) ──────────────────────────────
+    @property
+    def readiness_percent(self):
+        """0-100 readiness score. A hard stop-factor caps it low; otherwise it
+        blends the ESG overall score with the share of matched green criteria."""
+        if self.triggered_stops:
+            return min(self.overall_score, 25)
+        crit = self.green_criteria
+        ratio = (len(self.matched_green) / len(crit) * 100) if crit else 0
+        pct = round(0.55 * self.overall_score + 0.45 * ratio)
+        return max(0, min(100, pct))
+
+    @property
+    def readiness_band(self):
+        """'good' (≥70) / 'warn' (40-69) / 'bad' (<40) — red/yellow/green."""
+        p = self.readiness_percent
+        return 'good' if p >= 70 else 'warn' if p >= 40 else 'bad'

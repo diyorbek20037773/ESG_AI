@@ -1,0 +1,111 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Admin insights" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-page-head">
+  <div>
+    <span class="nv-eyebrow"><i class="ti ti-shield-lock"></i> {% trans "Admin" %}</span>
+    <h1 class="nv-page-title">{% trans "Admin insights" %}</h1>
+    <p class="nv-page-sub">{% trans "Users, activity and uploads across the platform." %}</p>
+  </div>
+</div>
+
+<!-- Stat tiles -->
+<div class="nv-grid nv-stats nv-mb">
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-users"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ total_users }}">0</div>
+    <div class="nv-stat-label">{% trans "Total users" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic" style="color:var(--nv-good);background:var(--nv-good-soft);box-shadow:none;"><i class="ti ti-building-bank"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ bank_users }}">0</div>
+    <div class="nv-stat-label">{% trans "Bank employees" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic" style="color:var(--nv-warn);background:var(--nv-warn-soft);box-shadow:none;"><i class="ti ti-briefcase"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ ent_users }}">0</div>
+    <div class="nv-stat-label">{% trans "Entrepreneurs" %}</div>
+  </div>
+  <div class="nv-card nv-stat lift" data-rise>
+    <div class="nv-stat-ic"><i class="ti ti-login-2"></i></div>
+    <div class="nv-stat-val nv-mono" data-count="{{ logins_total }}">0</div>
+    <div class="nv-stat-label">{% trans "Total logins" %}</div>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2 nv-mb">
+  <!-- registrations chart -->
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-chart-bar"></i>{% trans "Registrations (recent days)" %}</div>
+    {% if reg %}
+    <div class="nv-minibars">
+      {% for r in reg %}
+      <div class="nv-minibar" title="{{ r.d }}: {{ r.n }}">
+        <span class="nv-minibar-fill" data-bar="{% widthratio r.n reg_max 100 %}"></span>
+        <small>{{ r.d|date:"d.m" }}</small>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="nv-empty" style="padding:30px;"><i class="ti ti-chart-bar"></i><p>{% trans "No data yet." %}</p></div>
+    {% endif %}
+  </div>
+
+  <!-- analyses split -->
+  <div class="nv-card lift" data-rise>
+    <div class="nv-card-title"><i class="ti ti-file-analytics"></i>{% trans "Analyses by type" %}</div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Bank verdicts" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio bank_an total_analyses 100 %}" data-bar-color="var(--nv-good)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ bank_an }}</span></div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Readiness checks" %}</span>
+      <div class="nv-bar" data-bar="{% widthratio read_an total_analyses 100 %}" data-bar-color="var(--nv-warn)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ read_an }}</span></div>
+    <div class="nv-bar-row"><span class="nv-bar-label">{% trans "Total" %}</span>
+      <div class="nv-bar" data-bar="100" data-bar-color="var(--nv-emerald)"><span></span></div>
+      <span class="nv-bar-val nv-mono">{{ total_analyses }}</span></div>
+  </div>
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <!-- top users -->
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-trophy"></i>{% trans "Most active users" %}</div>
+    <div class="nv-table-wrap">
+      <table class="nv-table">
+        <thead><tr><th>{% trans "User" %}</th><th>{% trans "Role" %}</th><th>{% trans "Analyses" %}</th></tr></thead>
+        <tbody>
+          {% for u in top_users %}
+          <tr><td>{{ u.get_full_name|default:u.username }}</td>
+            <td><span class="nv-pill neutral">{% if u.is_superuser %}{% trans "Admin" %}{% elif u.profile.is_entrepreneur %}{% trans "Entrepreneur" %}{% else %}{% trans "Bank" %}{% endif %}</span></td>
+            <td class="num">{{ u.n }}</td></tr>
+          {% empty %}
+          <tr><td colspan="3" style="color:var(--nv-muted);">{% trans "No activity yet." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- recent uploads -->
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-upload"></i>{% trans "Recent uploads" %}</div>
+    <div class="nv-table-wrap">
+      <table class="nv-table">
+        <thead><tr><th>{% trans "User" %}</th><th>{% trans "Type" %}</th><th>{% trans "Files" %}</th><th>{% trans "Date" %}</th></tr></thead>
+        <tbody>
+          {% for r in recent %}
+          <tr><td>{% if r.created_by %}{{ r.created_by.get_full_name|default:r.created_by.username }}{% else %}—{% endif %}</td>
+            <td><span class="nv-pill neutral">{% if r.kind == 'readiness' %}{% trans "Readiness" %}{% else %}{% trans "Bank" %}{% endif %}</span></td>
+            <td>{{ r.filenames|length }}</td>
+            <td class="num">{{ r.created_at|date:"d.m H:i" }}</td></tr>
+          {% empty %}
+          <tr><td colspan="4" style="color:var(--nv-muted);">{% trans "No uploads yet." %}</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

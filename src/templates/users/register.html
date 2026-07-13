@@ -1,0 +1,62 @@
+{% extends 'users/_auth_base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Create account" %} — NovdAI{% endblock %}
+
+{% block auth_content %}
+<h1 class="nv-auth-title">{% trans "Create account" %}</h1>
+<p class="nv-auth-sub">{% trans "Choose your account type and get started." %}</p>
+
+{% if form.non_field_errors %}
+<div class="nv-pill bad nv-auth-err"><i class="ti ti-alert-circle"></i>{{ form.non_field_errors|first }}</div>
+{% endif %}
+
+<form method="post" novalidate class="nv-auth-form">
+  {% csrf_token %}
+
+  <div class="nv-role-pick">
+    <label class="nv-role-opt">
+      <input type="radio" name="role" value="bank" {% if form.role.value == 'bank' or not form.role.value %}checked{% endif %}>
+      <span class="nv-role-card">
+        <i class="ti ti-building-bank"></i>
+        <b>{% trans "Bank employee" %}</b>
+        <small>{% trans "Risk department — full green-finance analysis" %}</small>
+      </span>
+    </label>
+    <label class="nv-role-opt">
+      <input type="radio" name="role" value="entrepreneur" {% if form.role.value == 'entrepreneur' %}checked{% endif %}>
+      <span class="nv-role-card">
+        <span class="nv-role-flag">{% trans "Test mode" %}</span>
+        <i class="ti ti-briefcase"></i>
+        <b>{% trans "Entrepreneur" %}</b>
+        <small>{% trans "Check your project's green-finance readiness" %}</small>
+      </span>
+    </label>
+  </div>
+
+  <div class="nv-field">
+    <label class="nv-label">{% trans "Full name" %}</label>
+    <input type="text" name="full_name" class="nv-input" value="{{ form.full_name.value|default:'' }}" placeholder="{% trans 'Your name' %}">
+  </div>
+  <div class="nv-field">
+    <label class="nv-label">{% trans "Email" %}</label>
+    <input type="email" name="email" class="nv-input" value="{{ form.email.value|default:'' }}" placeholder="name@bank.uz" autocomplete="username" required>
+    {% if form.email.errors %}<span class="nv-err-line">{{ form.email.errors|first }}</span>{% endif %}
+  </div>
+  <div class="nv-auth-row">
+    <div class="nv-field">
+      <label class="nv-label">{% trans "Password" %}</label>
+      <input type="password" name="password1" class="nv-input" autocomplete="new-password" required>
+      {% if form.password1.errors %}<span class="nv-err-line">{{ form.password1.errors|first }}</span>{% endif %}
+    </div>
+    <div class="nv-field">
+      <label class="nv-label">{% trans "Confirm password" %}</label>
+      <input type="password" name="password2" class="nv-input" autocomplete="new-password" required>
+      {% if form.password2.errors %}<span class="nv-err-line">{{ form.password2.errors|first }}</span>{% endif %}
+    </div>
+  </div>
+
+  <button type="submit" class="nv-btn nv-btn-primary block"><i class="ti ti-user-plus"></i>{% trans "Create account" %}</button>
+</form>
+
+<p class="nv-auth-alt">{% trans "Already have an account?" %} <a href="{% url 'users:login' %}">{% trans "Log in" %}</a></p>
+{% endblock %}

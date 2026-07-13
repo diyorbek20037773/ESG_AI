@@ -1,0 +1,80 @@
+{% extends 'dashboard/base_dashboard.html' %}
+{% load i18n %}
+{% block title %}{% trans "Readiness result" %} — NovdAI{% endblock %}
+
+{% block content %}
+<div class="nv-testmode"><i class="ti ti-flask"></i>{% trans "This feature runs in test mode." %}</div>
+
+<div class="nv-page-head">
+  <div>
+    <a href="{% url 'dashboard:readiness' %}" class="nv-eyebrow"><i class="ti ti-arrow-left"></i> {% trans "ESG readiness" %}</a>
+    <h1 class="nv-page-title">{{ a.company_name|default:_("Your project") }}</h1>
+    <p class="nv-page-sub">{% trans "Green-finance readiness" %} · #{{ a.number }}</p>
+  </div>
+  <a href="{% url 'dashboard:readiness' %}" class="nv-btn nv-btn-primary"><i class="ti ti-gauge"></i>{% trans "New check" %}</a>
+</div>
+
+<div class="nv-grid nv-cols-2">
+  <!-- Speedometer -->
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-gauge"></i>{% trans "Readiness level" %}</div>
+    <div class="nv-speedo" data-speedo="{{ a.readiness_percent }}" data-band="{{ a.readiness_band }}">
+      <svg viewBox="0 0 200 116" class="nv-speedo-svg">
+        <path class="nv-speedo-bg" d="M14 100 A86 86 0 0 1 186 100" />
+        <path class="nv-speedo-zone z-bad"  d="M14 100 A86 86 0 0 1 71 24"  />
+        <path class="nv-speedo-zone z-warn" d="M71 24 A86 86 0 0 1 129 24" />
+        <path class="nv-speedo-zone z-good" d="M129 24 A86 86 0 0 1 186 100" />
+        <path class="nv-speedo-fill" d="M14 100 A86 86 0 0 1 186 100" />
+        <g class="nv-speedo-needle"><line x1="100" y1="100" x2="100" y2="30"/><circle cx="100" cy="100" r="7"/></g>
+      </svg>
+      <div class="nv-speedo-read">
+        <span class="nv-speedo-num" data-count="{{ a.readiness_percent }}">0</span><span class="nv-speedo-pct">%</span>
+      </div>
+    </div>
+    <div class="nv-speedo-band band-{{ a.readiness_band }}">
+      {% if a.readiness_band == 'good' %}<i class="ti ti-circle-check"></i>{% trans "Ready for green finance" %}
+      {% elif a.readiness_band == 'warn' %}<i class="ti ti-alert-triangle"></i>{% trans "Partially ready" %}
+      {% else %}<i class="ti ti-circle-x"></i>{% trans "Not ready yet" %}{% endif %}
+    </div>
+    <p class="nv-speedo-hint">
+      {% if a.readiness_band == 'good' %}{% trans "Your project matches green-finance criteria. You can approach a bank." %}
+      {% elif a.readiness_band == 'warn' %}{% trans "Some criteria are met. Address the gaps below to improve your readiness." %}
+      {% else %}{% trans "Key requirements are missing or an exclusion applies. See the items below." %}{% endif %}
+    </p>
+  </div>
+
+  <!-- E/S/G mini scores -->
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-chart-donut"></i>{% trans "ESG performance" %}</div>
+    <div class="nv-gauges">
+      {% include 'dashboard/_gauge.html' with value=a.environmental_score label=_("Environmental") %}
+      {% include 'dashboard/_gauge.html' with value=a.social_score label=_("Social") %}
+      {% include 'dashboard/_gauge.html' with value=a.governance_score label=_("Governance") %}
+    </div>
+    {% if a.summary %}<p class="nv-speedo-hint" style="margin-top:16px;">{{ a.summary }}</p>{% endif %}
+  </div>
+</div>
+
+<!-- What's missing / matched -->
+<div class="nv-grid nv-cols-2 nv-mt">
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-leaf"></i>{% trans "Green criteria" %} <span class="nv-pill good" style="margin-left:auto;">{{ a.matched_green|length }}/{{ a.green_criteria|length }}</span></div>
+    {% for g in a.green_criteria %}
+    <div class="nv-crit"><div class="nv-crit-ic {% if g.value %}yes{% else %}no{% endif %}"><i class="ti {% if g.value %}ti-check{% else %}ti-minus{% endif %}"></i></div>
+      <div><div class="nv-crit-q">{{ g.question }}</div>{% if g.evidence %}<div class="nv-crit-e">{{ g.evidence }}</div>{% endif %}</div></div>
+    {% endfor %}
+  </div>
+
+  <div class="nv-card" data-rise>
+    <div class="nv-card-title"><i class="ti ti-ban"></i>{% trans "Exclusion (stop) factors" %} <span class="nv-pill {% if a.triggered_stops %}bad{% else %}good{% endif %}" style="margin-left:auto;">{{ a.triggered_stops|length }}</span></div>
+    {% if a.triggered_stops %}
+      {% for s in a.triggered_stops %}
+      <div class="nv-crit"><div class="nv-crit-ic stop"><i class="ti ti-alert-triangle"></i></div>
+        <div><div class="nv-crit-q">{{ s.question }}</div>{% if s.evidence %}<div class="nv-crit-e">{{ s.evidence }}</div>{% endif %}</div></div>
+      {% endfor %}
+    {% else %}
+      <div class="nv-empty" style="padding:32px 16px;"><i class="ti ti-shield-check"></i><p>{% trans "No exclusion factors triggered." %}</p></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
