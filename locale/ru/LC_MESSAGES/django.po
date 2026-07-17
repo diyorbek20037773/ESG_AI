@@ -1112,3 +1112,35 @@ msgstr "Пока нет загрузок."
 
 msgid "Total"
 msgstr "Итого"
+
+# NovdAI team creds + award
+
+msgid "ML Specialist — Bank"
+msgstr "ML-специалист — банк"
+
+msgid "Trained 200+ in ML"
+msgstr "Обучил 200+ по ML"
+
+msgid "Python & Django Developer"
+msgstr "Python и Django разработчик"
+
+msgid "Faxriddin bio"
+msgstr "Разрабатывает веб-приложения на Python и Django с опытом 1+ год. Специализируется на backend и RESTful API."
+
+msgid "Recognition"
+msgstr "Признание"
+
+msgid "Winner of the REAL HOLAT Hackathon"
+msgstr "Победитель хакатона REAL HOLAT"
+
+msgid "award lead"
+msgstr "Наша команда получила грант на развитие на хакатоне REAL HOLAT (Data · Design · Impact) — подтверждение того, что продукт работает и решает реальную задачу."
+
+msgid "UZS development grant"
+msgstr "грант на развитие (сум)"
+
+msgid "Agency for Strategic Development"
+msgstr "Агентство стратегических реформ"
+
+msgid "with GIZ Germany support"
+msgstr "при поддержке GIZ Германия"

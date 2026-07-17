@@ -1112,3 +1112,35 @@ msgstr "No uploads yet."
 
 msgid "Total"
 msgstr "Total"
+
+# NovdAI team creds + award
+
+msgid "ML Specialist — Bank"
+msgstr "ML Specialist — Bank"
+
+msgid "Trained 200+ in ML"
+msgstr "Trained 200+ in ML"
+
+msgid "Python & Django Developer"
+msgstr "Python & Django Developer"
+
+msgid "Faxriddin bio"
+msgstr "Builds web applications in Python and Django, with 1+ year of experience. Specialises in backend and RESTful APIs."
+
+msgid "Recognition"
+msgstr "Recognition"
+
+msgid "Winner of the REAL HOLAT Hackathon"
+msgstr "Winner of the REAL HOLAT Hackathon"
+
+msgid "award lead"
+msgstr "Our team won the development grant at the REAL HOLAT Hackathon (Data · Design · Impact) — recognition that the product works and solves a real problem."
+
+msgid "UZS development grant"
+msgstr "UZS development grant"
+
+msgid "Agency for Strategic Development"
+msgstr "Agency for Strategic Development"
+
+msgid "with GIZ Germany support"
+msgstr "with GIZ Germany support"

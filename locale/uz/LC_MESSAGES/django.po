@@ -1112,3 +1112,35 @@ msgstr "Hali yuklamalar yo'q."
 
 msgid "Total"
 msgstr "Jami"
+
+# NovdAI team creds + award
+
+msgid "ML Specialist — Bank"
+msgstr "ML mutaxassisi — bank"
+
+msgid "Trained 200+ in ML"
+msgstr "200+ kishiga ML o'rgatgan"
+
+msgid "Python & Django Developer"
+msgstr "Python & Django dasturchi"
+
+msgid "Faxriddin bio"
+msgstr "1+ yillik tajriba bilan Python va Django asosida web ilovalar ishlab chiquvchi. Backend va RESTful API yaratishga ixtisoslashgan."
+
+msgid "Recognition"
+msgstr "E'tirof"
+
+msgid "Winner of the REAL HOLAT Hackathon"
+msgstr "REAL HOLAT xakatoni g'olibi"
+
+msgid "award lead"
+msgstr "Jamoamiz REAL HOLAT xakatonida (Data · Design · Impact) development grantini yutdi — mahsulot ishlashi va haqiqiy muammoni hal qilishining tasdig'i."
+
+msgid "UZS development grant"
+msgstr "so'm development grant"
+
+msgid "Agency for Strategic Development"
+msgstr "Strategik islohotlar agentligi"
+
+msgid "with GIZ Germany support"
+msgstr "GIZ Germaniya ko'magida"

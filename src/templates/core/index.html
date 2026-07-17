@@ -697,6 +697,27 @@
   </section>
 
 
+  <!-- ─── Achievement / hackathon grant ──────────────────── -->
+  <section class="py-lg-12 py-8" id="achievement">
+    <div class="container">
+      <div class="nv-award">
+        <div class="nv-award-media">
+          <img src="{% static 'assets/images/team/hackathon-realholat.jpg' %}" alt="REAL HOLAT Hackathon" loading="lazy">
+        </div>
+        <div class="nv-award-body">
+          <span class="nv-award-eyebrow"><i class="ti ti-trophy"></i>{% trans "Recognition" %}</span>
+          <h2 class="nv-award-title">{% trans "Winner of the REAL HOLAT Hackathon" %}</h2>
+          <p class="nv-award-lead">{% trans "award lead" %}</p>
+          <div class="nv-award-stats">
+            <div class="nv-award-stat"><b>80 000 000</b><span>{% trans "UZS development grant" %}</span></div>
+            <div class="nv-award-stat"><b>ASRR</b><span>{% trans "Agency for Strategic Development" %}</span></div>
+            <div class="nv-award-stat"><b>GIZ</b><span>{% trans "with GIZ Germany support" %}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="py-lg-13 py-8 bg-light bg-opacity-25" id="mentor">
     <div class="container">
       <div class="row text-center">
@@ -730,6 +751,10 @@
             <h3 class="h6 fw-bold mb-1">Asliddin Bakhtiyorov</h3>
             <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CTO, Co-founder</span>
             <p class="mb-0 small text-secondary">Program and Model Risk Assessment Management. 3 years of experience.</p>
+            <div class="team-creds">
+              <span class="cred-chip"><i class="ti ti-brain"></i>{% trans "ML Specialist — Bank" %}</span>
+              <span class="cred-chip"><i class="ti ti-school"></i>{% trans "Trained 200+ in ML" %}</span>
+            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -741,6 +766,10 @@
             <h3 class="h6 fw-bold mb-1">Doniyor Mamatkarimov</h3>
             <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">COO, Co-founder</span>
             <p class="mb-0 small text-secondary">More than 4 years of experience in the construction and banking sectors.</p>
+            <div class="team-creds">
+              <a class="cred-chip" href="{% static 'assets/docs/certs/doniyor-adb-climate-sovereign-risk.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>ADB · Climate & Sovereign Risk</a>
+              <a class="cred-chip" href="{% static 'assets/docs/certs/doniyor-worldbank-esf.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>World Bank · ESF</a>
+            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -752,6 +781,12 @@
             <h3 class="h6 fw-bold mb-1">Abduganiev Gayrat</h3>
             <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CFO, Co-founder</span>
             <p class="mb-0 small text-secondary">10 years of experience in construction and manufacturing organizations, as well as in the banking sector.</p>
+            <div class="team-creds">
+              <a class="cred-chip" href="{% static 'assets/docs/certs/gayrat-esg.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>ESG</a>
+              <a class="cred-chip" href="{% static 'assets/docs/certs/gayrat-tcfd.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>TCFD</a>
+              <a class="cred-chip" href="{% static 'assets/docs/certs/gayrat-iso-50001.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>ISO 50001</a>
+              <a class="cred-chip" href="{% static 'assets/docs/certs/gayrat-ebrd.pdf' %}" target="_blank" rel="noopener"><i class="ti ti-certificate"></i>EBRD Sustain</a>
+            </div>
           </div>
         </div>
         <div class="col-lg-4 col-md-6">
@@ -772,8 +807,12 @@
                    class="w-100 h-100" style="object-fit:cover;" loading="lazy" />
             </div>
             <h3 class="h6 fw-bold mb-1">Faxriddin Baxtiyorov</h3>
-            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">CTO, Co-founder</span>
-            <p class="mb-0 small text-secondary">Lead Specialist at the Republican Center “Biosifat”.</p>
+            <span class="text-primary mb-2 d-block text-xs fw-semibold text-uppercase" style="letter-spacing:.04rem;">{% trans "Python & Django Developer" %}</span>
+            <p class="mb-0 small text-secondary">{% trans "Faxriddin bio" %}</p>
+            <div class="team-creds">
+              <span class="cred-chip"><i class="ti ti-brand-python"></i>Python · Django</span>
+              <span class="cred-chip"><i class="ti ti-api"></i>REST API</span>
+            </div>
           </div>
         </div>
       </div>
