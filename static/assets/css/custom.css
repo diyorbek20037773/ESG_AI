@@ -1847,14 +1847,12 @@ a.cred-chip:hover { background:rgba(9,200,44,.18); border-color:#09C82C; transfo
   text-transform:uppercase; color:var(--bs-secondary-color,#8a978f); margin-bottom:2px;
 }
 .team-logos img {
-  height:30px; width:auto; max-width:120px; object-fit:contain;
-  filter:grayscale(.15); opacity:.94; transition:filter .18s, opacity .18s, transform .18s;
+  height:48px; width:auto; max-width:170px; object-fit:contain;
+  background:transparent; opacity:.97; transition:opacity .18s, transform .18s;
 }
-.team-logos img:hover { filter:none; opacity:1; transform:translateY(-1px); }
+.team-logos img:hover { opacity:1; transform:translateY(-2px) scale(1.03); }
 [data-bs-theme="dark"] .team-logos { border-top-color:rgba(255,255,255,.09); }
-[data-bs-theme="dark"] .team-logos img {
-  background:#fff; border-radius:7px; padding:4px 7px; height:34px; filter:none; opacity:1;
-}
+[data-bs-theme="dark"] .team-logos img { background:transparent; opacity:1; }
 
 /* ── Award: "open the product" Telegram CTA ──────────────────────────────── */
 .nv-award-cta {
