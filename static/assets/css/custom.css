@@ -1866,3 +1866,20 @@ a.cred-chip:hover { background:rgba(9,200,44,.18); border-color:#09C82C; transfo
 .nv-award-cta i { font-size:18px; }
 .nv-award-cta span { font-family:'JetBrains Mono','SF Mono',monospace; font-weight:600; opacity:.85; }
 [data-bs-theme="dark"] .nv-award-cta { color:#04120b; box-shadow:0 8px 24px rgba(43,255,136,.32); }
+
+/* ─── 1-Minute Pitch (YouTube Shorts, vertical 9:16) ─────────── */
+.nv-pitch { overflow:hidden; }
+.nv-short { position:relative; padding:6px; border-radius:26px;
+  background:linear-gradient(150deg,#2bff88,#09C82C 55%,#0f6b3a);
+  box-shadow:0 24px 60px rgba(9,200,44,.22); }
+.nv-short-frame {
+  position:relative; width:min(340px,80vw); aspect-ratio:9/16;
+  border-radius:20px; overflow:hidden; background:#04120b; }
+.nv-short-frame iframe {
+  position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+.nv-short::after {
+  content:""; position:absolute; inset:-2px; border-radius:28px; z-index:-1;
+  background:radial-gradient(60% 40% at 50% 0%,rgba(43,255,136,.35),transparent 70%);
+  filter:blur(18px); }
+[data-bs-theme="dark"] .nv-short { box-shadow:0 24px 70px rgba(43,255,136,.3); }
+[data-bs-theme="dark"] .nv-short-frame { background:#010805; }
