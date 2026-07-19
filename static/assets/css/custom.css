@@ -1833,3 +1833,38 @@ a.cred-chip:hover { background:rgba(9,200,44,.18); border-color:#09C82C; transfo
 @media (max-width:820px) {
   .nv-award { grid-template-columns:1fr; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NovdAI — team workplace logos + award product CTA
+   ═══════════════════════════════════════════════════════════════════════════ */
+.team-logos {
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+  gap:10px 14px; margin-top:16px; padding-top:14px;
+  border-top:1px solid var(--bs-border-color,#e9efeb);
+}
+.team-logos-label {
+  width:100%; font-size:10px; font-weight:700; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--bs-secondary-color,#8a978f); margin-bottom:2px;
+}
+.team-logos img {
+  height:30px; width:auto; max-width:120px; object-fit:contain;
+  filter:grayscale(.15); opacity:.94; transition:filter .18s, opacity .18s, transform .18s;
+}
+.team-logos img:hover { filter:none; opacity:1; transform:translateY(-1px); }
+[data-bs-theme="dark"] .team-logos { border-top-color:rgba(255,255,255,.09); }
+[data-bs-theme="dark"] .team-logos img {
+  background:#fff; border-radius:7px; padding:4px 7px; height:34px; filter:none; opacity:1;
+}
+
+/* ── Award: "open the product" Telegram CTA ──────────────────────────────── */
+.nv-award-cta {
+  display:inline-flex; align-items:center; gap:9px; margin-top:22px;
+  padding:11px 20px; border-radius:999px; text-decoration:none;
+  font-family:'Geist',sans-serif; font-weight:700; font-size:14.5px; line-height:1;
+  color:#04120b; background:linear-gradient(135deg,#2bff88,#09C82C);
+  box-shadow:0 8px 22px rgba(9,200,44,.28); transition:transform .16s, box-shadow .16s, filter .16s;
+}
+.nv-award-cta:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(9,200,44,.4); filter:brightness(1.04); color:#04120b; }
+.nv-award-cta i { font-size:18px; }
+.nv-award-cta span { font-family:'JetBrains Mono','SF Mono',monospace; font-weight:600; opacity:.85; }
+[data-bs-theme="dark"] .nv-award-cta { color:#04120b; box-shadow:0 8px 24px rgba(43,255,136,.32); }

@@ -1144,3 +1144,11 @@ msgstr "Strategik islohotlar agentligi"
 
 msgid "with GIZ Germany support"
 msgstr "GIZ Germaniya ko'magida"
+
+# NovdAI team logos + award CTA
+
+msgid "Workplace"
+msgstr "Ish joyi"
+
+msgid "Open the product"
+msgstr "Mahsulotga kirish"

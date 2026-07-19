@@ -1144,3 +1144,11 @@ msgstr "Агентство стратегических реформ"
 
 msgid "with GIZ Germany support"
 msgstr "при поддержке GIZ Германия"
+
+# NovdAI team logos + award CTA
+
+msgid "Workplace"
+msgstr "Место работы"
+
+msgid "Open the product"
+msgstr "Открыть продукт"
