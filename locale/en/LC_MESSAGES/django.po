@@ -1152,3 +1152,8 @@ msgstr "Workplace"
 
 msgid "Open the product"
 msgstr "Open the product"
+
+# NovdAI pitch subtitle
+
+msgid "Pitch subtitle"
+msgstr "From document to green finance — the whole idea in one minute."

@@ -1152,3 +1152,8 @@ msgstr "Ish joyi"
 
 msgid "Open the product"
 msgstr "Mahsulotga kirish"
+
+# NovdAI pitch subtitle
+
+msgid "Pitch subtitle"
+msgstr "Hujjatdan yashil moliyagacha — butun g'oya bir daqiqada."
