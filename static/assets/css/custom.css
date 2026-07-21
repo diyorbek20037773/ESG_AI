@@ -1528,6 +1528,17 @@ html:not([data-bs-theme]) .theme-icon--moon { display: inline-block; }
 [data-bs-theme="dark"] .nv-hero-stat-num { text-shadow:0 0 18px rgba(43,255,136,.3); }
 .nv-hero-stat-lbl { font-size:12px; color:var(--h-ink2); margin-top:6px;
   text-transform:uppercase; letter-spacing:.06em; }
+/* stat with no number — show label alone as a prominent feature tag */
+.nv-hero-stat--nolabel { justify-content:center; }
+.nv-hero-stat--nolabel .nv-hero-stat-lbl {
+  margin-top:0; font-family:'Geist'; font-weight:700; font-size:clamp(.92rem,1.4vw,1.08rem);
+  letter-spacing:.02em; text-transform:none; color:var(--h-em);
+  display:inline-flex; align-items:center; gap:8px;
+}
+.nv-hero-stat--nolabel .nv-hero-stat-lbl::before {
+  content:""; width:9px; height:9px; border-radius:50%; background:var(--h-em);
+  box-shadow:0 0 0 4px color-mix(in srgb, var(--h-em) 20%, transparent);
+}
 
 /* ── FLOW: document → AI → verdict ───────────────────────────────────────── */
 .nv-flow { position:relative; max-width:440px; margin-left:auto; display:flex; flex-direction:column;

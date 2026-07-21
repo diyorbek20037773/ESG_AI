@@ -597,3 +597,24 @@ textarea.nv-input { resize: vertical; }
   transition:height 1s cubic-bezier(.22,1,.36,1); }
 :root[data-bs-theme="dark"] .nv-minibar-fill { background:linear-gradient(180deg,var(--nv-neon),var(--nv-emerald)); }
 .nv-minibar small { font-size:10.5px; color:var(--nv-muted); }
+
+/* ── Overview: green-project-analysis CTA panel ──────────────────────────── */
+.nv-cta-panel {
+  display:flex; align-items:center; gap:20px;
+  background:linear-gradient(135deg, var(--nv-good-soft), transparent 70%);
+  border:1px solid var(--nv-hairline);
+}
+.nv-cta-ic {
+  flex:0 0 auto; width:52px; height:52px; border-radius:14px;
+  display:grid; place-items:center; font-size:26px; color:#fff;
+  background:linear-gradient(140deg, var(--nv-emerald), var(--nv-neon));
+  box-shadow:0 8px 20px rgba(5,150,105,.28);
+}
+[data-bs-theme="dark"] .nv-cta-ic { color:#04120b; }
+.nv-cta-body { flex:1 1 auto; min-width:0; }
+.nv-cta-title { font-weight:800; font-size:1.12rem; letter-spacing:-.01em; color:var(--nv-ink); }
+.nv-cta-sub { margin:4px 0 0; font-size:.92rem; color:var(--nv-muted); line-height:1.5; }
+@media (max-width:640px){
+  .nv-cta-panel { flex-direction:column; align-items:flex-start; }
+  .nv-cta-panel .nv-btn { width:100%; justify-content:center; }
+}

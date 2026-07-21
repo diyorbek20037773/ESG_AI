@@ -1157,3 +1157,11 @@ msgstr "Open the product"
 
 msgid "Pitch subtitle"
 msgstr "From document to green finance — the whole idea in one minute."
+
+# NovdAI overview CTA panel
+
+msgid "Green project analysis"
+msgstr "Green project analysis"
+
+msgid "Green project analysis sub"
+msgstr "Upload a client's project documents and get an AI-assisted ESG assessment."

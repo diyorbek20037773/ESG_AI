@@ -1157,3 +1157,11 @@ msgstr "Mahsulotga kirish"
 
 msgid "Pitch subtitle"
 msgstr "Hujjatdan yashil moliyagacha — butun g'oya bir daqiqada."
+
+# NovdAI overview CTA panel
+
+msgid "Green project analysis"
+msgstr "Yashil loyiha tahlili"
+
+msgid "Green project analysis sub"
+msgstr "Mijoz loyihasi hujjatlarini yuklang va AI yordamida ESG bahosini oling."
