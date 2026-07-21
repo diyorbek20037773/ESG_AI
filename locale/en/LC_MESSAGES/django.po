@@ -1169,4 +1169,4 @@ msgstr "Upload a client's project documents and get an AI-assisted ESG assessmen
 # NovdAI ESG assessment nav
 
 msgid "ESG assessment"
-msgstr "ESG assessment"
+msgstr "ESG risk assessment"
