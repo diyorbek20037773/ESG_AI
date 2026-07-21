@@ -571,7 +571,7 @@ msgid "Analyses"
 msgstr "Tahlillar"
 
 msgid "Clients"
-msgstr "Mijozlar"
+msgstr "Yashil portfel"
 
 msgid "Analytics"
 msgstr "Analitika"

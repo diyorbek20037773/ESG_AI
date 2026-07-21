@@ -571,7 +571,7 @@ msgid "Analyses"
 msgstr "Analyses"
 
 msgid "Clients"
-msgstr "Clients"
+msgstr "Green portfolio"
 
 msgid "Analytics"
 msgstr "Analytics"
