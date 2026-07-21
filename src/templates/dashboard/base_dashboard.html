@@ -32,6 +32,7 @@
         {# Bank / superuser nav #}
         <a href="{% url 'dashboard:index' %}" class="nv-nav-item {% if url_name == 'index' %}active{% endif %}"><i class="ti ti-layout-dashboard"></i>{% trans "Overview" %}</a>
         <a href="{% url 'dashboard:new' %}" class="nv-nav-item {% if url_name == 'new' %}active{% endif %}"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+        <a href="{% url 'dashboard:new' %}" class="nv-nav-item"><i class="ti ti-shield-check"></i>{% trans "ESG assessment" %}</a>
         <a href="{% url 'dashboard:analyses' %}" class="nv-nav-item {% if url_name == 'analyses' or url_name == 'analysis_detail' %}active{% endif %}"><i class="ti ti-file-analytics"></i>{% trans "Analyses" %}</a>
         <a href="{% url 'dashboard:clients' %}" class="nv-nav-item {% if url_name == 'clients' or url_name == 'client_detail' %}active{% endif %}"><i class="ti ti-users-group"></i>{% trans "Clients" %}</a>
         <a href="{% url 'dashboard:analytics' %}" class="nv-nav-item {% if url_name == 'analytics' %}active{% endif %}"><i class="ti ti-chart-histogram"></i>{% trans "Analytics" %}</a>

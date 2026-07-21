@@ -1165,3 +1165,8 @@ msgstr "Yashil loyiha tahlili"
 
 msgid "Green project analysis sub"
 msgstr "Mijoz loyihasi hujjatlarini yuklang va AI yordamida ESG bahosini oling."
+
+# NovdAI ESG assessment nav
+
+msgid "ESG assessment"
+msgstr "ESG tahlil"

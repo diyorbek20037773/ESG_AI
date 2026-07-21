@@ -1165,3 +1165,8 @@ msgstr "Анализ зелёного проекта"
 
 msgid "Green project analysis sub"
 msgstr "Загрузите проектные документы клиента и получите ESG-оценку с помощью ИИ."
+
+# NovdAI ESG assessment nav
+
+msgid "ESG assessment"
+msgstr "ESG-оценка рисков"
