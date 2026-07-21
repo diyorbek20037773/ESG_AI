@@ -1894,3 +1894,9 @@ a.cred-chip:hover { background:rgba(9,200,44,.18); border-color:#09C82C; transfo
   filter:blur(18px); }
 [data-bs-theme="dark"] .nv-short { box-shadow:0 24px 70px rgba(43,255,136,.3); }
 [data-bs-theme="dark"] .nv-short-frame { background:#010805; }
+
+/* ── Main NovdAI logo lockup (navbar / footer / auth) ────────────────────── */
+.nv-logo-img { height:38px; width:auto; max-width:100%; display:block; }
+.footer-brand .nv-logo-img { height:34px; }
+.nv-auth-brand .nv-logo-img { height:44px; }
+@media (max-width:576px){ .navbar-brand .nv-logo-img { height:32px; } }

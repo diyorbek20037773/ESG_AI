@@ -1,9 +1,8 @@
 {% load static i18n %}
   <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
     <div class="container">
-      <a class="navbar-brand nv-brand-link d-inline-flex gap-2 align-items-center lh-1" href="{% url 'core:index' %}">
-        {% include 'brand/_novda_mark.html' with size=34 uid="nav" %}
-        <span class="nv-brand-word fw-bold fs-5">Novd<span class="nv-brand-ai">AI</span></span>
+      <a class="navbar-brand nv-brand-link d-inline-flex align-items-center lh-1" href="{% url 'core:index' %}">
+        <img src="{% static 'assets/images/novdai-logo.png' %}" alt="NovdAI" class="nv-logo-img" height="38">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

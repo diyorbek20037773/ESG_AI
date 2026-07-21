@@ -618,3 +618,6 @@ textarea.nv-input { resize: vertical; }
   .nv-cta-panel { flex-direction:column; align-items:flex-start; }
   .nv-cta-panel .nv-btn { width:100%; justify-content:center; }
 }
+
+/* ── Sidebar main NovdAI logo lockup ─────────────────────────────────────── */
+.nv-brand .nv-logo-img { height:32px; width:auto; max-width:100%; display:block; }

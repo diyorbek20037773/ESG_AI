@@ -17,8 +17,7 @@
     <aside class="nv-auth-aside" aria-hidden="true">
       <div class="nv-auth-aside-glow"></div>
       <a href="{% url 'core:index' %}" class="nv-auth-brand">
-        {% include 'brand/_novda_mark.html' with size=40 uid="auth" %}
-        <span>Novd<b>AI</b></span>
+        <img src="{% static 'assets/images/novdai-logo.png' %}" alt="NovdAI" class="nv-logo-img" height="44">
       </a>
       <div class="nv-auth-aside-copy">
         <h2>{% trans "auth aside title" %}</h2>
