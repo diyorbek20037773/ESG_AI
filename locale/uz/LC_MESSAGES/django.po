@@ -1170,3 +1170,47 @@ msgstr "Mijoz loyihasi hujjatlarini yuklang va AI yordamida ESG bahosini oling."
 
 msgid "ESG assessment"
 msgstr "ESG risklarini baholash"
+
+# NovdAI green portfolio table
+
+msgid "Green loan portfolio — clients, credit terms and green classification."
+msgstr "Yashil kredit portfeli — mijozlar, kredit shartlari va yashil tasnif."
+
+msgid "Region code"
+msgstr "Hudud kodi"
+
+msgid "Segment"
+msgstr "Segment"
+
+msgid "Client name"
+msgstr "Mijoz nomi"
+
+msgid "Contract ID"
+msgstr "Shartnoma ID"
+
+msgid "Currency"
+msgstr "Valyuta"
+
+msgid "Rate, %"
+msgstr "Foiz, %"
+
+msgid "Credit purpose"
+msgstr "Kredit maqsadi"
+
+msgid "Green direction"
+msgstr "Yashil yo'nalish"
+
+msgid "Green mark"
+msgstr "Yashil belgi"
+
+msgid "MoF regulation"
+msgstr "Minfin nizomi"
+
+msgid "Credit product"
+msgstr "Kredit mahsuloti"
+
+msgid "Sector"
+msgstr "Tarmoq"
+
+msgid "Field"
+msgstr "Soha"

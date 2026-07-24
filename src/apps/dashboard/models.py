@@ -13,6 +13,20 @@ class Client(models.Model):
     industry = models.CharField(_('Industry'), max_length=128, blank=True)
     region = models.CharField(_('Region'), max_length=128, blank=True)
     notes = models.TextField(_('Notes'), blank=True)
+
+    # ── Green-portfolio (credit) fields — bank loan-book columns ───────────
+    region_code = models.CharField(_('Region code'), max_length=16, blank=True)
+    segment = models.CharField(_('Segment'), max_length=64, blank=True)
+    contract_id = models.CharField(_('Contract ID'), max_length=64, blank=True)
+    currency = models.CharField(_('Currency'), max_length=8, blank=True)
+    credit_rate = models.DecimalField(_('Credit rate, %'), max_digits=5, decimal_places=2,
+                                      null=True, blank=True)
+    credit_purpose = models.CharField(_('Credit purpose'), max_length=255, blank=True)
+    green_direction = models.CharField(_('Green direction'), max_length=128, blank=True)
+    green_mark = models.CharField(_('Green mark'), max_length=32, blank=True)  # EM1 / EM2
+    credit_product = models.CharField(_('Credit product'), max_length=128, blank=True)
+    sector = models.CharField(_('Sector'), max_length=128, blank=True)
+    field = models.CharField(_('Field'), max_length=128, blank=True)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True,
         related_name='clients', verbose_name=_('Created by'),

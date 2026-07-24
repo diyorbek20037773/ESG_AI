@@ -1170,3 +1170,47 @@ msgstr "Upload a client's project documents and get an AI-assisted ESG assessmen
 
 msgid "ESG assessment"
 msgstr "ESG risk assessment"
+
+# NovdAI green portfolio table
+
+msgid "Green loan portfolio — clients, credit terms and green classification."
+msgstr "Green loan portfolio — clients, credit terms and green classification."
+
+msgid "Region code"
+msgstr "Region code"
+
+msgid "Segment"
+msgstr "Segment"
+
+msgid "Client name"
+msgstr "Client name"
+
+msgid "Contract ID"
+msgstr "Contract ID"
+
+msgid "Currency"
+msgstr "Currency"
+
+msgid "Rate, %"
+msgstr "Rate, %"
+
+msgid "Credit purpose"
+msgstr "Credit purpose"
+
+msgid "Green direction"
+msgstr "Green direction"
+
+msgid "Green mark"
+msgstr "Green mark"
+
+msgid "MoF regulation"
+msgstr "MoF regulation"
+
+msgid "Credit product"
+msgstr "Credit product"
+
+msgid "Sector"
+msgstr "Sector"
+
+msgid "Field"
+msgstr "Field"

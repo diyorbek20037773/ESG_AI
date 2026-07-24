@@ -1170,3 +1170,47 @@ msgstr "Загрузите проектные документы клиента 
 
 msgid "ESG assessment"
 msgstr "ESG-оценка рисков"
+
+# NovdAI green portfolio table
+
+msgid "Green loan portfolio — clients, credit terms and green classification."
+msgstr "Зелёный кредитный портфель — клиенты, условия кредита и зелёная классификация."
+
+msgid "Region code"
+msgstr "Код региона"
+
+msgid "Segment"
+msgstr "Сегмент"
+
+msgid "Client name"
+msgstr "Наименование клиента"
+
+msgid "Contract ID"
+msgstr "ID договора"
+
+msgid "Currency"
+msgstr "Валюта"
+
+msgid "Rate, %"
+msgstr "Ставка, %"
+
+msgid "Credit purpose"
+msgstr "Цель кредита"
+
+msgid "Green direction"
+msgstr "Зелёное направление"
+
+msgid "Green mark"
+msgstr "Зелёная метка"
+
+msgid "MoF regulation"
+msgstr "Положение Минфина"
+
+msgid "Credit product"
+msgstr "Кредитный продукт"
+
+msgid "Sector"
+msgstr "Отрасль"
+
+msgid "Field"
+msgstr "Сфера"

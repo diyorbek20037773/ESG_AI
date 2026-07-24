@@ -79,7 +79,8 @@ def analyses(request):
 
 
 def clients(request):
-    items = Client.objects.annotate(n=Count('analyses')).order_by('name')
+    items = (Client.objects.annotate(n=Count('analyses'))
+             .prefetch_related('analyses').order_by('green_mark', 'name'))
     return render(request, 'dashboard/clients.html', {'clients': items})
 
 

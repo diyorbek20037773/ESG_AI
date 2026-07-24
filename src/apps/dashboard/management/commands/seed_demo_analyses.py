@@ -41,7 +41,14 @@ DEMO = [
         # renewable-energy green criterion.
         "number": "202600001",
         "company_name": "QUYOSH VODIY SOLAR LLC",
-        "client": ("Quyosh Vodiy Solar LLC", "300100200", "Qayta tiklanuvchi energiya", "Jizzax"),
+        "client": {
+            "name": "Quyosh Vodiy Solar LLC", "stir": "300100200",
+            "industry": "Qayta tiklanuvchi energiya", "region": "Jizzax",
+            "region_code": "25", "segment": "Yirik biznes", "contract_id": "KR-2026-0142",
+            "currency": "UZS", "credit_rate": "14.00", "credit_purpose": "Quyosh panellari xaridi",
+            "green_direction": "Qayta tiklanuvchi energiya", "green_mark": "EM1",
+            "credit_product": "Yashil kredit", "sector": "Energetika", "field": "Elektr ishlab chiqarish",
+        },
         "language": "uz",
         "filenames": ["quyosh-vodiy-loyiha.pdf"],
         "scores": (72, 78, 70, 74),
@@ -63,7 +70,14 @@ DEMO = [
         # NOT-GREEN — a project that trips a stop-factor (coal), so it is rejected.
         "number": "202600002",
         "company_name": "OQTOSH ENERGO LLC",
-        "client": ("Oqtosh Energo LLC", "300300400", "Energetika", "Navoiy"),
+        "client": {
+            "name": "Oqtosh Energo LLC", "stir": "300300400",
+            "industry": "Energetika", "region": "Navoiy",
+            "region_code": "08", "segment": "O'rta biznes", "contract_id": "KR-2026-0287",
+            "currency": "USD", "credit_rate": "9.50", "credit_purpose": "Qozon uskunalari xaridi",
+            "green_direction": "—", "green_mark": "EM2",
+            "credit_product": "Investitsiya krediti", "sector": "Energetika", "field": "Issiqlik energetikasi",
+        },
         "language": "uz",
         "filenames": ["oqtosh-energo-loyiha.pdf"],
         "scores": (48, 62, 58, 55),
@@ -83,6 +97,25 @@ DEMO = [
     },
 ]
 
+# Extra synthetic green-portfolio rows (no analysis) — richer loan-book table.
+PORTFOLIO = [
+    {"name": "Yashil Agro Klaster LLC", "stir": "301400500", "industry": "Qishloq xo'jaligi",
+     "region": "Buxoro", "region_code": "12", "segment": "O'rta biznes", "contract_id": "KR-2026-0311",
+     "currency": "UZS", "credit_rate": "13.50", "credit_purpose": "Tomchilatib sug'orish tizimi",
+     "green_direction": "Suv resurslarini tejash", "green_mark": "EM1",
+     "credit_product": "Yashil kredit", "sector": "Agrosanoat", "field": "Sug'orma dehqonchilik"},
+    {"name": "Chorvoq Gidro MChJ", "stir": "301600700", "industry": "Gidroenergetika",
+     "region": "Toshkent", "region_code": "27", "segment": "Yirik biznes", "contract_id": "KR-2026-0356",
+     "currency": "UZS", "credit_rate": "12.00", "credit_purpose": "Kichik GES modernizatsiyasi",
+     "green_direction": "Gidroenergetika", "green_mark": "EM1",
+     "credit_product": "Yashil kredit", "sector": "Energetika", "field": "Suv elektr stansiyasi"},
+    {"name": "EkoBino Devkon LLC", "stir": "301800900", "industry": "Qurilish",
+     "region": "Samarqand", "region_code": "18", "segment": "Kichik biznes", "contract_id": "KR-2026-0402",
+     "currency": "UZS", "credit_rate": "15.00", "credit_purpose": "Energiya-samarali bino qurilishi",
+     "green_direction": "Energiya samaradorligi", "green_mark": "EM2",
+     "credit_product": "Yashil ipoteka", "sector": "Qurilish", "field": "Turar-joy qurilishi"},
+]
+
 
 class Command(BaseCommand):
     help = "Wipe real analyses and seed two synthetic demo projects (1 green, 1 not-green)."
@@ -97,8 +130,7 @@ class Command(BaseCommand):
             verdict = constants.compute_verdict(
                 d["eco_required"], d["eco_obtained"], d["stops"], d["green"],
             )
-            name, stir, industry, region = d["client"]
-            client = Client.objects.create(name=name, stir=stir, industry=industry, region=region)
+            client = Client.objects.create(**d["client"])
             Analysis.objects.create(
                 kind=Analysis.KIND_BANK,
                 client=client,
@@ -124,7 +156,11 @@ class Command(BaseCommand):
                 language=d["language"],
             )
 
+        for c in PORTFOLIO:
+            Client.objects.create(**c)
+
         self.stdout.write(self.style.SUCCESS(
-            f"Demo analyses reset: removed {removed}, seeded {len(DEMO)} synthetic "
+            f"Demo reset: removed {removed} analyses, seeded {len(DEMO)} synthetic analyses "
             f"({Analysis.objects.filter(verdict='green').count()} green, "
-            f"{Analysis.objects.filter(verdict='not_green').count()} not-green)."))
+            f"{Analysis.objects.filter(verdict='not_green').count()} not-green) and "
+            f"{Client.objects.count()} portfolio clients."))

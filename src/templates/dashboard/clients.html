@@ -7,25 +7,59 @@
   <div>
     <span class="nv-eyebrow">{% trans "Portfolio" %}</span>
     <h1 class="nv-page-title">{% trans "Clients" %}</h1>
-    <p class="nv-page-sub">{% trans "Bank clients and their green-finance projects." %}</p>
+    <p class="nv-page-sub">{% trans "Green loan portfolio — clients, credit terms and green classification." %}</p>
   </div>
+  <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
 </div>
 
 {% if clients %}
-<div class="nv-grid nv-cols-3">
-  {% for c in clients %}
-  <a href="{% url 'dashboard:client_detail' c.pk %}" class="nv-card lift" data-rise>
-    <div class="nv-flex nv-between">
-      <div class="nv-stat-ic" style="margin-bottom:0;"><i class="ti ti-building"></i></div>
-      <span class="nv-pill neutral">{{ c.n }} {% trans "analyses" %}</span>
-    </div>
-    <div style="font-weight:700;font-size:16px;margin-top:14px;">{{ c.name }}</div>
-    <div style="color:var(--nv-muted);font-size:13px;margin-top:4px;">
-      {{ c.industry|default:"—" }}{% if c.region %} · {{ c.region }}{% endif %}
-    </div>
-    {% if c.stir %}<div class="nv-mono" style="color:var(--nv-muted);font-size:12px;margin-top:6px;">{% trans "STIR" %}: {{ c.stir }}</div>{% endif %}
-  </a>
-  {% endfor %}
+<div class="nv-card" data-rise>
+  <div class="nv-table-wrap">
+    <table class="nv-table nv-portfolio">
+      <thead><tr>
+        <th>№</th>
+        <th>{% trans "Region code" %}</th>
+        <th>{% trans "Segment" %}</th>
+        <th>{% trans "Client name" %}</th>
+        <th>{% trans "Contract ID" %}</th>
+        <th>{% trans "Currency" %}</th>
+        <th class="num">{% trans "Rate, %" %}</th>
+        <th>{% trans "Credit purpose" %}</th>
+        <th>{% trans "Green direction" %}</th>
+        <th>{% trans "Green mark" %}<span class="nv-th-sub">{% trans "MoF regulation" %}</span></th>
+        <th>{% trans "Credit product" %}</th>
+        <th>{% trans "Sector" %}</th>
+        <th>{% trans "Field" %}</th>
+      </tr></thead>
+      <tbody>
+        {% for c in clients %}
+        <tr onclick="location='{% url 'dashboard:client_detail' c.pk %}'">
+          <td class="num nv-muted">{{ forloop.counter }}</td>
+          <td class="num">{{ c.region_code|default:"—" }}</td>
+          <td>{{ c.segment|default:"—" }}</td>
+          <td class="nv-cell-name">
+            <span class="nv-name-main">{{ c.name }}</span>
+            {% if c.region %}<span class="nv-name-sub">{{ c.region }}</span>{% endif %}
+          </td>
+          <td class="nv-mono">{{ c.contract_id|default:"—" }}</td>
+          <td><span class="nv-pill neutral nv-ccy">{{ c.currency|default:"—" }}</span></td>
+          <td class="num">{% if c.credit_rate != None %}{{ c.credit_rate }}{% else %}—{% endif %}</td>
+          <td class="nv-cell-wide">{{ c.credit_purpose|default:"—" }}</td>
+          <td class="nv-cell-wide">{{ c.green_direction|default:"—" }}</td>
+          <td>
+            {% if c.green_mark == "EM1" %}<span class="nv-em nv-em1">EM1</span>
+            {% elif c.green_mark == "EM2" %}<span class="nv-em nv-em2">EM2</span>
+            {% elif c.green_mark %}<span class="nv-em">{{ c.green_mark }}</span>
+            {% else %}<span class="nv-muted">—</span>{% endif %}
+          </td>
+          <td>{{ c.credit_product|default:"—" }}</td>
+          <td>{{ c.sector|default:"—" }}</td>
+          <td>{{ c.field|default:"—" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 {% else %}
 <div class="nv-card"><div class="nv-empty"><i class="ti ti-users-group"></i><p>{% trans "No clients yet." %}</p></div></div>
