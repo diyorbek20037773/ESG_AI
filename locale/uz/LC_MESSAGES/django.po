@@ -1214,3 +1214,17 @@ msgstr "Tarmoq"
 
 msgid "Field"
 msgstr "Soha"
+
+# NovdAI platform demo section
+
+msgid "Platform demo"
+msgstr "Platforma demosi"
+
+msgid "See the"
+msgstr "Ko'ring"
+
+msgid "dashboard in action"
+msgstr "dashboard amalda"
+
+msgid "Demo subtitle"
+msgstr "NovdAI dashboard'ining to'liq ko'rinishi — ro'yxatdan o'tish, yashil moliya tahlili va yakuniy hisobot."

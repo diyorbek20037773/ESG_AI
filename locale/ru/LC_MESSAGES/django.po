@@ -1214,3 +1214,17 @@ msgstr "Отрасль"
 
 msgid "Field"
 msgstr "Сфера"
+
+# NovdAI platform demo section
+
+msgid "Platform demo"
+msgstr "Демо платформы"
+
+msgid "See the"
+msgstr "Смотрите"
+
+msgid "dashboard in action"
+msgstr "панель в действии"
+
+msgid "Demo subtitle"
+msgstr "Полный обзор панели NovdAI — регистрация, анализ зелёного финансирования и итоговый отчёт."

@@ -1214,3 +1214,17 @@ msgstr "Sector"
 
 msgid "Field"
 msgstr "Field"
+
+# NovdAI platform demo section
+
+msgid "Platform demo"
+msgstr "Platform demo"
+
+msgid "See the"
+msgstr "See the"
+
+msgid "dashboard in action"
+msgstr "dashboard in action"
+
+msgid "Demo subtitle"
+msgstr "A full walkthrough of the NovdAI dashboard — registration, green-finance analysis and the verdict report."
