@@ -1228,3 +1228,17 @@ msgstr "панель в действии"
 
 msgid "Demo subtitle"
 msgstr "Полный обзор панели NovdAI — регистрация, анализ зелёного финансирования и итоговый отчёт."
+
+# Registration certificate (dashboard)
+
+msgid "State-registered software"
+msgstr "Программа в госреестре"
+
+msgid "Certificate"
+msgstr "Свидетельство"
+
+msgid "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)."
+msgstr "Официальное свидетельство о регистрации программы (Министерство юстиции Республики Узбекистан)."
+
+msgid "View certificate"
+msgstr "Посмотреть свидетельство"

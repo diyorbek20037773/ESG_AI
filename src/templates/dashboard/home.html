@@ -1,5 +1,5 @@
 {% extends 'dashboard/base_dashboard.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% block title %}{% trans "Overview" %} — NovdAI{% endblock %}
 
 {% block content %}
@@ -43,6 +43,21 @@
     <p class="nv-cta-sub">{% trans "Green project analysis sub" %}</p>
   </div>
   <a href="{% url 'dashboard:new' %}" class="nv-btn nv-btn-primary"><i class="ti ti-sparkles"></i>{% trans "New analysis" %}</a>
+</div>
+
+<div class="nv-card nv-cta-panel nv-mb lift" data-rise>
+  <a href="{% static 'assets/docs/certificate_DGU59865.pdf' %}" target="_blank" rel="noopener"
+     style="flex:0 0 auto;line-height:0;">
+    <img src="{% static 'assets/images/certificate_DGU59865.png' %}"
+         alt="{% trans 'State-registered software' %}"
+         style="width:92px;height:auto;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.12);display:block;">
+  </a>
+  <div class="nv-cta-body">
+    <span class="nv-pill good" style="margin-bottom:8px;"><i class="ti ti-certificate"></i>{% trans "State-registered software" %}</span>
+    <div class="nv-cta-title">{% trans "Certificate" %} № DGU 59865</div>
+    <p class="nv-cta-sub">{% trans "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)." %} · 13.02.2026</p>
+  </div>
+  <a href="{% static 'assets/docs/certificate_DGU59865.pdf' %}" target="_blank" rel="noopener" class="nv-btn nv-btn-ghost"><i class="ti ti-external-link"></i>{% trans "View certificate" %}</a>
 </div>
 
 <div class="nv-grid nv-cols-2 nv-mb">

@@ -1228,3 +1228,17 @@ msgstr "dashboard in action"
 
 msgid "Demo subtitle"
 msgstr "A full walkthrough of the NovdAI dashboard — registration, green-finance analysis and the verdict report."
+
+# Registration certificate (dashboard)
+
+msgid "State-registered software"
+msgstr "State-registered software"
+
+msgid "Certificate"
+msgstr "Certificate"
+
+msgid "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)."
+msgstr "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)."
+
+msgid "View certificate"
+msgstr "View certificate"

@@ -1228,3 +1228,17 @@ msgstr "dashboard amalda"
 
 msgid "Demo subtitle"
 msgstr "NovdAI dashboard'ining to'liq ko'rinishi — ro'yxatdan o'tish, yashil moliya tahlili va yakuniy hisobot."
+
+# Registration certificate (dashboard)
+
+msgid "State-registered software"
+msgstr "Davlat ro'yxatidan o'tgan dastur"
+
+msgid "Certificate"
+msgstr "Guvohnoma"
+
+msgid "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)."
+msgstr "O'zbekiston Respublikasi Adliya vazirligi tomonidan berilgan rasmiy dastur ro'yxatidan o'tkazish guvohnomasi."
+
+msgid "View certificate"
+msgstr "Guvohnomani ko'rish"
