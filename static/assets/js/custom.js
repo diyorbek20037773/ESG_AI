@@ -250,3 +250,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+/* ── Inline Google-Drive video embed (News card) — play on-page, no redirect ── */
+(function () {
+  function playInline(trigger) {
+    var card = trigger.closest('.nv-news-card');
+    var media = card ? card.querySelector('.nv-news-media') : null;
+    if (!media || media.classList.contains('is-playing')) return;
+    var url = trigger.getAttribute('data-drive-embed');
+    if (!url) return;
+    var f = document.createElement('iframe');
+    f.src = url;
+    f.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
+    f.setAttribute('allowfullscreen', '');
+    f.className = 'nv-news-iframe';
+    media.innerHTML = '';
+    media.appendChild(f);
+    media.classList.add('is-playing');
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-drive-embed]');
+    if (!t) return;
+    e.preventDefault();
+    playInline(t);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var t = e.target.closest('.nv-news-media[data-drive-embed]');
+    if (!t) return;
+    e.preventDefault();
+    playInline(t);
+  });
+})();

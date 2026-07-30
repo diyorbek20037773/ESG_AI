@@ -1959,6 +1959,10 @@ a.cred-chip:hover { background:rgba(9,200,44,.18); border-color:#09C82C; transfo
   border-radius:50%; background:rgba(9,200,44,.86); box-shadow:0 8px 26px rgba(0,0,0,.35);
   transition:transform .18s, background .18s; }
 .nv-news-media:hover .nv-news-play i { transform:scale(1.08); background:#09C82C; }
+.nv-news-media[role="button"] { cursor:pointer; }
+.nv-news-iframe { position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+.nv-news-media.is-playing .nv-news-play { display:none; }
+.nv-news-media.is-playing img { display:none; }
 .nv-news-badge { display:inline-flex; align-items:center; gap:7px; padding:6px 13px; border-radius:999px;
   font-size:12.5px; font-weight:700; color:#07902a; background:rgba(9,200,44,.10); border:1px solid rgba(9,200,44,.28); }
 [data-bs-theme="dark"] .nv-news-badge { color:#5affa0; background:rgba(43,255,136,.12); border-color:rgba(43,255,136,.3); }

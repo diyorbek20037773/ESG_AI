@@ -797,10 +797,11 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
           <div class="nv-news-card">
-            <a href="https://drive.google.com/file/d/1Vs8MZmnHuohEnPhjv_PxrD-SrtkRDBJL/view" target="_blank" rel="noopener" class="nv-news-media" aria-label="{% trans 'Watch video' %}">
+            <div class="nv-news-media" role="button" tabindex="0" aria-label="{% trans 'Watch video' %}"
+                 data-drive-embed="https://drive.google.com/file/d/1Vs8MZmnHuohEnPhjv_PxrD-SrtkRDBJL/preview">
               <img src="{% static 'assets/images/uzc-interview-stage.jpg' %}" alt="UzCombinator — NovdAI" loading="lazy">
               <span class="nv-news-play"><i class="ti ti-player-play-filled"></i></span>
-            </a>
+            </div>
             <div class="nv-news-body">
               <span class="nv-news-badge"><i class="ti ti-rocket"></i>UzCombinator S2</span>
               <h3 class="nv-news-title">{% trans "UzCombinator news title" %}</h3>
@@ -808,9 +809,10 @@
               <div class="nv-news-tags">
                 <span>#UzCombinator</span><span>#startup</span><span>#Uzbekistan</span>
               </div>
-              <a href="https://drive.google.com/file/d/1Vs8MZmnHuohEnPhjv_PxrD-SrtkRDBJL/view" target="_blank" rel="noopener" class="btn btn-primary rounded-pill px-4">
+              <button type="button" class="btn btn-primary rounded-pill px-4"
+                      data-drive-embed="https://drive.google.com/file/d/1Vs8MZmnHuohEnPhjv_PxrD-SrtkRDBJL/preview">
                 <i class="ti ti-player-play me-1"></i>{% trans "Watch video" %}
-              </a>
+              </button>
             </div>
           </div>
         </div>
