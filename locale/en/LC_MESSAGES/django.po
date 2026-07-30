@@ -1242,3 +1242,14 @@ msgstr "Official software registration certificate (Ministry of Justice, Republi
 
 msgid "View certificate"
 msgstr "View certificate"
+
+# NovdAI UzCombinator news
+
+msgid "UzCombinator news title"
+msgstr "NovdAI advanced to the UzCombinator Season 2 interview stage"
+
+msgid "UzCombinator news body"
+msgstr "Being selected among thousands of applications is a great vote of confidence for us. The most exciting part is only just beginning."
+
+msgid "Watch video"
+msgstr "Watch video"

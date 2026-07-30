@@ -1242,3 +1242,14 @@ msgstr "O'zbekiston Respublikasi Adliya vazirligi tomonidan berilgan rasmiy dast
 
 msgid "View certificate"
 msgstr "Guvohnomani ko'rish"
+
+# NovdAI UzCombinator news
+
+msgid "UzCombinator news title"
+msgstr "NovdAI jamoasi UzCombinator 2-mavsumining suhbat bosqichiga o‘tdi"
+
+msgid "UzCombinator news body"
+msgstr "Minglab arizalar orasidan tanlanish — biz uchun katta ishonch. Eng qizig‘i endi boshlanmoqda."
+
+msgid "Watch video"
+msgstr "Videoni ko‘rish"

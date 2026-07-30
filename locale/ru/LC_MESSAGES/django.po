@@ -1242,3 +1242,14 @@ msgstr "Официальное свидетельство о регистрац�
 
 msgid "View certificate"
 msgstr "Посмотреть свидетельство"
+
+# NovdAI UzCombinator news
+
+msgid "UzCombinator news title"
+msgstr "NovdAI вышла в этап собеседования UzCombinator, Сезон 2"
+
+msgid "UzCombinator news body"
+msgstr "Быть отобранными среди тысяч заявок — большое доверие для нас. Самое интересное только начинается."
+
+msgid "Watch video"
+msgstr "Смотреть видео"
