@@ -262,6 +262,24 @@
         </div>
       </div>
 
+      <div class="row justify-content-center mb-8">
+        <div class="col-12 col-lg-10">
+          <div class="nv-patent">
+            <a href="{% static 'assets/docs/patent_novdai.pdf' %}" target="_blank" rel="noopener" class="nv-patent-thumb">
+              <img src="{% static 'assets/images/patent_novdai.png' %}" alt="Guvohnoma DGU 59865" loading="lazy">
+            </a>
+            <div class="nv-patent-body">
+              <span class="nv-patent-badge"><i class="ti ti-certificate"></i>{% trans "State-registered software" %}</span>
+              <h3 class="nv-patent-title">{% trans "Certificate" %} № DGU 59865</h3>
+              <p class="nv-patent-sub">{% trans "Official software registration certificate (Ministry of Justice, Republic of Uzbekistan)." %} · 13.02.2026</p>
+              <a href="{% static 'assets/docs/patent_novdai.pdf' %}" target="_blank" rel="noopener" class="btn btn-primary rounded-pill px-4">
+                <i class="ti ti-external-link me-1"></i>{% trans "View certificate" %}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row g-4">
         {% for post in latest_posts %}
         <div class="col-lg-4 col-md-6">
